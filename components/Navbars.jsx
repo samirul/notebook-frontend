@@ -3,8 +3,9 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import {Toggle} from '../components/Toggle';
 
-const Navbars = ({value}) => {
+const Navbars = ({value, handleChange}) => {
   return (
     <>
       <div>
@@ -27,6 +28,7 @@ const Navbars = ({value}) => {
                     Separated link
                   </NavDropdown.Item>
                 </NavDropdown>
+                <Toggle isChecked={value} handleChange={handleChange} />
               </Nav>
             </Navbar.Collapse>
           </Container>

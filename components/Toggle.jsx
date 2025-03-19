@@ -1,4 +1,6 @@
 import "./Toggle.css";
+import WbSunnyIcon from '@mui/icons-material/WbSunny';
+import ModeNightIcon from '@mui/icons-material/ModeNight';
 
 export const Toggle = ({ handleChange, isChecked }) => {
   return (
@@ -10,7 +12,7 @@ export const Toggle = ({ handleChange, isChecked }) => {
         onChange={handleChange}
         checked={isChecked}
       />
-      <label htmlFor="check">Dark Mode</label>
+      <label htmlFor="check">{isChecked ? <WbSunnyIcon id="sunny-icon"/> : <ModeNightIcon/>}</label>
     </div>
   );
 };

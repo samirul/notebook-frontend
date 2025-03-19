@@ -1,6 +1,6 @@
 .toggle-container {
     position: absolute;
-    top: 2em;
+    bottom: 1em;
     right: 2em;
   }
   
@@ -39,4 +39,8 @@
   
   .toggle:checked + label::after {
     transform: translateX(100%);
+  }
+
+  #sunny-icon{
+    color: #fffc62 !important;
   }
