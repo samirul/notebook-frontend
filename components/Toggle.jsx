@@ -1,4 +1,4 @@
-import "./Toggle.css";
+import "../css/Toggle.css";
 import WbSunnyIcon from '@mui/icons-material/WbSunny';
 import ModeNightIcon from '@mui/icons-material/ModeNight';
 
