@@ -11,7 +11,7 @@ const Navbars = ({value, handleChange}) => {
       <div>
         <Navbar expand="lg" className="nav-bg-color" data-bs-theme={value ? "dark" : "light"}>
           <Container>
-            <Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand>
+            <Navbar.Brand href="#home">MyNotebook</Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
               <Nav className="me-auto">
