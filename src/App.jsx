@@ -8,6 +8,7 @@ import {
   Navigate
 } from "react-router-dom";
 import HomePage from '../pages/HomePage';
+import Footer from '../components/Footer';
 
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
             <Route path="/" exact element={<HomePage />} />
          </Routes>
       </Router>
+      <Footer/>
       </div>
     </>
   )

@@ -1,0 +1,16 @@
+footer {
+    grid-column: span 3;
+    text-align: center;
+    border-top: 1px solid #838383;
+    background-image: linear-gradient(45deg, #FF512F 0%, #F09819  51%, #FF512F  100%);
+    padding: 30px;
+    width: 100vw;  /* Full viewport width */
+    position: relative; /* Ensure proper layout */
+    left: 0;
+    color: var(--primary-text-color);
+    font-weight: 800;
+    font-size: 20px;
+}
+
+
+
