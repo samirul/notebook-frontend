@@ -7,10 +7,12 @@ const HomePage = () => {
       <main className='main-container'>
         <div className='grid-container'>
           <div className='banner-main'>
-            <img src={notebook} alt="banner"/>
-            <h1>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus, minus quibusdam architecto quia nesciunt error quaerat, hic, culpa nihil quos ratione exercitationem doloremque debitis itaque quam ea laborum inventore dolorum pariatur sunt ab sapiente nisi? Accusamus, adipisci. Cupiditate natus dolore adipisci. Maiores, asperiores quisquam? Accusantium laudantium quo atque suscipit, provident reiciendis, iusto modi soluta delectus aut nam unde? Dicta quisquam, commodi itaque illo quibusdam fugit nihil excepturi natus culpa similique, illum, eaque possimus cupiditate quaerat repudiandae rerum dolorem. Maxime laudantium quia suscipit, ratione doloribus ipsum hic saepe cum magnam inventore porro cumque pariatur illo sint nobis? Earum mollitia fugit dolore.</h1>
+            <img src={notebook} alt="banner" />
+            <h1>Write Anytime, Anywhere – Your Digital Notebook for Effortless Note-Taking! Capture Ideas, Organize Thoughts, and Access Your Notes Anytime with Our Seamless, Cloud-Synced Platform. Start Typing and Stay Productive!
+              Whether you're a student, professional, or creative thinker, our intuitive and distraction-free interface makes note-taking easy and efficient. Collaborate in real time, and never lose an important idea again. With powerful search, customizable categories, and secure cloud storage, your notes are always at your fingertips.
+              Unlock your productivity and turn every thought into action—start your digital note-taking journey today!</h1>
           </div>
-        <button className='btn-banner'>Write Your Notebook</button>
+          <button className='btn-banner'>Write Your Notebook</button>
         </div>
       </main>
     </>
