@@ -44,3 +44,12 @@
   #sunny-icon{
     color: #fffc62 !important;
   }
+
+  @media screen and (max-width: 995px) {
+    .toggle-container {
+      position: relative;
+      bottom: 1em;
+      right: 0.2em;
+    }
+    
+  }

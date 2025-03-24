@@ -1,6 +1,13 @@
 import { useState } from 'react'
 import useLocalStorage from "use-local-storage";
 import Navbars from '../components/Navbars';
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate
+} from "react-router-dom";
+import HomePage from '../pages/HomePage';
 
 
 function App() {
@@ -10,7 +17,12 @@ function App() {
     <>
       <Navbars value={isDark} handleChange={() => setIsDark(!isDark)}/>
       <div className="App" data-theme={isDark ? "dark" : "light"}>
-    </div>
+      <Router>
+         <Routes>
+            <Route path="/" exact element={<HomePage />} />
+         </Routes>
+      </Router>
+      </div>
     </>
   )
 }
