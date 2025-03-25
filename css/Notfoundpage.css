@@ -7,9 +7,9 @@
 
 .error-page-number{
     font-size: 150px;
-    color: #fff;
+    color: var(--primary-text-color);
 }
 .error-page-text{
     margin-top: 20px;
-    color: #fff;
+    color: var(--primary-text-color);
 }

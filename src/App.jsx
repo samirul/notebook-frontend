@@ -15,11 +15,11 @@ import Notfoundpage from '../pages/Notfoundpage';
 
 const Layout = ({ children }) => {
   const location = useLocation();
-  const showSideMenu = location.pathname === "/" || location.pathname === "*";
+  const hideSideMenu = location.pathname === "404";
 
   return (
     <div className="app-container">
-      {showSideMenu && <Sidebar />}
+      {hideSideMenu && <Sidebar />}
       <div className="content">{children}</div>
     </div>
   );
@@ -37,7 +37,8 @@ function App() {
         <Layout>
          <Routes>
             <Route path="/" exact element={<HomePage />} />
-            <Route path="*" exact element={<Notfoundpage />} />
+            <Route path="*" element={<Navigate to="/404" />} />
+            <Route path="/404" exact element={<Notfoundpage />} />
          </Routes>
          </Layout>
         <Footer/>
