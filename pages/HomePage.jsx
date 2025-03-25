@@ -12,7 +12,7 @@ const HomePage = () => {
               Whether you're a student, professional, or creative thinker, our intuitive and distraction-free interface makes note-taking easy and efficient. Collaborate in real time, and never lose an important idea again. With powerful search, customizable categories, and secure cloud storage, your notes are always at your fingertips.
               Unlock your productivity and turn every thought into action—start your digital note-taking journey today!</h1>
           </div>
-          <button className='btn-banner'>Write Your Notebook</button>
+          <button className='btn-banner'>Write Your Notes</button>
         </div>
       </main>
     </>

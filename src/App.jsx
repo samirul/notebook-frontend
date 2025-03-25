@@ -1,14 +1,29 @@
-import { useState } from 'react'
+import { useState} from 'react'
 import useLocalStorage from "use-local-storage";
 import Navbars from '../components/Navbars';
 import {
   BrowserRouter as Router,
   Routes,
   Route,
-  Navigate
+  Navigate,
+  useLocation 
 } from "react-router-dom";
 import HomePage from '../pages/HomePage';
 import Footer from '../components/Footer';
+import Sidebar from '../components/Sidebar';
+import Notfoundpage from '../pages/Notfoundpage';
+
+const Layout = ({ children }) => {
+  const location = useLocation();
+  const showSideMenu = location.pathname === "/" || location.pathname === "*";
+
+  return (
+    <div className="app-container">
+      {showSideMenu && <Sidebar />}
+      <div className="content">{children}</div>
+    </div>
+  );
+};
 
 
 function App() {
@@ -19,11 +34,14 @@ function App() {
       <Navbars value={isDark} handleChange={() => setIsDark(!isDark)}/>
       <div className="App" data-theme={isDark ? "dark" : "light"}>
       <Router>
+        <Layout>
          <Routes>
             <Route path="/" exact element={<HomePage />} />
+            <Route path="*" exact element={<Notfoundpage />} />
          </Routes>
+         </Layout>
+        <Footer/>
       </Router>
-      <Footer/>
       </div>
     </>
   )
