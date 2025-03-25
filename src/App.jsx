@@ -12,14 +12,15 @@ import HomePage from '../pages/HomePage';
 import Footer from '../components/Footer';
 import Sidebar from '../components/Sidebar';
 import Notfoundpage from '../pages/Notfoundpage';
+import Topics from '../pages/Topics';
 
 const Layout = ({ children }) => {
   const location = useLocation();
-  const hideSideMenu = location.pathname === "404";
+  const hideSideMenu = location.pathname === "/404" || location.pathname === "/";
 
   return (
     <div className="app-container">
-      {hideSideMenu && <Sidebar />}
+      {!hideSideMenu && <Sidebar />}
       <div className="content">{children}</div>
     </div>
   );
@@ -39,6 +40,7 @@ function App() {
             <Route path="/" exact element={<HomePage />} />
             <Route path="*" element={<Navigate to="/404" />} />
             <Route path="/404" exact element={<Notfoundpage />} />
+            <Route path="/topics" exact element={<Topics />} />
          </Routes>
          </Layout>
         <Footer/>
