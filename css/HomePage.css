@@ -58,7 +58,6 @@ h1{
 
 .grid-container .btn-banner:hover {
   background-position: right center;
-  /* change the direction of the change here */
   color: #fff;
   text-decoration: none;
 }

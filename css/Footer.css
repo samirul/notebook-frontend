@@ -4,13 +4,18 @@ footer {
     border-top: 1px solid #838383;
     background-image: linear-gradient(45deg, #FF512F 0%, #F09819  51%, #FF512F  100%);
     padding: 30px;
-    width: 100vw;  /* Full viewport width */
-    position: relative; /* Ensure proper layout */
+    width: 100vw;
+    position: relative;
     left: 0;
     color: var(--primary-text-color);
     font-weight: 800;
     font-size: 20px;
 }
 
-
-
+.footer-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+}

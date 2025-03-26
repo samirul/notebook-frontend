@@ -3,6 +3,7 @@
 @import url("../css/HomePage.css");
 @import url("../css/Footer.css");
 @import url("../css/Notfoundpage.css");
+@import url("../css/Sidebar.css");
 
 html, body{
   margin: 0;
@@ -48,7 +49,6 @@ html, body{
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  align-items: center;
   background-color: var(--background-color);
   transition: background-color 0.25s ease-in-out;
 }
