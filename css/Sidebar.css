@@ -3,8 +3,8 @@
     left: 0;
     top: 0;
     height: 100vh;
-    background-color: #1a1a1a;
-    color: white;
+    background-color: var(--background-color);
+    color: var(--primary-text-color);
     transition: all 0.3s ease;
     width: 250px;
     padding: 1rem;
@@ -25,7 +25,7 @@
   .toggle-btn {
     background: none;
     border: none;
-    color: white;
+    color: var(--primary-text-color);
     cursor: pointer;
     font-size: 1.2rem;
     padding: 0.5rem;
@@ -35,6 +35,7 @@
   
   .toggle-btn:hover {
     background-color: #2a2a2a;
+    color: #f6f6f6;
   }
   
   .menu-item {
@@ -57,13 +58,14 @@
   
   .menu-title:hover {
     background-color: #2a2a2a;
+    color: #f6f6f6;
   }
   
   .menu-link {
     display: flex;
     align-items: center;
     padding: 0.5rem;
-    color: white;
+    color: var(--primary-text-color);
     text-decoration: none;
     border-radius: 4px;
     transition: background-color 0.2s;
@@ -71,6 +73,7 @@
   
   .menu-link:hover {
     background-color: #2a2a2a;
+    color: #f6f6f6;
   }
   
   .icon-wrapper {
@@ -105,7 +108,7 @@
   .submenu-item {
     display: block;
     padding: 0.5rem;
-    color: white;
+    color: var(--primary-text-color);
     text-decoration: none;
     font-size: 0.9rem;
     transition: background-color 0.2s;
@@ -114,6 +117,7 @@
   
   .submenu-item:hover {
     background-color: #2a2a2a;
+    color: #f6f6f6;
   }
   
   /* Floating menu styles */
@@ -121,7 +125,7 @@
     position: absolute;
     left: calc(100% + 10px);
     top: 0;
-    background-color: #1a1a1a;
+    background-color: var(--background-color);
     border-radius: 4px;
     padding: 0.5rem;
     min-width: 150px;
@@ -139,7 +143,7 @@
   .floating-menu-item {
     display: block;
     padding: 0.5rem;
-    color: white;
+    color: var(--primary-text-color);
     text-decoration: none;
     border-radius: 4px;
     transition: background-color 0.2s;
@@ -147,6 +151,7 @@
   
   .floating-menu-item:hover {
     background-color: #2a2a2a;
+    color: #f6f6f6;
   }
   
   /* Collapsed sidebar specific styles */
