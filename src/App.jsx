@@ -40,7 +40,6 @@ function App() {
             <Sidebar isOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />
             <Routes>
               <Route path="*" element={<Navigate to="/404" />} />
-              <Route path="/404" exact element={<Notfoundpage />} />
               <Route path="/topics" exact element={<Topics />} />
             </Routes>
             {/* <Footer/> */}
