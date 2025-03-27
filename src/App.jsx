@@ -42,7 +42,6 @@ function App() {
               <Route path="*" element={<Navigate to="/404" />} />
               <Route path="/topics" exact element={<Topics />} />
             </Routes>
-            {/* <Footer/> */}
           </main>
         }
       </div>
