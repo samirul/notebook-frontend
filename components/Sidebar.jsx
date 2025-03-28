@@ -4,20 +4,24 @@ import { FaChevronDown, FaChevronRight, FaBars, FaHome, FaBook, FaCog } from 're
 
 const Sidebar = ({ isOpen, toggleSidebar }) => {
   const [dropdowns, setDropdowns] = useState({});
-  const [subDropdowns, setSubDropdowns] = useState({}); // New state for subcategory dropdowns
+  const [subDropdowns, setSubDropdowns] = useState({});
   const [hoveredItem, setHoveredItem] = useState(null);
 
-  const menuItems = [
+  // Separate arrays for each section
+  const dashboardItems = [
     {
       title: 'Dashboard',
       path: '/',
       icon: <FaHome />
-    },
+    }
+  ];
+
+  const topicItems = [
     {
       title: 'Topics',
       icon: <FaBook />,
       submenu: [
-        { 
+        {
           title: 'Mathematics',
           path: '/topics/math',
           subcategories: [
@@ -26,7 +30,7 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
             { title: 'Calculus', path: '/topics/math/calculus' }
           ]
         },
-        { 
+        {
           title: 'Science',
           path: '/topics/science',
           subcategories: [
@@ -35,7 +39,7 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
             { title: 'Biology', path: '/topics/science/biology' }
           ]
         },
-        { 
+        {
           title: 'History',
           path: '/topics/history',
           subcategories: [
@@ -45,7 +49,10 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
           ]
         }
       ]
-    },
+    }
+  ];
+
+  const settingsItems = [
     {
       title: 'Settings',
       icon: <FaCog />,
@@ -70,6 +77,76 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
     }));
   };
 
+  const renderMenuItems = (items) => {
+    return items.map((item, index) => (
+      <div
+        key={index}
+        className="menu-item"
+        onMouseEnter={() => setHoveredItem(item.title)}
+        onMouseLeave={() => setHoveredItem(null)}
+      >
+        {item.submenu ? (
+          <div className="menu-item-wrapper">
+            <div
+              className="menu-title"
+              onClick={() => toggleDropdown(item.title)}
+            >
+              <span className="icon-wrapper">{item.icon}</span>
+              <span className="title-text">{item.title}</span>
+              <span className="dropdown-icon">
+                {dropdowns[item.title] ? <FaChevronDown /> : <FaChevronRight />}
+              </span>
+            </div>
+            <div className={`submenu ${dropdowns[item.title] ? 'open' : ''}`}>
+              {item.submenu.map((subItem, subIndex) => (
+                <div key={subIndex} className="submenu-group">
+                  <div
+                    className="submenu-header"
+                    onClick={() => toggleSubDropdown(subItem.title)}
+                  >
+                    <Link to={subItem.path} className="submenu-title">
+                      {subItem.title}
+                    </Link>
+                    {subItem.subcategories && (
+                      <span className="dropdown-icon">
+                        {subDropdowns[subItem.title] ? <FaChevronDown /> : <FaChevronRight />}
+                      </span>
+                    )}
+                  </div>
+                  {subItem.subcategories && subDropdowns[subItem.title] && (
+                    <div className="subcategories">
+                      {subItem.subcategories.map((subCat, subCatIndex) => (
+                        <Link
+                          key={subCatIndex}
+                          to={subCat.path}
+                          className="subcategory-item"
+                        >
+                          {subCat.title}
+                        </Link>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
+          </div>
+        ) : (
+          <div className="menu-item-wrapper">
+            <Link to={item.path} className="menu-link">
+              <span className="icon-wrapper">{item.icon}</span>
+              <span className="title-text">{item.title}</span>
+            </Link>
+            {!isOpen && hoveredItem === item.title && (
+              <div className="floating-menu">
+                <div className="floating-title">{item.title}</div>
+              </div>
+            )}
+          </div>
+        )}
+      </div>
+    ));
+  };
+
   return (
     <div className={`sidebar ${isOpen ? 'open' : 'closed'}`}>
       <div className="sidebar-header">
@@ -78,106 +155,15 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
         </button>
       </div>
       <nav className="sidebar-nav">
-        {menuItems.map((item, index) => (
-          <div
-            key={index}
-            className="menu-item"
-            onMouseEnter={() => setHoveredItem(item.title)}
-            onMouseLeave={() => setHoveredItem(null)}
-          >
-            {item.submenu ? (
-              <div className="menu-item-wrapper">
-                <div
-                  className="menu-title"
-                  onClick={() => toggleDropdown(item.title)}
-                >
-                  <span className="icon-wrapper">{item.icon}</span>
-                  <span className="title-text">{item.title}</span>
-                  <span className="dropdown-icon">
-                    {dropdowns[item.title] ? <FaChevronDown /> : <FaChevronRight />}
-                  </span>
-                </div>
-                {!isOpen && hoveredItem === item.title && (
-                  <div className="floating-menu">
-                    <div className="floating-title">{item.title}</div>
-                    {item.submenu.map((subItem, subIndex) => (
-                      <div key={subIndex} className="floating-submenu-item">
-                        <div 
-                          className="floating-submenu-header"
-                          onClick={() => toggleSubDropdown(subItem.title)}
-                        >
-                          <span>{subItem.title}</span>
-                          {subItem.subcategories && (
-                            <span className="dropdown-icon">
-                              {subDropdowns[subItem.title] ? <FaChevronDown /> : <FaChevronRight />}
-                            </span>
-                          )}
-                        </div>
-                        {subItem.subcategories && subDropdowns[subItem.title] && (
-                          <div className="floating-subcategories">
-                            {subItem.subcategories.map((subCat, subCatIndex) => (
-                              <Link
-                                key={subCatIndex}
-                                to={subCat.path}
-                                className="floating-subcategory-item"
-                              >
-                                {subCat.title}
-                              </Link>
-                            ))}
-                          </div>
-                        )}
-                      </div>
-                    ))}
-                  </div>
-                )}
-                <div className={`submenu ${dropdowns[item.title] ? 'open' : ''}`}>
-                  {item.submenu.map((subItem, subIndex) => (
-                    <div key={subIndex} className="submenu-group">
-                      <div 
-                        className="submenu-header"
-                        onClick={() => toggleSubDropdown(subItem.title)}
-                      >
-                        <Link to={subItem.path} className="submenu-title">
-                          {subItem.title}
-                        </Link>
-                        {subItem.subcategories && (
-                          <span className="dropdown-icon">
-                            {subDropdowns[subItem.title] ? <FaChevronDown /> : <FaChevronRight />}
-                          </span>
-                        )}
-                      </div>
-                      {subItem.subcategories && subDropdowns[subItem.title] && (
-                        <div className="subcategories">
-                          {subItem.subcategories.map((subCat, subCatIndex) => (
-                            <Link
-                              key={subCatIndex}
-                              to={subCat.path}
-                              className="subcategory-item"
-                            >
-                              {subCat.title}
-                            </Link>
-                          ))}
-                        </div>
-                      )}
-                    </div>
-                  ))}
-                </div>
-              </div>
-            ) : (
-              <div className="menu-item-wrapper">
-                <Link to={item.path} className="menu-link">
-                  <span className="icon-wrapper">{item.icon}</span>
-                  <span className="title-text">{item.title}</span>
-                </Link>
-                {!isOpen && hoveredItem === item.title && (
-                  <div className="floating-menu">
-                    <div className="floating-title">{item.title}</div>
-                  </div>
-                )}
-              </div>
-            )}
-          </div>
-        ))}
+        <div className="sidebar-section">
+          {renderMenuItems(dashboardItems)}
+        </div>
+        <div className="sidebar-section">
+          {renderMenuItems(topicItems)}
+        </div>
+        <div className="sidebar-section">
+          {renderMenuItems(settingsItems)}
+        </div>
       </nav>
     </div>
   );
