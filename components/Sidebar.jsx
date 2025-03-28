@@ -16,6 +16,17 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
     }
   ];
 
+  const CreateNote = [
+    {
+      title: 'New Note',
+      icon: <FaBook />,
+      submenu: [
+        { title: 'New Category', path: '/settings/profile' },
+        { title: 'Create Note', path: '/new-note' }
+      ]
+    }
+  ];
+
   const topicItems = [
     {
       title: 'Topics',
@@ -157,6 +168,9 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
       <nav className="sidebar-nav">
         <div className="sidebar-section">
           {renderMenuItems(dashboardItems)}
+        </div>
+        <div className="sidebar-section">
+          {renderMenuItems(CreateNote)}
         </div>
         <div className="sidebar-section">
           {renderMenuItems(topicItems)}

@@ -1,0 +1,10 @@
+.new-notes-container
+.react-quill-class{
+    height: 50vh;
+    margin: 60px auto;
+    width: 90%;
+}
+
+.ql-editor p{
+    color: var(--primary-text-color);
+}
