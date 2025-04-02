@@ -50,25 +50,25 @@ const NewNotes = () => {
             <div className='new-notes-container'>
                 <div className="grid-note-container">
                     <Form onSubmit={handleSubmit} className="p-4">
-                        <Form.Group className="mb-3 from-size-item" controlId="formName">
-                            <Form.Label>Name</Form.Label>
+                        <Form.Group className="mb-3 from-size-item" controlId="formTitle">
+                            <Form.Label>Title</Form.Label>
                             <Form.Control
                                 type="text"
                                 name="name"
                                 value={formData.name}
                                 onChange={handleChange}
-                                placeholder="Enter your name"
+                                placeholder="Enter your title"
                             />
                         </Form.Group>
 
-                        <Form.Group className="mb-3 from-size-item" controlId="formEmail">
-                            <Form.Label>Email</Form.Label>
+                        <Form.Group className="mb-3 from-size-item" controlId="formOptions">
+                            <Form.Label>Category</Form.Label>
                             <Form.Select
-                                name="email"
-                                value={formData.email}
+                                name="options"
+                                value={formData.options}
                                 onChange={handleChange}
                             >
-                                <option value="">Select an option</option>
+                                <option value="">Select an category</option>
                                 <option value="option1">Option 1</option>
                                 <option value="option2">Option 2</option>
                                 <option value="option3">Option 3</option>
@@ -76,7 +76,6 @@ const NewNotes = () => {
                         </Form.Group>
 
                         <Form.Group className="mb-3" controlId="formDescription">
-                            <Form.Label>Description</Form.Label>
                             <ReactQuill theme="snow"
                                 value={formData.description}
                                 onChange={handleQuillChange}
