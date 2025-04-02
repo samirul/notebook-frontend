@@ -11,7 +11,7 @@ import HomePage from '../pages/HomePage';
 import Footer from '../components/Footer';
 import Sidebar from '../components/Sidebar';
 import Notfoundpage from '../pages/Notfoundpage';
-import Topics from '../pages/Topics';
+import Notes from '../pages/Notes';
 import NewNotes from '../pages/NewNotes';
 
 function App() {
@@ -41,7 +41,7 @@ function App() {
             <Sidebar isOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />
             <Routes>
               <Route path="*" element={<Navigate to="/404" />} />
-              <Route path="/topics" exact element={<Topics />} />
+              <Route path="/notes" exact element={<Notes />} />
               <Route path="/new-note" exact element={<NewNotes />} />
             </Routes>
           </main>

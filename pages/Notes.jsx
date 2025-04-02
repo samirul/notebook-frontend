@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Topics = () => {
+const Notes = () => {
   return (
     <>
       <main className='topic-grid'>
@@ -13,4 +13,4 @@ const Topics = () => {
   )
 }
 
-export default Topics
+export default Notes

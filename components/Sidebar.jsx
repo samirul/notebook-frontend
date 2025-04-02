@@ -18,7 +18,7 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
 
   const CreateNote = [
     {
-      title: 'New Note',
+      title: 'New',
       icon: <FaBook />,
       submenu: [
         { title: 'New Category', path: '/settings/profile' },
@@ -29,7 +29,7 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
 
   const topicItems = [
     {
-      title: 'Topics',
+      title: 'Notes',
       icon: <FaBook />,
       submenu: [
         {

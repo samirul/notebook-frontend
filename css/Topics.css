@@ -10,17 +10,16 @@
     grid-column: span 3;
 }
 
+@media screen and (max-width: 995px) {
+    .topic-container {
+        grid-template-columns: 1fr;
+    }
+
+}
 
 @media screen and (max-width: 620px) {
     .topic-container {
         grid-template-columns: 1fr;
     }
     
-}
-
-@media screen and (max-width: 995px) {
-    .topic-container {
-        grid-template-columns: 1fr;
-    }
-
 }
