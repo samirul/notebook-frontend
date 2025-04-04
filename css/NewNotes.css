@@ -90,6 +90,69 @@ svg path.ql-fill{
     color: var(--primary-text-color) !important;
 }
 
+
+.button-submit {
+  backface-visibility: hidden;
+  background: var(--background-button-color);
+  border: 0;
+  border-radius: .375rem;
+  box-sizing: border-box;
+  color: var(--background-button-text-color);
+  cursor: pointer;
+  display: inline-block;
+  font-family: Circular,Helvetica,sans-serif;
+  text-transform: uppercase;
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: -.01em;
+  line-height: 1.3;
+  padding: 1rem 4rem;
+  position: relative;
+  text-align: left;
+  text-decoration: none;
+  transform: translateZ(0) scale(1);
+  transition: transform .2s;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.button-submit:disabled {
+  color: #787878;
+  cursor: auto;
+}
+
+.button-submit:not(:disabled):hover {
+  transform: scale(1.05);
+}
+
+.button-submit:not(:disabled):hover:active {
+  transform: scale(1.05) translateY(.125rem);
+}
+
+.button-submit:focus {
+  outline: 0 solid transparent;
+}
+
+.button-submit:focus:before {
+  border-width: .125rem;
+  content: "";
+  left: calc(-1*.375rem);
+  pointer-events: none;
+  position: absolute;
+  top: calc(-1*.375rem);
+  transition: border-radius;
+  user-select: none;
+}
+
+.button-submit:focus:not(:focus-visible) {
+  outline: 0 solid transparent;
+}
+
+.button-submit:not(:disabled):active {
+  transform: translateY(.125rem);
+}
+
 @media only screen and (min-device-width: 1201px) and (max-device-width: 1800px){
     .new-notes-container .react-quill-class {
         max-width: 1000px;
@@ -184,69 +247,12 @@ svg path.ql-fill{
         display: flex;
         justify-content: center;
         align-items: center;
-        padding-top: 150px;
+        padding-top: 220px;
     }
 
-}
+    .button-submit {
+        padding: 0.8rem 3rem;
+        font-size: 1.1rem;
+    }
 
-.button-submit {
-  backface-visibility: hidden;
-  background: var(--background-button-color);
-  border: 0;
-  border-radius: .375rem;
-  box-sizing: border-box;
-  color: var(--background-button-text-color);
-  cursor: pointer;
-  display: inline-block;
-  font-family: Circular,Helvetica,sans-serif;
-  text-transform: uppercase;
-  font-size: 1.5rem;
-  font-weight: 700;
-  letter-spacing: -.01em;
-  line-height: 1.3;
-  padding: 1rem 4rem;
-  position: relative;
-  text-align: left;
-  text-decoration: none;
-  transform: translateZ(0) scale(1);
-  transition: transform .2s;
-  user-select: none;
-  -webkit-user-select: none;
-  touch-action: manipulation;
-}
-
-.button-submit:disabled {
-  color: #787878;
-  cursor: auto;
-}
-
-.button-submit:not(:disabled):hover {
-  transform: scale(1.05);
-}
-
-.button-submit:not(:disabled):hover:active {
-  transform: scale(1.05) translateY(.125rem);
-}
-
-.button-submit:focus {
-  outline: 0 solid transparent;
-}
-
-.button-submit:focus:before {
-  border-width: .125rem;
-  content: "";
-  left: calc(-1*.375rem);
-  pointer-events: none;
-  position: absolute;
-  top: calc(-1*.375rem);
-  transition: border-radius;
-  user-select: none;
-}
-
-.button-submit:focus:not(:focus-visible) {
-  outline: 0 solid transparent;
-}
-
-.button-submit:not(:disabled):active {
-  transform: translateY(.125rem);
 }
