@@ -48,6 +48,47 @@ form {
     width: 100%;
 }
 
+svg path.ql-fill{
+    fill: var(--primary-text-color) !important;
+}
+
+.ql-picker-label{
+    color: var(--primary-text-color) !important;
+}
+
+.ql-stroke {
+    stroke: var(--primary-text-color) !important;
+}
+
+.ql-direction svg{
+    stroke: var(--primary-text-color) !important;
+}
+
+.ql-snow .ql-picker-options{
+    background-color: var(--background-color) !important;
+}
+
+.ql-snow .ql-picker{
+    color: var(--primary-text-color) !important;
+}
+
+.ql-snow.ql-toolbar button:hover,
+.ql-snow .ql-toolbar button:hover,
+.ql-snow.ql-toolbar button:focus,
+.ql-snow .ql-toolbar button:focus,
+.ql-snow.ql-toolbar button.ql-active,
+.ql-snow .ql-toolbar button.ql-active,
+.ql-snow.ql-toolbar .ql-picker-label:hover,
+.ql-snow .ql-toolbar .ql-picker-label:hover,
+.ql-snow.ql-toolbar .ql-picker-label.ql-active,
+.ql-snow .ql-toolbar .ql-picker-label.ql-active,
+.ql-snow.ql-toolbar .ql-picker-item:hover,
+.ql-snow .ql-toolbar .ql-picker-item:hover,
+.ql-snow.ql-toolbar .ql-picker-item.ql-selected,
+.ql-snow .ql-toolbar .ql-picker-item.ql-selected {
+    color: var(--primary-text-color) !important;
+}
+
 @media screen and (max-width: 995px) {
     .grid-note-container .btn-container {
         display: flex;
