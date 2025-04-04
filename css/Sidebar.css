@@ -185,19 +185,9 @@
   gap: 2px;
 }
 
-  .sidebar.closed .icon-wrapper {
-    margin-right: 0;
-  }
-  
-  .main-content {
-    margin-left: 250px;
-    transition: margin-left 0.3s ease;
-  }
-  
-  .main-content.sidebar-closed {
-    margin-left: 60px;
-  }
-
+.main-content{
+  margin-left: 60px;
+}
 
 .submenu-group {
   margin: 5px 0;
@@ -297,7 +287,20 @@
 }
 
 
-
+@media screen and (min-width: 1500px){
+  .main-content{
+    margin-left: 0px;
+  }
+  
+  .main-content {
+    margin-left: 250px;
+    transition: margin-left 0.3s ease;
+  }
+  
+  .main-content.sidebar-closed {
+    margin-left: 60px;
+  }
+}
   
   @media (max-width: 768px) {
     .sidebar {

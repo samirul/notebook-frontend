@@ -1,8 +1,8 @@
 .new-notes-container .react-quill-class {
     height: 100vh;
     margin: 60px auto;
-    width: 90%;
-    max-width: 1800px;
+    max-width: 1200px;
+    
 }
 
 .ql-editor p {
@@ -90,7 +90,70 @@ svg path.ql-fill{
     color: var(--primary-text-color) !important;
 }
 
-@media screen and (max-width: 995px) {
+@media only screen and (min-device-width: 1201px) and (max-device-width: 1800px){
+    .new-notes-container .react-quill-class {
+        max-width: 1000px;
+    }
+}
+
+@media only screen and (min-device-width: 1000px) and (max-device-width: 1200px){
+    .new-notes-container .react-quill-class {
+        max-width: 850px;
+    }
+}
+@media only screen and (min-device-width: 900px) and (max-device-width: 999px){
+    .new-notes-container .react-quill-class {
+        max-width: 800px;
+    }
+
+    .grid-note-container .btn-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding-top: 35px;
+    }
+
+}
+@media only screen and (min-device-width: 800px) and (max-device-width: 899px){
+    .new-notes-container .react-quill-class {
+        max-width: 650px;
+    }
+    .grid-note-container .btn-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding-top: 45px;
+    }
+
+}
+@media only screen and (min-device-width: 700px) and (max-device-width: 799px){
+    .new-notes-container .react-quill-class {
+        max-width: 600px;
+    }
+    .grid-note-container .btn-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding-top: 50px;
+    }
+
+}
+@media only screen and (min-device-width: 600px) and (max-device-width: 699px){
+    .new-notes-container .react-quill-class {
+        max-width: 500px;
+    }
+    .grid-note-container .btn-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding-top: 100px;
+    }
+
+}
+@media only screen and (min-device-width: 500px) and (max-device-width: 599px){
+    .new-notes-container .react-quill-class {
+        max-width: 400px;
+    }
     .grid-note-container .btn-container {
         display: flex;
         justify-content: center;
@@ -100,96 +163,31 @@ svg path.ql-fill{
 
 }
 
-@media screen and (min-width: 820px) {
+@media only screen and (min-device-width: 400px) and (max-device-width: 499px){
+    .new-notes-container .react-quill-class {
+        max-width: 300px;
+    }
     .grid-note-container .btn-container {
         display: flex;
         justify-content: center;
         align-items: center;
-        padding-top: 35px;
+        padding-top: 120px;
     }
 
 }
 
-@media screen and (max-width: 768px) {
+@media only screen and (min-device-width: 300px) and (max-device-width: 399px){
+    .new-notes-container .react-quill-class {
+        max-width: 200px;
+    }
     .grid-note-container .btn-container {
         display: flex;
         justify-content: center;
         align-items: center;
-        padding-top: 50px;
+        padding-top: 150px;
     }
 
 }
-
-@media screen and (max-width: 620px) {
-    .grid-note-container .btn-container {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        padding-top: 100px;
-    }
-
-}
-
-
-@media screen and (max-width: 450px) {
-    .grid-note-container .btn-container {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        padding-top: 200px;
-    }
-
-}
-
-@media screen and (max-width: 430px) {
-    .grid-note-container .btn-container {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        padding-top: 140px;
-    }
-
-}
-
-@media screen and (max-width: 414px) {
-    .grid-note-container .btn-container {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        padding-top: 140px;
-    }
-
-}
-
-@media screen and (max-width: 390px) {
-    .grid-note-container .btn-container {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        padding-top: 160px;
-    }
-
-}
-
-@media screen and (max-width: 380px) {
-    .grid-note-container .btn-container {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        padding-top: 160px;
-    }
-
-}
-@media screen and (max-width: 344px) {
-    .grid-note-container .btn-container {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        padding-top: 210px;
-    }
-
-}
-
 
 .button-submit {
   backface-visibility: hidden;
