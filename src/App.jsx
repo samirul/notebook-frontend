@@ -15,7 +15,7 @@ import Notes from '../pages/Notes';
 import NewNotes from '../pages/NewNotes';
 
 function App() {
-  const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
   };
