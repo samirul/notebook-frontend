@@ -192,11 +192,11 @@ svg path.ql-fill{
 
 .button-submit {
   backface-visibility: hidden;
-  background: #332cf2;
+  background: var(--background-button-color);
   border: 0;
   border-radius: .375rem;
   box-sizing: border-box;
-  color: #fff;
+  color: var(--background-button-text-color);
   cursor: pointer;
   display: inline-block;
   font-family: Circular,Helvetica,sans-serif;

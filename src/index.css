@@ -16,6 +16,8 @@ html, body{
 }
 
 :root {
+  --background-button-color: #0a0a0a;
+  --background-button-text-color: #f6f6f6;
   --background-color: #f6f6f6;
   --foreground-color: #003cff;
   --primary-text-color: #0a0a0a;
@@ -26,6 +28,8 @@ html, body{
 }
 
 [data-theme="dark"] {
+  --background-button-color: #f6f6f6;
+  --background-button-text-color: #0a0a0a;
   --background-color: #0a0a0a;
   --foreground-color: #567aff;
   --primary-text-color: #f6f6f6;
@@ -36,6 +40,8 @@ html, body{
 }
 
 [data-bs-theme="dark"] {
+  --background-button-color: #f6f6f6;
+  --background-button-text-color: #0a0a0a;
   --background-color: #0a0a0a;
   --foreground-color: #567aff;
   --primary-text-color: #f6f6f6;
