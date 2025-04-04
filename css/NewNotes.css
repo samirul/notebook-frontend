@@ -154,6 +154,10 @@ svg path.ql-fill{
   transform: translateY(.125rem);
 }
 
+.form-label{
+    color: var(--primary-text-color);
+}
+
 @media only screen and (min-device-width: 1201px) and (max-device-width: 1800px){
     .new-notes-container .react-quill-class {
         max-width: 1000px;
