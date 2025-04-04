@@ -115,6 +115,7 @@ svg path.ql-fill{
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
+  margin-bottom: 50px;
 }
 
 .button-submit:disabled {
