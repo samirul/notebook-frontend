@@ -2,6 +2,7 @@
     height: 100vh;
     margin: 60px auto;
     width: 90%;
+    max-width: 1800px;
 }
 
 .ql-editor p {
