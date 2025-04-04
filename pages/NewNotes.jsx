@@ -3,7 +3,6 @@ import ReactQuill from 'react-quill-new';
 import 'react-quill-new/dist/quill.snow.css';
 import 'react-quill-new/dist/quill.bubble.css';
 import Form from 'react-bootstrap/Form';
-import Button from 'react-bootstrap/Button';
 
 const NewNotes = () => {
     const [formData, setFormData] = useState({ name: '', options: '', description: '' });
