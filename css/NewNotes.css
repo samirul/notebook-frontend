@@ -49,12 +49,6 @@ form {
 }
 
 @media screen and (max-width: 995px) {
-    .new-notes-container .react-quill-class {
-        height: 30vh;
-        margin: 60px auto;
-        width: 90%;
-    }
-
     .grid-note-container .btn-container {
         display: flex;
         justify-content: center;
@@ -64,13 +58,27 @@ form {
 
 }
 
-@media screen and (max-width: 620px) {
-    .new-notes-container .react-quill-class {
-        height: 30vh;
-        margin: 60px auto;
-        width: 90%;
+@media screen and (min-width: 820px) {
+    .grid-note-container .btn-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding-top: 35px;
     }
 
+}
+
+@media screen and (max-width: 768px) {
+    .grid-note-container .btn-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding-top: 50px;
+    }
+
+}
+
+@media screen and (max-width: 620px) {
     .grid-note-container .btn-container {
         display: flex;
         justify-content: center;
@@ -82,12 +90,6 @@ form {
 
 
 @media screen and (max-width: 450px) {
-    .new-notes-container .react-quill-class {
-        height: 30vh;
-        margin: 60px auto;
-        width: 90%;
-    }
-
     .grid-note-container .btn-container {
         display: flex;
         justify-content: center;
@@ -95,4 +97,115 @@ form {
         padding-top: 200px;
     }
 
+}
+
+@media screen and (max-width: 430px) {
+    .grid-note-container .btn-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding-top: 140px;
+    }
+
+}
+
+@media screen and (max-width: 414px) {
+    .grid-note-container .btn-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding-top: 140px;
+    }
+
+}
+
+@media screen and (max-width: 390px) {
+    .grid-note-container .btn-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding-top: 160px;
+    }
+
+}
+
+@media screen and (max-width: 380px) {
+    .grid-note-container .btn-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding-top: 160px;
+    }
+
+}
+@media screen and (max-width: 344px) {
+    .grid-note-container .btn-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding-top: 210px;
+    }
+
+}
+
+
+.button-submit {
+  backface-visibility: hidden;
+  background: #332cf2;
+  border: 0;
+  border-radius: .375rem;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  font-family: Circular,Helvetica,sans-serif;
+  font-size: 1.125rem;
+  font-weight: 700;
+  letter-spacing: -.01em;
+  line-height: 1.3;
+  padding: 1rem 1.25rem;
+  position: relative;
+  text-align: left;
+  text-decoration: none;
+  transform: translateZ(0) scale(1);
+  transition: transform .2s;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.button-submit:disabled {
+  color: #787878;
+  cursor: auto;
+}
+
+.button-submit:not(:disabled):hover {
+  transform: scale(1.05);
+}
+
+.button-submit:not(:disabled):hover:active {
+  transform: scale(1.05) translateY(.125rem);
+}
+
+.button-submit:focus {
+  outline: 0 solid transparent;
+}
+
+.button-submit:focus:before {
+  border-width: .125rem;
+  content: "";
+  left: calc(-1*.375rem);
+  pointer-events: none;
+  position: absolute;
+  top: calc(-1*.375rem);
+  transition: border-radius;
+  user-select: none;
+}
+
+.button-submit:focus:not(:focus-visible) {
+  outline: 0 solid transparent;
+}
+
+.button-submit:not(:disabled):active {
+  transform: translateY(.125rem);
 }

@@ -83,9 +83,9 @@ const NewNotes = () => {
                                 className='react-quill-class' />
                         </Form.Group>
                         <div className='btn-container'>
-                            <Button variant="primary" type="submit">
-                                Submit
-                            </Button>
+                        <button className="button-submit" role="button">
+                            Submit
+                        </button>
                         </div>
                     </Form>
                 </div>
