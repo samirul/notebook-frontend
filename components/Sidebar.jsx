@@ -16,6 +16,14 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
     }
   ];
 
+  const AllNotes = [
+    {
+      title: 'All Notes',
+      path: '/notes',
+      icon: <FaHome />
+    }
+  ];
+
   const CreateNote = [
     {
       title: 'New',
@@ -34,7 +42,7 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
       submenu: [
         {
           title: 'Mathematics',
-          path: '/topics/math',
+          // path: '/topics/math',
           subcategories: [
             { title: 'Algebra', path: '/topics/math/algebra' },
             { title: 'Geometry', path: '/topics/math/geometry' },
@@ -43,7 +51,7 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
         },
         {
           title: 'Science',
-          path: '/topics/science',
+          // path: '/topics/science',
           subcategories: [
             { title: 'Physics', path: '/topics/science/physics' },
             { title: 'Chemistry', path: '/topics/science/chemistry' },
@@ -52,7 +60,7 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
         },
         {
           title: 'History',
-          path: '/topics/history',
+          // path: '/topics/history',
           subcategories: [
             { title: 'World History', path: '/topics/history/world' },
             { title: 'Ancient History', path: '/topics/history/ancient' },
@@ -168,6 +176,9 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
       <nav className="sidebar-nav">
         <div className="sidebar-section">
           {renderMenuItems(dashboardItems)}
+        </div>
+        <div className="sidebar-section">
+          {renderMenuItems(AllNotes)}
         </div>
         <div className="sidebar-section">
           {renderMenuItems(CreateNote)}
