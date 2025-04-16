@@ -135,6 +135,11 @@ input.category-input{
   color: var(--primary-text-color);
 }
 
+.grid-category-views form{
+  /* text-align: center; */
+  grid-column: span 3;
+}
+
 
 @media only screen and (min-device-width: 300px) and (max-device-width: 399px){
 

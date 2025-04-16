@@ -19,7 +19,7 @@ const NewCategory = () => {
         <div className="grid-category-container">
           <Form onSubmit={handleSubmit} className="p-4">
             <Form.Group className="mb-3 from-size-item" controlId="formTitle">
-              <Form.Label className='category-name'>Category Name</Form.Label>
+              <Form.Label className='category-name'>Create New Category</Form.Label>
               <Form.Control
                 type="text"
                 name="name"
@@ -31,12 +31,30 @@ const NewCategory = () => {
             </Form.Group>
             <div className='btn-container'>
               <button className="button-submit-category" role="button">
-                Submit
+                Create
               </button>
             </div>
           </Form>
         </div>
         <div className='grid-category-views'>
+          <Form onSubmit={handleSubmit} className="p-4">
+            <Form.Group className="mb-3 from-size-item" controlId="formTitle">
+              <Form.Label className='category-name'>Search Categories</Form.Label>
+              <Form.Control
+                type="text"
+                name="name"
+                value={formData.name}
+                onChange={handleChange}
+                placeholder="Enter your category name"
+                className='category-input'
+              />
+            </Form.Group>
+            <div className='btn-container'>
+              <button className="button-submit-category" role="button">
+                Search
+              </button>
+            </div>
+          </Form>
           <h2>List of categories is created</h2>
           <div className='category-items'>
             <div className='category-item'>
