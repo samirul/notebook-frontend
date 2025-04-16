@@ -21,7 +21,7 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
       title: 'New',
       icon: <FaBook />,
       submenu: [
-        { title: 'New Category', path: '/settings/profile' },
+        { title: 'New Category', path: '/new-category' },
         { title: 'Create Note', path: '/new-note' }
       ]
     }

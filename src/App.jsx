@@ -13,6 +13,7 @@ import Sidebar from '../components/Sidebar';
 import Notfoundpage from '../pages/Notfoundpage';
 import Notes from '../pages/Notes';
 import NewNotes from '../pages/NewNotes';
+import NewCategory from '../pages/NewCategory';
 
 function App() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -43,6 +44,7 @@ function App() {
               <Route path="*" element={<Navigate to="/404" />} />
               <Route path="/notes" exact element={<Notes />} />
               <Route path="/new-note" exact element={<NewNotes />} />
+              <Route path="/new-category" exact element={<NewCategory />} />
             </Routes>
           </main>
         }

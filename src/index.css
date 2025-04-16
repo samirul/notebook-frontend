@@ -6,6 +6,7 @@
 @import url("../css/Sidebar.css");
 @import url("../css/Topics.css");
 @import url("../css/NewNotes.css");
+@import url("../css/NewCategory.css");
 
 html, body{
   margin: 0;
@@ -17,6 +18,8 @@ html, body{
 
 :root {
   --background-button-color: #0a0a0a;
+  --background-category-color: #0a0a0a;
+  --background-category-text-color: #f6f6f6;
   --background-button-text-color: #f6f6f6;
   --background-color: #f6f6f6;
   --foreground-color: #003cff;
@@ -29,6 +32,8 @@ html, body{
 
 [data-theme="dark"] {
   --background-button-color: #f6f6f6;
+  --background-category-color: #f6f6f6;
+  --background-category-text-color: #0a0a0a;
   --background-button-text-color: #0a0a0a;
   --background-color: #0a0a0a;
   --foreground-color: #567aff;
