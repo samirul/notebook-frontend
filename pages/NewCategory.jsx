@@ -4,14 +4,22 @@ import { Trash3Fill } from 'react-bootstrap-icons';
 
 const NewCategory = () => {
   const [formData, setFormData] = useState({ name: '' });
+  const [formSearch, setFormSearch] = useState({ name: '' });
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+  const handleChangeSearch = (e) => {
+    setFormSearch({ ...formSearch, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log('Form submitted:', formData);
+  };
+  const handleSubmitSearch = (e) => {
+    e.preventDefault();
+    console.log('Form submitted:', formSearch);
   };
   return (
     <div>
@@ -37,14 +45,14 @@ const NewCategory = () => {
           </Form>
         </div>
         <div className='grid-category-views'>
-          <Form onSubmit={handleSubmit} className="p-4">
+          <Form onSubmit={handleSubmitSearch} className="p-4">
             <Form.Group className="mb-3 from-size-item" controlId="formTitle">
               <Form.Label className='category-name'>Search Categories</Form.Label>
               <Form.Control
                 type="text"
                 name="name"
-                value={formData.name}
-                onChange={handleChange}
+                value={formSearch.name}
+                onChange={handleChangeSearch}
                 placeholder="Enter your category name"
                 className='category-input'
               />
