@@ -8,6 +8,7 @@
 @import url("../css/NewNotes.css");
 @import url("../css/NewCategory.css");
 @import url("../css/Modal.css");
+@import url("../css/Pagination.css");
 
 html, body{
   margin: 0;
@@ -22,6 +23,15 @@ html, body{
   --background-category-color: #0a0a0a;
   --background-category-text-color: #f6f6f6;
   --background-button-text-color: #f6f6f6;
+  --background-pagination-border-color: #dee2e6;
+  --background-pagination-hover-bg-color: #0a0a0a;
+  --pagination-shadow: 0 0 0 0.25rem rgba(0, 0, 0, 0.25);
+  --pagination-active-bg: #0a0a0a;
+  --pagination-active-text: #fff;
+  --pagination-hover-bg: #0a0a0a;
+  --link-hover-color: #fff;
+  --body-bg: #f6f6f6;
+  --link-color: #0a0a0a;
   --background-color: #f6f6f6;
   --foreground-color: #003cff;
   --primary-text-color: #0a0a0a;
@@ -35,7 +45,16 @@ html, body{
   --background-button-color: #f6f6f6;
   --background-category-color: #f6f6f6;
   --background-category-text-color: #0a0a0a;
-  --background-button-text-color: #0a0a0a;
+  --background-button-text-color: #5e5d5d;
+  --background-pagination-hover-bg-color: #fff;
+  --background-pagination-border-color: #f6f6f6;
+  --pagination-hover-bg: #fff;
+  --pagination-shadow: 0 0 0 0.25rem rgba(255, 250, 250, 0.774);
+  --pagination-active-bg: #f6f6f6;
+  --pagination-active-text: #0a0a0a;
+  --link-hover-color: #0a0a0a;
+  --body-bg: #0a0a0a;
+  --link-color: #fff;
   --background-color: #0a0a0a;
   --foreground-color: #567aff;
   --primary-text-color: #f6f6f6;
@@ -48,6 +67,15 @@ html, body{
 [data-bs-theme="dark"] {
   --background-button-color: #f6f6f6;
   --background-button-text-color: #0a0a0a;
+  --background-pagination-border-color: #f6f6f6;
+  --background-pagination-hover-bg-color: #fff;
+  --link-hover-color: #0a0a0a;
+  --pagination-hover-bg: #fff;
+  --pagination-active-bg: #f6f6f6;
+  --pagination-active-text: #0a0a0a;
+  --pagination-shadow: 0 0 0 0.25rem rgba(255, 250, 250, 0.774);
+  --link-color: #fff;
+  --body-bg: #0a0a0a;
   --background-color: #0a0a0a;
   --foreground-color: #567aff;
   --primary-text-color: #f6f6f6;

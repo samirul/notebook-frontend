@@ -70,6 +70,17 @@ const Notes = ({value}) => {
             <p>Lorem ipsum</p>
             <Trash3Fill className='trash-fill' onClick={() => setModalShow(true)}/>
           </div>
+          <div className='all-notes'>
+            <p>Lorem ipsum</p>
+            <Trash3Fill className='trash-fill' onClick={() => setModalShow(true)}/>
+          </div>
+          <div className='all-notes'>
+            <p>Lorem ipsum</p>
+            <Trash3Fill className='trash-fill' onClick={() => setModalShow(true)}/>
+          </div>
+          
+        </div >
+        <div className='paginator-notes'>
           <PaginationAllText/>
         </div>
       </main>

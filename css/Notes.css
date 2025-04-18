@@ -52,6 +52,12 @@
     margin-top: 20px;
 }
 
+.paginator-notes{
+    grid-column: span 3;
+    margin: 10px auto;
+    margin-bottom: 50px;
+}
+
 
 @media screen and (max-width: 995px) {
     .topic-container {
