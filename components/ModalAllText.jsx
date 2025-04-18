@@ -11,6 +11,8 @@ const ModalAllText = (props) => {
                     size="lg"
                     aria-labelledby="contained-modal-title-vcenter"
                     centered
+                    className='modal-all-notes'
+                    data-bs-theme={props.value ? "dark" : "light"}
                 >
                     <Modal.Header closeButton>
                         <Modal.Title id="contained-modal-title-vcenter">

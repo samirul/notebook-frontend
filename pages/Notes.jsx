@@ -3,7 +3,7 @@ import Form from 'react-bootstrap/Form';
 import { Trash3Fill } from 'react-bootstrap-icons';
 import ModalAllText from '../components/ModalAllText';
 
-const Notes = () => {
+const Notes = ({value}) => {
   const [formSearch, setFormSearch] = useState({ name: '' });
   const [modalShow, setModalShow] = React.useState(false);
 
@@ -42,6 +42,7 @@ const Notes = () => {
         <ModalAllText
         show={modalShow}
         onHide={() => setModalShow(false)}
+        value = {value}
       />
         <div className='note-container'>
           <div className='all-notes'>

@@ -52,6 +52,26 @@
     margin-top: 20px;
 }
 
+.modal-all-notes{
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.modal{
+    --bs-modal-header-border-color: var(--background-color) !important;
+    --bs-modal-header-border-width: 0px !important;
+    --bs-modal-footer-border-color: var(--background-color) !important;
+    --bs-modal-footer-border-width: 0px !important;
+}
+
+.modal-content{
+    color: var(--primary-text-color) !important;
+}
+
 @media screen and (max-width: 995px) {
     .topic-container {
         grid-template-columns: 1fr;

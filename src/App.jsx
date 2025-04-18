@@ -42,7 +42,7 @@ function App() {
             <Sidebar isOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />
             <Routes>
               <Route path="*" element={<Navigate to="/404" />} />
-              <Route path="/notes" exact element={<Notes />} />
+              <Route path="/notes" exact element={<Notes value={isDark}/>} />
               <Route path="/new-note" exact element={<NewNotes />} />
               <Route path="/new-category" exact element={<NewCategory />} />
             </Routes>
