@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import Form from 'react-bootstrap/Form';
 import { Trash3Fill } from 'react-bootstrap-icons';
 import ModalCategory from '../components/ModalCategory';
+import PaginationCategory from '../components/PaginationCategory';
 
 const NewCategory = ({value}) => {
   const [formData, setFormData] = useState({ name: '' });
@@ -101,6 +102,9 @@ const NewCategory = ({value}) => {
                <Trash3Fill className='trash-fill-category' onClick={() => setModalShow(true)}/>
             </div>
           </div>
+          <div className='paginator-notes'>
+            <PaginationCategory/>
+        </div>
         </div>
       </div>
     </div>
