@@ -38,28 +38,27 @@ const Notes = () => {
         </div>
         <div className='note-container'>
           <div className='all-notes'>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ex, culpa!, Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ex, culpa!,
-            </p>
+            <p>Lorem ipsumccccxxxxx</p>
               <Trash3Fill className='trash-fill'/>
           </div>
           <div className='all-notes'>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ex, culpa!</p>
+            <p>Lorem ipsum</p>
             <Trash3Fill className='trash-fill'/>
           </div>
           <div className='all-notes'>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ex, culpa!</p>
+            <p>Lorem ipsum</p>
             <Trash3Fill className='trash-fill'/>
           </div>
           <div className='all-notes'>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ex, culpa!</p>
+            <p>Lorem ipsum</p>
             <Trash3Fill className='trash-fill'/>
           </div>
           <div className='all-notes'>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ex, culpa!</p>
+            <p>Lorem ipsum</p>
             <Trash3Fill className='trash-fill'/>
           </div>
           <div className='all-notes'>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ex, culpa!</p>
+            <p>Lorem ipsum</p>
             <Trash3Fill className='trash-fill'/>
           </div>
         </div>

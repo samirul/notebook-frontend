@@ -29,9 +29,10 @@
     margin: 0px auto;
     word-break: break-word;
     overflow: hidden;
+    min-width: 300px;
     max-width: 300px;
-    max-height: 250px;
-    min-height: 250px;
+    max-height: 200px;
+    min-height: 200px;
     text-overflow: ellipsis;
     background-color: var(--background-category-color);
     color: var(--background-category-text-color);
