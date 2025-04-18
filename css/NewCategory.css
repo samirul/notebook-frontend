@@ -130,6 +130,7 @@ input.category-input{
     text-overflow: ellipsis;
     background-color: var(--background-category-color);
     color: var(--background-category-text-color);
+    cursor: pointer;
 }
 
 .grid-category-views h2{

@@ -1,10 +1,12 @@
 import React, { useState } from 'react'
 import Form from 'react-bootstrap/Form';
 import { Trash3Fill } from 'react-bootstrap-icons';
+import ModalCategory from '../components/ModalCategory';
 
-const NewCategory = () => {
+const NewCategory = ({value}) => {
   const [formData, setFormData] = useState({ name: '' });
   const [formSearch, setFormSearch] = useState({ name: '' });
+  const [modalShow, setModalShow] = useState(false);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -63,35 +65,40 @@ const NewCategory = () => {
               </button>
             </div>
           </Form>
+          <ModalCategory
+          show={modalShow}
+          onHide={() => setModalShow(false)}
+          value = {value}
+          />
           <h2>List of categories is created</h2>
           <div className='category-items'>
             <div className='category-item'>
               <p>Category12 sssssssss</p>
-              <Trash3Fill className='trash-fill-category'/>
+              <Trash3Fill className='trash-fill-category' onClick={() => setModalShow(true)}/>
             </div>
             <div className='category-item'>
               <p>Category12</p>
-               <Trash3Fill className='trash-fill-category'/>
+               <Trash3Fill className='trash-fill-category' onClick={() => setModalShow(true)}/>
             </div>
             <div className='category-item'>
               <p>Category12</p>
-               <Trash3Fill className='trash-fill-category'/>
+               <Trash3Fill className='trash-fill-category' onClick={() => setModalShow(true)}/>
             </div>
             <div className='category-item'>
               <p>Category12</p>
-               <Trash3Fill className='trash-fill-category'/>
+               <Trash3Fill className='trash-fill-category' onClick={() => setModalShow(true)}/>
             </div>
             <div className='category-item'>
               <p>Category</p>
-               <Trash3Fill className='trash-fill-category'/>
+               <Trash3Fill className='trash-fill-category' onClick={() => setModalShow(true)}/>
             </div>
             <div className='category-item'>
               <p>Category</p>
-               <Trash3Fill className='trash-fill-category'/>
+               <Trash3Fill className='trash-fill-category' onClick={() => setModalShow(true)}/>
             </div>
             <div className='category-item'>
               <p>Category</p>
-               <Trash3Fill className='trash-fill-category'/>
+               <Trash3Fill className='trash-fill-category' onClick={() => setModalShow(true)}/>
             </div>
           </div>
         </div>

@@ -6,7 +6,7 @@ import PaginationAllText from '../components/PaginationAllText';
 
 const Notes = ({value}) => {
   const [formSearch, setFormSearch] = useState({ name: '' });
-  const [modalShow, setModalShow] = React.useState(false);
+  const [modalShow, setModalShow] = useState(false);
 
   const handleChangeSearch = (e) => {
     setFormSearch({ ...formSearch, [e.target.name]: e.target.value });
