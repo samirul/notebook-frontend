@@ -141,6 +141,14 @@ input.category-input{
   grid-column: span 3;
 }
 
+.category-item p{
+  margin-top: 20px;
+}
+
+.category-item .trash-fill-category{
+  margin-top: 20px;
+}
+
 
 @media only screen and (min-device-width: 300px) and (max-device-width: 399px){
 

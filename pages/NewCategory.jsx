@@ -67,31 +67,31 @@ const NewCategory = () => {
           <div className='category-items'>
             <div className='category-item'>
               <p>Category12 sssssssss</p>
-              <Trash3Fill/>
+              <Trash3Fill className='trash-fill-category'/>
             </div>
             <div className='category-item'>
               <p>Category12</p>
-              <Trash3Fill/>
+               <Trash3Fill className='trash-fill-category'/>
             </div>
             <div className='category-item'>
               <p>Category12</p>
-              <Trash3Fill/>
+               <Trash3Fill className='trash-fill-category'/>
             </div>
             <div className='category-item'>
               <p>Category12</p>
-              <Trash3Fill/>
+               <Trash3Fill className='trash-fill-category'/>
             </div>
             <div className='category-item'>
               <p>Category</p>
-              <Trash3Fill/>
+               <Trash3Fill className='trash-fill-category'/>
             </div>
             <div className='category-item'>
               <p>Category</p>
-              <Trash3Fill/>
+               <Trash3Fill className='trash-fill-category'/>
             </div>
             <div className='category-item'>
               <p>Category</p>
-              <Trash3Fill/>
+               <Trash3Fill className='trash-fill-category'/>
             </div>
           </div>
         </div>
