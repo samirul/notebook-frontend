@@ -1,11 +1,67 @@
-import React from 'react'
+import React, { useState } from 'react'
+import Form from 'react-bootstrap/Form';
+import { Trash3Fill } from 'react-bootstrap-icons';
 
 const Notes = () => {
+  const [formSearch, setFormSearch] = useState({ name: '' });
+
+  const handleChangeSearch = (e) => {
+    setFormSearch({ ...formSearch, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmitSearch = (e) => {
+    e.preventDefault();
+    console.log('Form submitted:', formSearch);
+  };
   return (
     <>
       <main className='topic-grid'>
-        <div className='topic-container'>
-          <h1>Test Topic</h1>
+        <div className='topic-container-search'>
+          <Form onSubmit={handleSubmitSearch} className="p-4">
+            <Form.Group className="mb-3 from-size-item" controlId="formTitle">
+              <Form.Label className='category-name'>Search Notes</Form.Label>
+              <Form.Control
+                type="text"
+                name="name"
+                value={formSearch.name}
+                onChange={handleChangeSearch}
+                placeholder="Enter your notes name"
+                className='category-input'
+              />
+            </Form.Group>
+            <div className='btn-container'>
+              <button className="button-submit-category" role="button">
+                Create
+              </button>
+            </div>
+          </Form>
+        </div>
+        <div className='note-container'>
+          <div className='all-notes'>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ex, culpa!, Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ex, culpa!,
+            </p>
+              <Trash3Fill className='trash-fill'/>
+          </div>
+          <div className='all-notes'>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ex, culpa!</p>
+            <Trash3Fill className='trash-fill'/>
+          </div>
+          <div className='all-notes'>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ex, culpa!</p>
+            <Trash3Fill className='trash-fill'/>
+          </div>
+          <div className='all-notes'>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ex, culpa!</p>
+            <Trash3Fill className='trash-fill'/>
+          </div>
+          <div className='all-notes'>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ex, culpa!</p>
+            <Trash3Fill className='trash-fill'/>
+          </div>
+          <div className='all-notes'>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ex, culpa!</p>
+            <Trash3Fill className='trash-fill'/>
+          </div>
         </div>
       </main>
 
