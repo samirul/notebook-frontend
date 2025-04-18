@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import Form from 'react-bootstrap/Form';
 import { Trash3Fill } from 'react-bootstrap-icons';
 import ModalAllText from '../components/ModalAllText';
+import PaginationAllText from '../components/PaginationAllText';
 
 const Notes = ({value}) => {
   const [formSearch, setFormSearch] = useState({ name: '' });
@@ -69,6 +70,7 @@ const Notes = ({value}) => {
             <p>Lorem ipsum</p>
             <Trash3Fill className='trash-fill' onClick={() => setModalShow(true)}/>
           </div>
+          <PaginationAllText/>
         </div>
       </main>
 
