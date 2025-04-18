@@ -1,9 +1,11 @@
 import React, { useState } from 'react'
 import Form from 'react-bootstrap/Form';
 import { Trash3Fill } from 'react-bootstrap-icons';
+import ModalAllText from '../components/ModalAllText';
 
 const Notes = () => {
   const [formSearch, setFormSearch] = useState({ name: '' });
+  const [modalShow, setModalShow] = React.useState(false);
 
   const handleChangeSearch = (e) => {
     setFormSearch({ ...formSearch, [e.target.name]: e.target.value });
@@ -37,30 +39,34 @@ const Notes = () => {
           </Form>
         </div>
         <h2 className='notes-title-front'>All Notes</h2>
+        <ModalAllText
+        show={modalShow}
+        onHide={() => setModalShow(false)}
+      />
         <div className='note-container'>
           <div className='all-notes'>
             <p>Lorem ipsumccccxxxxx</p>
-              <Trash3Fill className='trash-fill'/>
+              <Trash3Fill className='trash-fill' onClick={() => setModalShow(true)}/>
           </div>
           <div className='all-notes'>
             <p>Lorem ipsum</p>
-            <Trash3Fill className='trash-fill'/>
+            <Trash3Fill className='trash-fill' onClick={() => setModalShow(true)}/>
           </div>
           <div className='all-notes'>
             <p>Lorem ipsum</p>
-            <Trash3Fill className='trash-fill'/>
+            <Trash3Fill className='trash-fill' onClick={() => setModalShow(true)}/>
           </div>
           <div className='all-notes'>
             <p>Lorem ipsum</p>
-            <Trash3Fill className='trash-fill'/>
+            <Trash3Fill className='trash-fill' onClick={() => setModalShow(true)}/>
           </div>
           <div className='all-notes'>
             <p>Lorem ipsum</p>
-            <Trash3Fill className='trash-fill'/>
+            <Trash3Fill className='trash-fill' onClick={() => setModalShow(true)}/>
           </div>
           <div className='all-notes'>
             <p>Lorem ipsum</p>
-            <Trash3Fill className='trash-fill'/>
+            <Trash3Fill className='trash-fill' onClick={() => setModalShow(true)}/>
           </div>
         </div>
       </main>
