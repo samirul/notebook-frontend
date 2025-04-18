@@ -36,6 +36,7 @@ const Notes = () => {
             </div>
           </Form>
         </div>
+        <h2 className='notes-title-front'>All Notes</h2>
         <div className='note-container'>
           <div className='all-notes'>
             <p>Lorem ipsumccccxxxxx</p>

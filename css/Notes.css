@@ -10,6 +10,12 @@
     grid-column: span 3;
 }
 
+.topic-grid .notes-title-front{
+    grid-column: span 3;
+    margin: 60px auto;
+    color: var(--primary-text-color);
+}
+
 .note-container{
     grid-column: span 3;
     margin: 60px auto;
