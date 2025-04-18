@@ -7,6 +7,7 @@
 @import url("../css/Notes.css");
 @import url("../css/NewNotes.css");
 @import url("../css/NewCategory.css");
+@import url("../css/Modal.css");
 
 html, body{
   margin: 0;

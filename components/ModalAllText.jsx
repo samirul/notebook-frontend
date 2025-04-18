@@ -1,5 +1,4 @@
 import React from 'react'
-import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 
 const ModalAllText = (props) => {
@@ -21,13 +20,21 @@ const ModalAllText = (props) => {
                     </Modal.Header>
                     <Modal.Body>
                         <h4>Delete Confirmation</h4>
-                        <p>
+                        <p className='modal-body-body'>
                             Are you sure you want to delete saved note?
                         </p>
                     </Modal.Body>
                     <Modal.Footer>
-                        <Button>Yes</Button>
-                        <Button onClick={props.onHide}>Cancel</Button>
+                        <div className='btn-container'>
+                            <button className="button-submit-category" role="button">
+                                Delete
+                            </button>
+                        </div>
+                        <div className='btn-container'>
+                            <button onClick={props.onHide} className="button-submit-category" role="button">
+                                Cancel
+                            </button>
+                        </div>
                     </Modal.Footer>
                 </Modal>
             </div>

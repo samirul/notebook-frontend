@@ -33,7 +33,7 @@ const Notes = ({value}) => {
             </Form.Group>
             <div className='btn-container'>
               <button className="button-submit-category" role="button">
-                Create
+                Search
               </button>
             </div>
           </Form>
