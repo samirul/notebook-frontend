@@ -46,7 +46,7 @@ function App() {
               <Route path="/notes" exact element={<Notes value={isDark}/>} />
               <Route path="/new-note" exact element={<NewNotes />} />
               <Route path="/new-category" exact element={<NewCategory value={isDark} />} />
-              <Route path="/note/:note_id/" exact element={<SinglePage/>} />
+              <Route path="/note/:note_id/" exact element={<SinglePage value={isDark}/>} />
             </Routes>
           </main>
         }

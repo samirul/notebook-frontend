@@ -1,9 +1,11 @@
-import React from 'react'
+import React, {useState}  from 'react'
 import { useParams } from 'react-router-dom'
 import { Trash3Fill, PencilSquare } from 'react-bootstrap-icons';
+import ModalSingleText from '../components/modals/ModalSingleText';
 
-const SinglePage = () => {
+const SinglePage = ({value}) => {
     const { note_id } = useParams();
+    const [modalShow, setModalShow] = useState(false);
     return (
         <>
             <main className='container'>
@@ -13,9 +15,14 @@ const SinglePage = () => {
                         <p className='note-created-time'>Created at: 10pm</p>
                         <p className='note-updated-time'>Updated at: 11pm</p>
                     </div>
+                    <ModalSingleText
+                        show={modalShow}
+                        onHide={() => setModalShow(false)}
+                        value={value}
+                    />
                     <div className="note-menu">
-                        <PencilSquare className='edit-text'/>
-                        <Trash3Fill className='delete-text'/>
+                        <PencilSquare className='edit-text' />
+                        <Trash3Fill className='delete-text' onClick={() => setModalShow(true)}/>
                     </div>
                     <div className='note-body'>
                         <article className='note-article'>

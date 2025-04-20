@@ -21,7 +21,7 @@ const ModalSingleText = (props) => {
                     <Modal.Body>
                         <h4>Delete Confirmation</h4>
                         <p className='modal-body-body'>
-                            Are you sure you want to delete saved category?
+                            Are you sure you want to delete saved note?
                         </p>
                     </Modal.Body>
                     <Modal.Footer>

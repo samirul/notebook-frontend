@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import Form from 'react-bootstrap/Form';
 import { Trash3Fill } from 'react-bootstrap-icons';
-import ModalCategory from '../components/modal/ModalCategory';
+import ModalCategory from '../components/modals/ModalCategory';
 import PaginationCategory from '../components/PaginationCategory';
 
 const NewCategory = ({value}) => {
