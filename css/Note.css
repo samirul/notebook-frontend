@@ -57,3 +57,9 @@
     color: var(--note-tools-button-color);
     cursor: pointer;
 }
+
+.edit-text:hover,
+.delete-text:hover{
+    color: var(--primary-text-color);
+    transition: .3s;
+}
