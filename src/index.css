@@ -9,6 +9,7 @@
 @import url("../css/NewCategory.css");
 @import url("../css/Modal.css");
 @import url("../css/Pagination.css");
+@import url("../css/Note.css");
 
 html, body{
   margin: 0;
@@ -29,6 +30,8 @@ html, body{
   --pagination-active-bg: #0a0a0a;
   --pagination-active-text: #fff;
   --pagination-hover-bg: #0a0a0a;
+  --note-tools-button-color: #8b8b8b;
+  --note-times-color: #8b8b8b;
   --link-hover-color: #fff;
   --body-bg: #f6f6f6;
   --link-color: #0a0a0a;
@@ -48,6 +51,8 @@ html, body{
   --background-button-text-color: #5e5d5d;
   --background-pagination-hover-bg-color: #fff;
   --background-pagination-border-color: #f6f6f6;
+  --note-tools-button-color: #8b8b8b;
+  --note-times-color: #8b8b8b;
   --pagination-hover-bg: #fff;
   --pagination-shadow: 0 0 0 0.25rem rgba(255, 250, 250, 0.774);
   --pagination-active-bg: #f6f6f6;
@@ -70,6 +75,8 @@ html, body{
   --background-pagination-border-color: #f6f6f6;
   --background-pagination-hover-bg-color: #fff;
   --link-hover-color: #0a0a0a;
+  --note-tools-button-color: #8b8b8b;
+  --note-times-color: #8b8b8b;
   --pagination-hover-bg: #fff;
   --pagination-active-bg: #f6f6f6;
   --pagination-active-text: #0a0a0a;
