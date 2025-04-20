@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import Form from 'react-bootstrap/Form';
 import { Trash3Fill } from 'react-bootstrap-icons';
-import ModalAllText from '../components/ModalAllText';
+import ModalAllText from '../components/modal/ModalAllText';
 import PaginationAllText from '../components/PaginationAllText';
 
 const Notes = ({value}) => {
