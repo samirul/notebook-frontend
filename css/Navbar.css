@@ -8,6 +8,11 @@
     font-size: 30px !important;
 }
 
-.navlink-text{
+.navlink-text-notes, 
+.navlink-text-login{
     color: var(--primary-text-color) !important;
+}
+
+.navlink-text-login{
+    margin-right: 120px;
 }

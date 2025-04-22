@@ -14,9 +14,9 @@ const Navbars = ({value, handleChange}) => {
             <Navbar.Brand className='notebook-home' href="/">MyNotebook</Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
-              <Nav className="justify-content-end flex-grow-1 pe-3">
-                <Nav.Link className='navlink-text me-3' href="/notes">Notes</Nav.Link>
-                <Nav.Link className='navlink-text me-3' href="/login">Login</Nav.Link>
+              <Nav className="nav-bar-link me-auto justify-content-end flex-grow-1">
+                <Nav.Link className='navlink-text-notes' href="/notes">Notes</Nav.Link>
+                <Nav.Link className='navlink-text-login' href="/login">Login</Nav.Link>
                 <Toggle isChecked={value} handleChange={handleChange} />
               </Nav>
             </Navbar.Collapse>
