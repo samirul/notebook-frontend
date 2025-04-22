@@ -3,10 +3,12 @@ import { useParams } from 'react-router-dom'
 import { Trash3Fill, PencilSquare, CloudDownload } from 'react-bootstrap-icons';
 import ModalSingleTextDelete from '../components/modals/ModalSingleTextDelete';
 import { generatePath, useNavigate } from "react-router-dom";
+import ModalSingleTextDownload from '../components/modals/ModalSingleTextDownload';
 
 const SinglePage = ({value}) => {
     const { note_id } = useParams();
-    const [modalShow, setModalShow] = useState(false);
+    const [modalShowDelete, setModalShowDelete] = useState(false);
+    const [modalShowDownload, setModalShowDownload] = useState(false);
 
     const navigate = useNavigate()
 
@@ -23,14 +25,19 @@ const SinglePage = ({value}) => {
                         <p className='note-updated-time'>Updated at: 11pm</p>
                     </div>
                     <ModalSingleTextDelete
-                        show={modalShow}
-                        onHide={() => setModalShow(false)}
+                        show={modalShowDelete}
+                        onHide={() => setModalShowDelete(false)}
+                        value={value}
+                    />
+                    <ModalSingleTextDownload
+                        show={modalShowDownload}
+                        onHide={() => setModalShowDownload(false)}
                         value={value}
                     />
                     <div className="note-menu">
-                        <CloudDownload className='download-text'/>
+                        <CloudDownload className='download-text' onClick={() => setModalShowDownload(true)}/>
                         <PencilSquare className='edit-text' onClick={() => handleProceed('dfsfesfsfe')} />
-                        <Trash3Fill className='delete-text' onClick={() => setModalShow(true)}/>
+                        <Trash3Fill className='delete-text' onClick={() => setModalShowDelete(true)}/>
                     </div>
                     <div className='note-body'>
                         <article className='note-article'>
