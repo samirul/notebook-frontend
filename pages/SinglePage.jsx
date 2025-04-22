@@ -1,7 +1,7 @@
 import React, {useState}  from 'react'
 import { useParams } from 'react-router-dom'
 import { Trash3Fill, PencilSquare, CloudDownload } from 'react-bootstrap-icons';
-import ModalSingleText from '../components/modals/ModalSingleText';
+import ModalSingleTextDelete from '../components/modals/ModalSingleTextDelete';
 import { generatePath, useNavigate } from "react-router-dom";
 
 const SinglePage = ({value}) => {
@@ -22,7 +22,7 @@ const SinglePage = ({value}) => {
                         <p className='note-created-time'>Created at: 10pm</p>
                         <p className='note-updated-time'>Updated at: 11pm</p>
                     </div>
-                    <ModalSingleText
+                    <ModalSingleTextDelete
                         show={modalShow}
                         onHide={() => setModalShow(false)}
                         value={value}

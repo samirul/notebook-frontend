@@ -1,7 +1,7 @@
 import React from 'react'
 import Modal from 'react-bootstrap/Modal';
 
-const ModalSingleText = (props) => {
+const ModalSingleTextDelete = (props) => {
     return (
         <>
             <div>
@@ -42,4 +42,4 @@ const ModalSingleText = (props) => {
     )
 }
 
-export default ModalSingleText
+export default ModalSingleTextDelete
