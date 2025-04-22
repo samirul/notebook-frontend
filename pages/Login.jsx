@@ -15,7 +15,7 @@ const Login = () => {
   };
   return (
     <>
-      <div className='container'>
+      <div className='login-container'>
         <div className="grid-auth-container">
           <div className='auth-panel'>
             <h2>Login</h2>

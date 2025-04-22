@@ -14,7 +14,7 @@ const Register = () => {
   };
   return (
     <>
-      <div className='container'>
+      <div className='register-container'>
         <div className="grid-auth-container">
           <div className='auth-panel'>
             <h2>Register</h2>
