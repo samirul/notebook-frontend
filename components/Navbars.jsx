@@ -16,7 +16,7 @@ const Navbars = ({value, handleChange}) => {
             <Navbar.Collapse id="basic-navbar-nav">
               <Nav className="justify-content-end flex-grow-1 pe-3">
                 <Nav.Link className='navlink-text me-3' href="/notes">Notes</Nav.Link>
-                <Nav.Link className='navlink-text me-3' href="#login">Login</Nav.Link>
+                <Nav.Link className='navlink-text me-3' href="/login">Login</Nav.Link>
                 <Toggle isChecked={value} handleChange={handleChange} />
               </Nav>
             </Navbar.Collapse>

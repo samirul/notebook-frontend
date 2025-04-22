@@ -16,6 +16,7 @@ import NewNotes from '../pages/NewNotes';
 import NewCategory from '../pages/NewCategory';
 import SinglePage from '../pages/SinglePage';
 import TextUpdatePage from '../pages/TextUpdatePage';
+import Login from '../pages/Login';
 
 function App() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -49,6 +50,7 @@ function App() {
               <Route path="/new-category" exact element={<NewCategory value={isDark} />} />
               <Route path="/note/:note_id/" exact element={<SinglePage value={isDark}/>} />
               <Route path="/note/update/:note_id/" exact element={<TextUpdatePage/>} />
+              <Route path="/login" exact element={<Login/>} />
             </Routes>
           </main>
         }
