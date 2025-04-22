@@ -2,3 +2,12 @@
     background-color: var(--background-nav-color);
     transition: background-color 0.25s ease-in-out;
 }
+
+.notebook-home{
+    font-weight: 800 !important;
+    font-size: 30px !important;
+}
+
+.navlink-text{
+    color: var(--primary-text-color) !important;
+}

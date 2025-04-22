@@ -11,23 +11,12 @@ const Navbars = ({value, handleChange}) => {
       <div>
         <Navbar expand="lg" className="nav-bg-color" data-bs-theme={value ? "dark" : "light"}>
           <Container>
-            <Navbar.Brand href="#home">MyNotebook</Navbar.Brand>
+            <Navbar.Brand className='notebook-home' href="/">MyNotebook</Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
-              <Nav className="me-auto">
-                <Nav.Link href="#home">Home</Nav.Link>
-                <Nav.Link href="#link">Link</Nav.Link>
-                <NavDropdown title="Dropdown" id="basic-nav-dropdown">
-                  <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-                  <NavDropdown.Item href="#action/3.2">
-                    Another action
-                  </NavDropdown.Item>
-                  <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
-                  <NavDropdown.Divider />
-                  <NavDropdown.Item href="#action/3.4">
-                    Separated link
-                  </NavDropdown.Item>
-                </NavDropdown>
+              <Nav className="justify-content-end flex-grow-1 pe-3">
+                <Nav.Link className='navlink-text me-3' href="/notes">Notes</Nav.Link>
+                <Nav.Link className='navlink-text me-3' href="#login">Login</Nav.Link>
                 <Toggle isChecked={value} handleChange={handleChange} />
               </Nav>
             </Navbar.Collapse>
