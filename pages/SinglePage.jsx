@@ -1,6 +1,6 @@
 import React, {useState}  from 'react'
 import { useParams } from 'react-router-dom'
-import { Trash3Fill, PencilSquare } from 'react-bootstrap-icons';
+import { Trash3Fill, PencilSquare, CloudDownload } from 'react-bootstrap-icons';
 import ModalSingleText from '../components/modals/ModalSingleText';
 import { generatePath, useNavigate } from "react-router-dom";
 
@@ -28,6 +28,7 @@ const SinglePage = ({value}) => {
                         value={value}
                     />
                     <div className="note-menu">
+                        <CloudDownload className='download-text'/>
                         <PencilSquare className='edit-text' onClick={() => handleProceed('dfsfesfsfe')} />
                         <Trash3Fill className='delete-text' onClick={() => setModalShow(true)}/>
                     </div>

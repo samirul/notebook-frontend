@@ -52,12 +52,14 @@
     gap: 20px;
 }
 
+.download-text,
 .edit-text,
 .delete-text{
     color: var(--note-tools-button-color);
     cursor: pointer;
 }
 
+.download-text:hover,
 .edit-text:hover,
 .delete-text:hover{
     color: var(--primary-text-color);
