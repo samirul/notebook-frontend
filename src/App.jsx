@@ -27,7 +27,8 @@ function App() {
   const location = useLocation();
   const preference = window.matchMedia("(prefers-color-scheme: dark)").matches;
   const [isDark, setIsDark] = useLocalStorage("isDark", preference);
-  const hideMain = location.pathname === "/" || location.pathname === "/404";
+  const hideMain = location.pathname === "/" || location.pathname === "/404" || 
+  location.pathname === "/login" || location.pathname === "/register";
   return (
     <>
       <div className="App" data-theme={isDark ? "dark" : "light"}>
@@ -38,6 +39,8 @@ function App() {
               <Route path="/" exact element={<HomePage />} />
               <Route path="*" element={<Navigate to="/404" />} />
               <Route path="/404" exact element={<Notfoundpage />} />
+              <Route path="/login" exact element={<Login/>} />
+              <Route path="/register" exact element={<Register/>} />
             </Routes>
             <Footer />
           </main>
@@ -51,8 +54,6 @@ function App() {
               <Route path="/new-category" exact element={<NewCategory value={isDark} />} />
               <Route path="/note/:note_id/" exact element={<SinglePage value={isDark}/>} />
               <Route path="/note/update/:note_id/" exact element={<TextUpdatePage/>} />
-              <Route path="/login" exact element={<Login/>} />
-              <Route path="/register" exact element={<Register/>} />
             </Routes>
           </main>
         }
