@@ -52,42 +52,6 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
     }
   ];
 
-  // const topicItems = [
-  //   {
-  //     title: 'Notes',
-  //     icon: <FaBook />,
-  //     submenu: [
-  //       {
-  //         title: 'Mathematics',
-  //         // path: '/topics/math',
-  //         subcategories: [
-  //           { title: 'Algebra', path: '/topics/math/algebra' },
-  //           { title: 'Geometry', path: '/topics/math/geometry' },
-  //           { title: 'Calculus', path: '/topics/math/calculus' }
-  //         ]
-  //       },
-  //       {
-  //         title: 'Science',
-  //         // path: '/topics/science',
-  //         subcategories: [
-  //           { title: 'Physics', path: '/topics/science/physics' },
-  //           { title: 'Chemistry', path: '/topics/science/chemistry' },
-  //           { title: 'Biology', path: '/topics/science/biology' }
-  //         ]
-  //       },
-  //       {
-  //         title: 'History',
-  //         // path: '/topics/history',
-  //         subcategories: [
-  //           { title: 'World History', path: '/topics/history/world' },
-  //           { title: 'Ancient History', path: '/topics/history/ancient' },
-  //           { title: 'Modern History', path: '/topics/history/modern' }
-  //         ]
-  //       }
-  //     ]
-  //   }
-  // ];
-
   const settingsItems = [
     {
       title: 'Settings',
@@ -204,9 +168,6 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
         <div className="sidebar-section">
           {renderMenuItems(CreateNote)}
         </div>
-        {/* <div className="sidebar-section">
-          {renderMenuItems(topicItems)}
-        </div> */}
         <div className="sidebar-section">
           {renderMenuItems(menuNoteItem)}
         </div>
