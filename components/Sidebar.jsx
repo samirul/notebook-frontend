@@ -1,11 +1,28 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { FaChevronDown, FaChevronRight, FaBars, FaHome, FaBook, FaCog } from 'react-icons/fa';
+import axios from 'axios';
 
 const Sidebar = ({ isOpen, toggleSidebar }) => {
   const [dropdowns, setDropdowns] = useState({});
   const [subDropdowns, setSubDropdowns] = useState({});
   const [hoveredItem, setHoveredItem] = useState(null);
+  const [menuNoteItem, setMenuNoteItem] = useState([]);
+
+  const fetchMenuNoteItem = async () => {
+    const response = await axios.get("http://localhost:8000/api/notes/notes/", { withCredentials: true }, {
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+      }
+    });
+    setMenuNoteItem([response.data]);
+    console.log(response.data)
+  }
+
+  useEffect(()=>{
+    fetchMenuNoteItem();
+  },[])
 
   // Separate arrays for each section
   const dashboardItems = [
@@ -18,7 +35,7 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
 
   const AllNotes = [
     {
-      title: 'All Notes',
+      title: 'All',
       path: '/notes',
       icon: <FaHome />
     }
@@ -27,7 +44,7 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
   const CreateNote = [
     {
       title: 'New',
-      icon: <FaBook />,
+      icon: 'FaBook',
       submenu: [
         { title: 'New Category', path: '/new-category' },
         { title: 'Create Note', path: '/new-note' }
@@ -35,46 +52,46 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
     }
   ];
 
-  const topicItems = [
-    {
-      title: 'Notes',
-      icon: <FaBook />,
-      submenu: [
-        {
-          title: 'Mathematics',
-          // path: '/topics/math',
-          subcategories: [
-            { title: 'Algebra', path: '/topics/math/algebra' },
-            { title: 'Geometry', path: '/topics/math/geometry' },
-            { title: 'Calculus', path: '/topics/math/calculus' }
-          ]
-        },
-        {
-          title: 'Science',
-          // path: '/topics/science',
-          subcategories: [
-            { title: 'Physics', path: '/topics/science/physics' },
-            { title: 'Chemistry', path: '/topics/science/chemistry' },
-            { title: 'Biology', path: '/topics/science/biology' }
-          ]
-        },
-        {
-          title: 'History',
-          // path: '/topics/history',
-          subcategories: [
-            { title: 'World History', path: '/topics/history/world' },
-            { title: 'Ancient History', path: '/topics/history/ancient' },
-            { title: 'Modern History', path: '/topics/history/modern' }
-          ]
-        }
-      ]
-    }
-  ];
+  // const topicItems = [
+  //   {
+  //     title: 'Notes',
+  //     icon: <FaBook />,
+  //     submenu: [
+  //       {
+  //         title: 'Mathematics',
+  //         // path: '/topics/math',
+  //         subcategories: [
+  //           { title: 'Algebra', path: '/topics/math/algebra' },
+  //           { title: 'Geometry', path: '/topics/math/geometry' },
+  //           { title: 'Calculus', path: '/topics/math/calculus' }
+  //         ]
+  //       },
+  //       {
+  //         title: 'Science',
+  //         // path: '/topics/science',
+  //         subcategories: [
+  //           { title: 'Physics', path: '/topics/science/physics' },
+  //           { title: 'Chemistry', path: '/topics/science/chemistry' },
+  //           { title: 'Biology', path: '/topics/science/biology' }
+  //         ]
+  //       },
+  //       {
+  //         title: 'History',
+  //         // path: '/topics/history',
+  //         subcategories: [
+  //           { title: 'World History', path: '/topics/history/world' },
+  //           { title: 'Ancient History', path: '/topics/history/ancient' },
+  //           { title: 'Modern History', path: '/topics/history/modern' }
+  //         ]
+  //       }
+  //     ]
+  //   }
+  // ];
 
   const settingsItems = [
     {
       title: 'Settings',
-      icon: <FaCog />,
+      icon: 'FaCog',
       submenu: [
         { title: 'Profile', path: '/settings/profile' },
         { title: 'Preferences', path: '/settings/preferences' }
@@ -110,7 +127,11 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
               className="menu-title"
               onClick={() => toggleDropdown(item.title)}
             >
-              <span className="icon-wrapper">{item.icon}</span>
+              <span className="icon-wrapper">{item.icon == 'FaBook' ? <FaBook/> : "" ||
+               item.icon == 'FaChevronDown' ? <FaChevronDown/> : "" ||
+               item.icon == 'FaBars' ? <FaBars/> : "" ||
+               item.icon == 'FaHome' ? <FaHome/> : "" ||
+               item.icon == 'FaCog' ? <FaCog/> : ""}</span>
               <span className="title-text">{item.title}</span>
               <span className="dropdown-icon">
                 {dropdowns[item.title] ? <FaChevronDown /> : <FaChevronRight />}
@@ -183,8 +204,11 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
         <div className="sidebar-section">
           {renderMenuItems(CreateNote)}
         </div>
-        <div className="sidebar-section">
+        {/* <div className="sidebar-section">
           {renderMenuItems(topicItems)}
+        </div> */}
+        <div className="sidebar-section">
+          {renderMenuItems(menuNoteItem)}
         </div>
         <div className="sidebar-section">
           {renderMenuItems(settingsItems)}
