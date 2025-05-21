@@ -104,6 +104,10 @@
     overflow: hidden;
     transition: max-height 0.3s ease;
     margin-left: 2.5rem;
+    overflow-y: scroll;
+    margin: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: "none",
   }
   
   .submenu.open {

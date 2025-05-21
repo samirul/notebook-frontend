@@ -3,10 +3,12 @@ import Form from 'react-bootstrap/Form';
 import { Trash3Fill } from 'react-bootstrap-icons';
 import ModalCategory from '../components/modals/ModalCategory';
 import PaginationCategory from '../components/PaginationCategory';
+import axios from 'axios'
+import Cookies from 'js-cookie';
 
 const NewCategory = ({value}) => {
-  const [formData, setFormData] = useState({ name: '' });
-  const [formSearch, setFormSearch] = useState({ name: '' });
+  const [formData, setFormData] = useState({ title: '' });
+  const [formSearch, setFormSearch] = useState({ title: '' });
   const [modalShow, setModalShow] = useState(false);
 
   const handleChange = (e) => {
@@ -16,8 +18,19 @@ const NewCategory = ({value}) => {
     setFormSearch({ ...formSearch, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    await axios.post("http://localhost:8000/api/notes/new-category/",
+      formData,
+      { withCredentials: true }, {
+      headers: 
+      {
+        'X-CSRFToken': Cookies.get('csrftoken'),
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+      },
+
+    })
     console.log('Form submitted:', formData);
   };
   const handleSubmitSearch = (e) => {
@@ -33,8 +46,8 @@ const NewCategory = ({value}) => {
               <Form.Label className='category-name'>Create New Category</Form.Label>
               <Form.Control
                 type="text"
-                name="name"
-                value={formData.name}
+                name="title"
+                value={formData.title}
                 onChange={handleChange}
                 placeholder="Enter your category name"
                 className='category-input'
@@ -53,8 +66,8 @@ const NewCategory = ({value}) => {
               <Form.Label className='category-name'>Search Categories</Form.Label>
               <Form.Control
                 type="text"
-                name="name"
-                value={formSearch.name}
+                name="title"
+                value={formSearch.title}
                 onChange={handleChangeSearch}
                 placeholder="Enter your category name"
                 className='category-input'

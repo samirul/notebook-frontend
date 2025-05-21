@@ -10,14 +10,14 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
   const [menuNoteItem, setMenuNoteItem] = useState([]);
 
   const fetchMenuNoteItem = async () => {
-    const response = await axios.get("http://localhost:8000/api/notes/notes/", { withCredentials: true }, {
+    const response = await axios.get("http://localhost:8000/api/notes/notes/",
+      { withCredentials: true }, {
       headers: {
         'Content-Type': 'application/json',
         'Accept': 'application/json',
       }
     });
     setMenuNoteItem([response.data]);
-    console.log(response.data)
   }
 
   useEffect(()=>{
@@ -52,16 +52,16 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
     }
   ];
 
-  const settingsItems = [
-    {
-      title: 'Settings',
-      icon: 'FaCog',
-      submenu: [
-        { title: 'Profile', path: '/settings/profile' },
-        { title: 'Preferences', path: '/settings/preferences' }
-      ]
-    }
-  ];
+  // const settingsItems = [
+  //   {
+  //     title: 'Settings',
+  //     icon: 'FaCog',
+  //     submenu: [
+  //       { title: 'Profile', path: '/settings/profile' },
+  //       { title: 'Preferences', path: '/settings/preferences' }
+  //     ]
+  //   }
+  // ];
 
   const toggleDropdown = (title) => {
     setDropdowns(prev => ({
@@ -171,9 +171,9 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
         <div className="sidebar-section">
           {renderMenuItems(menuNoteItem)}
         </div>
-        <div className="sidebar-section">
+        {/* <div className="sidebar-section">
           {renderMenuItems(settingsItems)}
-        </div>
+        </div> */}
       </nav>
     </div>
   );
