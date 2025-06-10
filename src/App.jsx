@@ -18,6 +18,7 @@ import SinglePage from '../pages/SinglePage';
 import TextUpdatePage from '../pages/TextUpdatePage';
 import Login from '../pages/Login';
 import Register from '../pages/Register';
+import { ToastContainer, toast } from 'react-toastify';
 import axios from 'axios';
 
 function App() {
@@ -44,7 +45,11 @@ function App() {
 
     socketRef.current.onmessage = (event) => {
       const data = JSON.parse(event.data);
-      console.log('Message from server:', data);
+      if(data['type'] != 'undefined' && data['type'] == 'created_category_error'){
+        toast.error(data['notification'], {position: 'bottom-left'})
+      }else if(data['type'] != 'undefined' && data['type'] == 'notification_created_category'){
+        toast.success(data['notification'], {position: 'bottom-left'})
+      }
     };
 
     socketRef.current.onclose = () => {
@@ -94,6 +99,7 @@ function App() {
               <Route path="/note/:note_id/" exact element={<SinglePage value={isDark} />} />
               <Route path="/note/update/:note_id/" exact element={<TextUpdatePage />} />
             </Routes>
+          <ToastContainer/>
           </main>
         }
       </div>
