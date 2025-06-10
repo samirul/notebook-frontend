@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import useLocalStorage from "use-local-storage";
 import Navbars from '../components/Navbars';
 import {
@@ -18,17 +18,56 @@ import SinglePage from '../pages/SinglePage';
 import TextUpdatePage from '../pages/TextUpdatePage';
 import Login from '../pages/Login';
 import Register from '../pages/Register';
+import axios from 'axios';
 
 function App() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const socketRef = useRef(null);
+
+
+  const socketConnection = async () => {
+    const response = await axios.get('http://localhost:8000/accounts/user/', { withCredentials: true }, {
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+        }
+      })
+    const {id} = response.data.user
+    socketRef.current = new WebSocket(`ws://localhost:8000/ws/notifications/${id}/`);
+    
+    socketRef.current.onopen = () => {
+      console.log('websocket connected')
+      if (socketRef.current && socketRef.current.readyState === WebSocket.OPEN) {
+        socketRef.current.send(JSON.stringify({ 'message': 'Connection established with React notebook-frontend app.' }))
+      }
+    }
+
+    socketRef.current.onmessage = (event) => {
+      const data = JSON.parse(event.data);
+      console.log('Message from server:', data);
+    };
+
+    socketRef.current.onclose = () => {
+      console.log('WebSocket disconnected');
+    };
+
+    return () => {
+      socketRef.current.close();
+    };
+  }
+
+  useEffect(() => {
+    socketConnection();
+  }, [])
+
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
   };
   const location = useLocation();
   const preference = window.matchMedia("(prefers-color-scheme: dark)").matches;
   const [isDark, setIsDark] = useLocalStorage("isDark", preference);
-  const hideMain = location.pathname === "/" || location.pathname === "/404" || 
-  location.pathname === "/login" || location.pathname === "/register";
+  const hideMain = location.pathname === "/" || location.pathname === "/404" ||
+    location.pathname === "/login" || location.pathname === "/register";
   return (
     <>
       <div className="App" data-theme={isDark ? "dark" : "light"}>
@@ -39,8 +78,8 @@ function App() {
               <Route path="/" exact element={<HomePage />} />
               <Route path="*" element={<Navigate to="/404" />} />
               <Route path="/404" exact element={<Notfoundpage />} />
-              <Route path="/login" exact element={<Login/>} />
-              <Route path="/register" exact element={<Register/>} />
+              <Route path="/login" exact element={<Login />} />
+              <Route path="/register" exact element={<Register />} />
             </Routes>
             <Footer />
           </main>
@@ -49,11 +88,11 @@ function App() {
             <Sidebar isOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />
             <Routes>
               <Route path="*" element={<Navigate to="/404" />} />
-              <Route path="/notes" exact element={<Notes value={isDark}/>} />
+              <Route path="/notes" exact element={<Notes value={isDark} />} />
               <Route path="/new-note" exact element={<NewNotes />} />
               <Route path="/new-category" exact element={<NewCategory value={isDark} />} />
-              <Route path="/note/:note_id/" exact element={<SinglePage value={isDark}/>} />
-              <Route path="/note/update/:note_id/" exact element={<TextUpdatePage/>} />
+              <Route path="/note/:note_id/" exact element={<SinglePage value={isDark} />} />
+              <Route path="/note/update/:note_id/" exact element={<TextUpdatePage />} />
             </Routes>
           </main>
         }

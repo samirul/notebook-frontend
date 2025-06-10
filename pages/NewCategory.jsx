@@ -20,18 +20,19 @@ const NewCategory = ({value}) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await axios.post("http://localhost:8000/api/notes/new-category/",
-      formData,
-      { withCredentials: true }, {
-      headers: 
-      {
-        'X-CSRFToken': Cookies.get('csrftoken'),
-        'Content-Type': 'application/json',
-        'Accept': 'application/json',
-      },
+    try {
+      await axios.post("http://localhost:8000/api/notes/new-category/",
+        formData,
+        { withCredentials: true }, {
+        headers:
+        {
+          'X-CSRFToken': Cookies.get('csrftoken'),
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+        },
 
-    })
-    console.log('Form submitted:', formData);
+      })
+    } catch (error) {}
   };
   const handleSubmitSearch = (e) => {
     e.preventDefault();
