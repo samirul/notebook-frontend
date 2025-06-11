@@ -49,6 +49,10 @@ function App() {
         toast.error(data['notification'], {position: 'bottom-left'})
       }else if(data['type'] != 'undefined' && data['type'] == 'notification_created_category'){
         toast.success(data['notification'], {position: 'bottom-left'})
+      }else if(data['type'] != 'undefined' && data['type'] == 'notification_created_note'){
+        toast.success(data['notification'], {position: 'bottom-left'})
+      }else if(data['type'] != 'undefined' && data['type'] == 'created_note_error'){
+        toast.error(data['notification'], {position: 'bottom-left'})
       }
     };
 
