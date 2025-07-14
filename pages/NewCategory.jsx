@@ -1,14 +1,20 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Form from 'react-bootstrap/Form';
 import { Trash3Fill } from 'react-bootstrap-icons';
 import ModalCategory from '../components/modals/ModalCategory';
-import PaginationCategory from '../components/PaginationCategory';
+// import PaginationCategory from '../components/PaginationCategory';
+import Pagination from 'react-bootstrap/Pagination';
 import axios from 'axios'
 import Cookies from 'js-cookie';
 
-const NewCategory = ({value}) => {
+const NewCategory = ({ value }) => {
   const [formData, setFormData] = useState({ title: '' });
   const [formSearch, setFormSearch] = useState({ title: '' });
+  const [formSearchResult, setFormSearchResult] = useState([]);
+  const [fetch, setFetch] = useState(false)
+  const [page, setPage] = useState(1);
+  const pageSize = 6;
+  const [totalCounts, setTotalCounts] = useState();
   const [modalShow, setModalShow] = useState(false);
 
   const handleChange = (e) => {
@@ -32,12 +38,41 @@ const NewCategory = ({value}) => {
         },
 
       })
-    } catch (error) {}
+    } catch (error) { }
   };
-  const handleSubmitSearch = (e) => {
-    e.preventDefault();
+
+  const dataSearch = async () =>{
+    try {
+      setFetch(true);
+      const response = await axios.get("http://localhost:8000/api/notes/category/search/", {
+        params: {
+          q: formSearch['title'],
+          page: page,
+          page_size: pageSize,
+        },
+        withCredentials: true
+      });
+      setFormSearchResult(response.data.search_result)
+      setTotalCounts(response.data.count)
+    } catch (error) {
+
+    }
     console.log('Form submitted:', formSearch);
+  }
+  const handleSubmitSearch = async (e) => {
+    e.preventDefault();
+    setPage(1);
+    dataSearch();
   };
+
+  useEffect(()=>{
+    if(fetch){
+      dataSearch();
+    }
+  },[page, fetch])
+
+  const totalPages = Math.ceil(totalCounts / pageSize);
+  
   return (
     <div>
       <div className='new-category-container'>
@@ -81,44 +116,43 @@ const NewCategory = ({value}) => {
             </div>
           </Form>
           <ModalCategory
-          show={modalShow}
-          onHide={() => setModalShow(false)}
-          value = {value}
+            show={modalShow}
+            onHide={() => setModalShow(false)}
+            value={value}
           />
           <h2>List of categories is created</h2>
           <div className='category-items'>
-            <div className='category-item'>
-              <p>Category12 sssssssss</p>
-              <Trash3Fill className='trash-fill-category' onClick={() => setModalShow(true)}/>
+          {formSearchResult.map((item) => (
+              <div className='category-item' key={item.id}>
+                <p>{item.title}</p>
+                <Trash3Fill className='trash-fill-category' onClick={() => setModalShow(true)} />
+              </div>
+            ))}
             </div>
-            <div className='category-item'>
-              <p>Category12</p>
-               <Trash3Fill className='trash-fill-category' onClick={() => setModalShow(true)}/>
-            </div>
-            <div className='category-item'>
-              <p>Category12</p>
-               <Trash3Fill className='trash-fill-category' onClick={() => setModalShow(true)}/>
-            </div>
-            <div className='category-item'>
-              <p>Category12</p>
-               <Trash3Fill className='trash-fill-category' onClick={() => setModalShow(true)}/>
-            </div>
-            <div className='category-item'>
-              <p>Category</p>
-               <Trash3Fill className='trash-fill-category' onClick={() => setModalShow(true)}/>
-            </div>
-            <div className='category-item'>
-              <p>Category</p>
-               <Trash3Fill className='trash-fill-category' onClick={() => setModalShow(true)}/>
-            </div>
-            <div className='category-item'>
-              <p>Category</p>
-               <Trash3Fill className='trash-fill-category' onClick={() => setModalShow(true)}/>
-            </div>
-          </div>
           <div className='paginator-notes'>
-            <PaginationCategory/>
-        </div>
+            {totalPages > 1 && (
+            <Pagination>
+              <Pagination.First onClick={() => setPage(1)} disabled={page === 1} />
+              <Pagination.Prev onClick={() => setPage(page - 1)} disabled={page === 1} />
+
+              {[...Array(totalPages)].map((_, i) => {
+                const pageNum = i + 1;
+                return (
+                  <Pagination.Item
+                    key={pageNum}
+                    active={pageNum === page}
+                    onClick={() => setPage(pageNum)}
+                  >
+                    {pageNum}
+                  </Pagination.Item>
+                );
+              })}
+
+              <Pagination.Next onClick={() => setPage(page + 1)} disabled={page === totalPages} />
+              <Pagination.Last onClick={() => setPage(totalPages)} disabled={page === totalPages} />
+            </Pagination>
+          )}
+          </div>
         </div>
       </div>
     </div>

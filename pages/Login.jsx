@@ -1,23 +1,48 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import Form from 'react-bootstrap/Form';
+import axios from 'axios';
+import Cookies from 'js-cookie';
+import Alert from 'react-bootstrap/Alert';
 
 const Login = () => {
 
   const [loginData, setLoginData] = useState({ email: '', password: '' });
+  const [loginErrorMsg, setLoginErrorMsg] = useState([])
+  const [showLoginErrorMsg, setShowLoginErrorMsg] = useState(false)
 
   const handleChange = (e) => {
     setLoginData({ ...loginData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log('Form submitted:', loginData);
+    try {
+      await axios.post("http://localhost:8000/api/auth/login/",
+        loginData,
+        { withCredentials: true }, {
+        headers:
+        {
+          'X-CSRFToken': Cookies.get('csrftoken'),
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+        },
+
+      })
+    } catch (error) {
+      if(error.status == 400){
+        setLoginErrorMsg(error.response.data['non_field_errors'][0]);
+        setShowLoginErrorMsg(true);
+      }
+    }
   };
   return (
     <>
       <div className='login-container'>
         <div className="grid-auth-container">
           <div className='auth-panel'>
+            {showLoginErrorMsg ? <Alert variant="danger">
+            <p>{loginErrorMsg}</p>
+          </Alert> : ""}
             <h2>Login</h2>
             <Form onSubmit={handleSubmit} className="p-4">
               <Form.Group className="mb-3 from-size-item" controlId="formEmail">
@@ -46,8 +71,8 @@ const Login = () => {
                   Login
                 </button>
               </div>
-            <p className='register-link-title'>Not Registered?</p>
-            <a className="register-link" href="/register">Register</a>
+              <p className='register-link-title'>Not Registered?</p>
+              <a className="register-link" href="/register">Register</a>
             </Form>
           </div>
 
