@@ -143,6 +143,8 @@ input.category-input{
 
 .category-item p{
   margin-top: 20px;
+  font-size: 30px;
+  font-weight: 600;
 }
 
 .category-item .trash-fill-category{
