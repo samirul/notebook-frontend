@@ -15,6 +15,7 @@ const NewCategory = ({ value }) => {
   const pageSize = 6;
   const [totalCounts, setTotalCounts] = useState();
   const [modalShow, setModalShow] = useState(false);
+  const [idCategory, setIdCategory] = useState([]);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -72,6 +73,10 @@ const NewCategory = ({ value }) => {
 
   const totalPages = Math.ceil(totalCounts / pageSize);
 
+  const handleModal = (item) =>{
+    setIdCategory(item.id)
+  }
+
   return (
     <div>
       <div className='new-category-container'>
@@ -118,13 +123,14 @@ const NewCategory = ({ value }) => {
             show={modalShow}
             onHide={() => setModalShow(false)}
             value={value}
+            id = {idCategory}
           />
           <h2>List of categories is created</h2>
           <div className='category-items'>
             {formSearchResult.map((item) => (
               <div className='category-item' key={item.id}>
                 <p>{item.title}</p>
-                <Trash3Fill className='trash-fill-category' onClick={() => setModalShow(true)} />
+                <Trash3Fill className='trash-fill-category' onClick={() => {setModalShow(true), handleModal(item)}}/>
               </div>
             ))}
           </div>

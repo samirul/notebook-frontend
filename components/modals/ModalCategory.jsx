@@ -2,6 +2,7 @@ import React from 'react'
 import Modal from 'react-bootstrap/Modal';
 
 const ModalCategory = (props) => {
+    console.log(props.id)
     return (
         <>
             <div>
