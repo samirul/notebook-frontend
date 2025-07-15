@@ -1,8 +1,13 @@
-import React from 'react'
+import axios from 'axios';
 import Modal from 'react-bootstrap/Modal';
 
 const ModalCategory = (props) => {
-    console.log(props.id)
+    const handleDelete = async (id) => {
+        try {
+            await axios.delete(`http://localhost:8000/api/notes/category/delete/${id}/`, { withCredentials: true })
+        } catch (error) { }
+    }
+
     return (
         <>
             <div>
@@ -27,7 +32,7 @@ const ModalCategory = (props) => {
                     </Modal.Body>
                     <Modal.Footer>
                         <div className='btn-container'>
-                            <button className="button-submit-category" role="button">
+                            <button className="button-submit-category" role="button" onClick={() => { handleDelete(props.id), props.onHide() }}>
                                 Delete
                             </button>
                         </div>

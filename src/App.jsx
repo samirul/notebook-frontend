@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import useLocalStorage from "use-local-storage";
 import Navbars from '../components/Navbars';
 import {
@@ -18,55 +18,14 @@ import SinglePage from '../pages/SinglePage';
 import TextUpdatePage from '../pages/TextUpdatePage';
 import Login from '../pages/Login';
 import Register from '../pages/Register';
-import { ToastContainer, toast } from 'react-toastify';
-import axios from 'axios';
+import { SocketConnection } from '../components/SocketConnection';
+import { ToastContainer } from 'react-toastify';
 
 function App() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-  const socketRef = useRef(null);
-
-
-  const socketConnection = async () => {
-    const response = await axios.get('http://localhost:8000/accounts/user/', { withCredentials: true }, {
-        headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json',
-        }
-      })
-    const {id} = response.data.user
-    socketRef.current = new WebSocket(`ws://localhost:8000/ws/notifications/${id}/`);
-    
-    socketRef.current.onopen = () => {
-      console.log('websocket connected')
-      if (socketRef.current && socketRef.current.readyState === WebSocket.OPEN) {
-        socketRef.current.send(JSON.stringify({ 'message': 'Connection established with React notebook-frontend app.' }))
-      }
-    }
-
-    socketRef.current.onmessage = (event) => {
-      const data = JSON.parse(event.data);
-      if(data['type'] != 'undefined' && data['type'] == 'created_category_error'){
-        toast.error(data['notification'], {position: 'bottom-left'})
-      }else if(data['type'] != 'undefined' && data['type'] == 'notification_created_category'){
-        toast.success(data['notification'], {position: 'bottom-left'})
-      }else if(data['type'] != 'undefined' && data['type'] == 'notification_created_note'){
-        toast.success(data['notification'], {position: 'bottom-left'})
-      }else if(data['type'] != 'undefined' && data['type'] == 'created_note_error'){
-        toast.error(data['notification'], {position: 'bottom-left'})
-      }
-    };
-
-    socketRef.current.onclose = () => {
-      console.log('WebSocket disconnected');
-    };
-
-    return () => {
-      socketRef.current.close();
-    };
-  }
 
   useEffect(() => {
-    socketConnection();
+    SocketConnection();
   }, [])
 
   const toggleSidebar = () => {
