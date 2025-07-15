@@ -2,8 +2,7 @@ import React, { useEffect, useState } from 'react'
 import Form from 'react-bootstrap/Form';
 import { Trash3Fill } from 'react-bootstrap-icons';
 import ModalCategory from '../components/modals/ModalCategory';
-// import PaginationCategory from '../components/PaginationCategory';
-import Pagination from 'react-bootstrap/Pagination';
+import PaginationButton from '../components/PaginationButton';
 import axios from 'axios'
 import Cookies from 'js-cookie';
 
@@ -41,7 +40,7 @@ const NewCategory = ({ value }) => {
     } catch (error) { }
   };
 
-  const dataSearch = async () =>{
+  const dataSearch = async () => {
     try {
       setFetch(true);
       const response = await axios.get("http://localhost:8000/api/notes/category/search/", {
@@ -65,14 +64,14 @@ const NewCategory = ({ value }) => {
     dataSearch();
   };
 
-  useEffect(()=>{
-    if(fetch){
+  useEffect(() => {
+    if (fetch) {
       dataSearch();
     }
-  },[page, fetch])
+  }, [page, fetch])
 
   const totalPages = Math.ceil(totalCounts / pageSize);
-  
+
   return (
     <div>
       <div className='new-category-container'>
@@ -122,36 +121,21 @@ const NewCategory = ({ value }) => {
           />
           <h2>List of categories is created</h2>
           <div className='category-items'>
-          {formSearchResult.map((item) => (
+            {formSearchResult.map((item) => (
               <div className='category-item' key={item.id}>
                 <p>{item.title}</p>
                 <Trash3Fill className='trash-fill-category' onClick={() => setModalShow(true)} />
               </div>
             ))}
-            </div>
+          </div>
           <div className='paginator-notes'>
             {totalPages > 1 && (
-            <Pagination>
-              <Pagination.First onClick={() => setPage(1)} disabled={page === 1} />
-              <Pagination.Prev onClick={() => setPage(page - 1)} disabled={page === 1} />
-
-              {[...Array(totalPages)].map((_, i) => {
-                const pageNum = i + 1;
-                return (
-                  <Pagination.Item
-                    key={pageNum}
-                    active={pageNum === page}
-                    onClick={() => setPage(pageNum)}
-                  >
-                    {pageNum}
-                  </Pagination.Item>
-                );
-              })}
-
-              <Pagination.Next onClick={() => setPage(page + 1)} disabled={page === totalPages} />
-              <Pagination.Last onClick={() => setPage(totalPages)} disabled={page === totalPages} />
-            </Pagination>
-          )}
+              <PaginationButton
+                totalPages={totalPages}
+                currentPage={page}
+                onPageChange={(newPage) => setPage(newPage)}
+              />
+            )}
           </div>
         </div>
       </div>
