@@ -1,21 +1,68 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Form from 'react-bootstrap/Form';
 import { Trash3Fill } from 'react-bootstrap-icons';
 import ModalAllText from '../components/modals/ModalAllText';
-import PaginationAllText from '../components/PaginationAllText';
+import PaginationButton from '../components/PaginationButton';
+import axios from 'axios';
 
-const Notes = ({value}) => {
-  const [formSearch, setFormSearch] = useState({ name: '' });
+
+const Notes = ({ value }) => {
+  const [formSearch, setFormSearch] = useState({ title: '' });
   const [modalShow, setModalShow] = useState(false);
+  const [fetch, setFetch] = useState(false)
+  const [page, setPage] = useState(1);
+  const [formSearchResult, setFormSearchResult] = useState([]);
+  const [totalCounts, setTotalCounts] = useState();
+  const [idNote, setIdNote] = useState([]);
+  const pageSize = 6;
 
   const handleChangeSearch = (e) => {
     setFormSearch({ ...formSearch, [e.target.name]: e.target.value });
   };
 
-  const handleSubmitSearch = (e) => {
-    e.preventDefault();
+  const dataSearch = async () => {
+    try {
+      setFetch(true);
+      const response = await axios.get("http://localhost:8000/api/notes/note/search/", {
+        params: {
+          q: formSearch['title'],
+          page: page,
+          page_size: pageSize,
+        },
+        withCredentials: true
+      });
+      setFormSearchResult(response.data.search_result)
+      setTotalCounts(response.data.count)
+    } catch (error) {
+
+    }
     console.log('Form submitted:', formSearch);
+  }
+
+  const handleSubmitSearch = async (e) => {
+    e.preventDefault();
+    setPage(1);
+    dataSearch();
   };
+
+  useEffect(() => {
+    if (fetch) {
+      dataSearch();
+    }
+  }, [page, fetch])
+
+
+  const totalPages = Math.ceil(totalCounts / pageSize);
+
+  const handleModal = (item) =>{
+    setIdNote(item.id)
+  }
+
+  const handleDeleteLocal = (id) => {
+    setFormSearchResult((prev) => prev.filter((cat) => cat.id !== id)); // immediate UI update
+  }; 
+
+
   return (
     <>
       <main className='topic-grid'>
@@ -25,7 +72,7 @@ const Notes = ({value}) => {
               <Form.Label className='category-name'>Search Notes</Form.Label>
               <Form.Control
                 type="text"
-                name="name"
+                name="title"
                 value={formSearch.name}
                 onChange={handleChangeSearch}
                 placeholder="Enter your notes name"
@@ -41,47 +88,31 @@ const Notes = ({value}) => {
         </div>
         <h2 className='notes-title-front'>All Notes</h2>
         <ModalAllText
-        show={modalShow}
-        onHide={() => setModalShow(false)}
-        value = {value}
-      />
+          show={modalShow}
+          onHide={() => setModalShow(false)}
+          value={value}
+          id = {idNote}
+            onDeleteSuccess={(id) => {
+            handleDeleteLocal(id); 
+            setModalShow(false);
+          }}
+        />
         <div className='note-container'>
-          <div className='all-notes'>
-            <p>Lorem ipsumccccxxxxx</p>
-              <Trash3Fill className='trash-fill' onClick={() => setModalShow(true)}/>
-          </div>
-          <div className='all-notes'>
-            <p>Lorem ipsum</p>
-            <Trash3Fill className='trash-fill' onClick={() => setModalShow(true)}/>
-          </div>
-          <div className='all-notes'>
-            <p>Lorem ipsum</p>
-            <Trash3Fill className='trash-fill' onClick={() => setModalShow(true)}/>
-          </div>
-          <div className='all-notes'>
-            <p>Lorem ipsum</p>
-            <Trash3Fill className='trash-fill' onClick={() => setModalShow(true)}/>
-          </div>
-          <div className='all-notes'>
-            <p>Lorem ipsum</p>
-            <Trash3Fill className='trash-fill' onClick={() => setModalShow(true)}/>
-          </div>
-          <div className='all-notes'>
-            <p>Lorem ipsum</p>
-            <Trash3Fill className='trash-fill' onClick={() => setModalShow(true)}/>
-          </div>
-          <div className='all-notes'>
-            <p>Lorem ipsum</p>
-            <Trash3Fill className='trash-fill' onClick={() => setModalShow(true)}/>
-          </div>
-          <div className='all-notes'>
-            <p>Lorem ipsum</p>
-            <Trash3Fill className='trash-fill' onClick={() => setModalShow(true)}/>
-          </div>
-          
+          {formSearchResult.map((item) => (
+            <div className='all-notes'>
+              <p>{item.title}</p>
+              <Trash3Fill className='trash-fill' onClick={() => {setModalShow(true), handleModal(item)}} />
+            </div>
+          ))}
         </div >
         <div className='paginator-notes'>
-          <PaginationAllText/>
+          {totalPages > 1 && (
+              <PaginationButton
+                totalPages={totalPages}
+                currentPage={page}
+                onPageChange={(newPage) => setPage(newPage)}
+              />
+            )}
         </div>
       </main>
 
