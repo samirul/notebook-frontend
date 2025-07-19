@@ -99,7 +99,7 @@ const Notes = ({ value }) => {
         />
         <div className='note-container'>
           {formSearchResult.map((item) => (
-            <div className='all-notes'>
+            <div className='all-notes' key={item.id}>
               <p>{item.title}</p>
               <Trash3Fill className='trash-fill' onClick={() => {setModalShow(true), handleModal(item)}} />
             </div>
