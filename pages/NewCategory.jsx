@@ -59,6 +59,10 @@ const NewCategory = ({ value }) => {
     }
     console.log('Form submitted:', formSearch);
   }
+
+    const handleDeleteLocal = (id) => {
+    setFormSearchResult((prev) => prev.filter((cat) => cat.id !== id)); // immediate UI update
+  }; 
   const handleSubmitSearch = async (e) => {
     e.preventDefault();
     setPage(1);
@@ -124,6 +128,10 @@ const NewCategory = ({ value }) => {
             onHide={() => setModalShow(false)}
             value={value}
             id = {idCategory}
+            onDeleteSuccess={(id) => {
+            handleDeleteLocal(id); 
+            setModalShow(false);
+          }}
           />
           <h2>List of categories is created</h2>
           <div className='category-items'>

@@ -5,6 +5,7 @@ const ModalCategory = (props) => {
     const handleDelete = async (id) => {
         try {
             await axios.delete(`http://localhost:8000/api/notes/category/delete/${id}/`, { withCredentials: true })
+            props.onDeleteSuccess(props.id);
         } catch (error) { }
     }
 
