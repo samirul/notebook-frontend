@@ -47,6 +47,8 @@
 
 .all-notes p{
     margin-top: 20px;
+    font-size: 30px;
+    font-weight: 600;
 }
 .all-notes .trash-fill{
     margin-top: 20px;
