@@ -13,7 +13,20 @@
     margin: 80px auto;
     max-width: 500px;
     width: 100%;
-    padding: 80px 20px;
+    padding: 20px 20px;
+    background: var(--background-color);
+    border-radius: 10px;
+    -webkit-box-shadow: 0px 0px 8px 0px var(--shadow-color);
+    -moz-box-shadow: 0px 0px 8px 0px var(--shadow-color);
+    box-shadow: 0px 0px 8px 0px var(--shadow-color);
+}
+
+.grid-auth-container .auth-panel-alert{
+    grid-column: span 3;
+    margin: 80px auto;
+    max-width: 500px;
+    width: 100%;
+    padding: 40px 20px;
     background: var(--background-color);
     border-radius: 10px;
     -webkit-box-shadow: 0px 0px 8px 0px var(--shadow-color);
@@ -22,6 +35,12 @@
 }
 
 .auth-panel h2{
+    color: var(--primary-text-color);
+    text-align: center;
+    padding-top: 50px;
+}
+
+.auth-panel-alert h2{
     color: var(--primary-text-color);
     text-align: center;
     padding-top: 50px;
@@ -65,6 +84,14 @@
     margin: 1px auto;
     color: var(--primary-text-color);
     font-size: 15px;
+}
+
+.error-msg{
+    color: crimson;
+    font-size: 12px;
+    font-weight: 600;
+    margin-top: 5px;
+
 }
 
 
