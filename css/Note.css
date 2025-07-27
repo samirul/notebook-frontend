@@ -17,6 +17,7 @@
     font-weight: 700;
 }
 
+.note-category,
 .note-created-time,
 .note-updated-time{
     margin-bottom: 8px;
