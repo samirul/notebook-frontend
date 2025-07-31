@@ -1,17 +1,36 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import ReactQuill from 'react-quill-new';
 import 'react-quill-new/dist/quill.snow.css';
 import 'react-quill-new/dist/quill.bubble.css';
 import Form from 'react-bootstrap/Form';
 import { useParams } from 'react-router-dom'
+import axios from 'axios';
+import Select from 'react-select'
+import { Spinner } from 'react-bootstrap';
 
 const TextUpdatePage = () => {
     const { note_id } = useParams();
-    console.log(note_id);
+    const [categories, setCategories] = useState([])
     const [formData, setFormData] = useState({ name: '', options: '', description: '' });
+    const [formCategoryTitle, setFormCategoryTitle] = useState('')
+    const [loading, setLoading] = useState(true);
+
+    const fetchData = async () => {
+        try {
+            const response = await axios.get(`http://localhost:8000/api/notes/notes/${note_id}`, { withCredentials: true })
+            setFormData(
+                {
+                    name: response?.data?.note?.title || '',
+                    options: response?.data?.note?.category?.id || '',
+                    description: response?.data?.note?.note_text || '',
+                }
+            )
+            setFormCategoryTitle(response?.data?.note?.category?.title || '')
+        } catch (error) { }
+    }
 
     const handleChange = (e) => {
-        setFormData({ ...formData, [e.target.name]: e.target.value });
+        setFormData(prev =>({ ...prev, [e.target.name]: e.target.value }));
     };
 
     const handleQuillChange = (value) => {
@@ -22,6 +41,39 @@ const TextUpdatePage = () => {
         e.preventDefault();
         console.log('Form submitted:', formData);
     };
+
+
+     const handleSelectChange = (selectedOption) => {
+    setFormData(prev => ({
+      ...prev,
+      options: selectedOption?.value
+    }));
+  };
+
+    const fetchCategories = async () => {
+        const response = await axios.get("http://localhost:8000/api/notes/categories/", { withCredentials: true }, {
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json',
+            }
+        })
+        setCategories(response.data);
+    }
+
+    const options = categories.map(item => ({
+        value: item.id,
+        label: item.title
+    }));
+
+
+    useEffect(() => {
+        fetchData();
+        fetchCategories();
+        setTimeout(() => {
+            setLoading(false);
+      }, 2500)
+    }, [])
+
 
     const modules = {
         toolbar: [
@@ -46,6 +98,16 @@ const TextUpdatePage = () => {
         ],
     };
 
+    if (loading) {
+    return (
+      <div className="d-flex justify-content-center align-items-center" style={{ height: '800px' }}>
+        <Spinner animation="border" role="status" variant="primary">
+          <span className="visually-hidden">Loading...</span>
+        </Spinner>
+      </div>
+    );
+  }
+
     return (
         <>
             <div className='new-notes-container'>
@@ -56,37 +118,33 @@ const TextUpdatePage = () => {
                             <Form.Control
                                 type="text"
                                 name="name"
-                                value={formData.name}
+                                value={formData?.name}
                                 onChange={handleChange}
                                 placeholder="Enter your title"
                             />
                         </Form.Group>
-
-                        <Form.Group className="mb-3 from-size-item" controlId="formOptions">
+                        <Form.Group className="mb-3 from-size-item" controlId="formCategory">
                             <Form.Label>Category</Form.Label>
-                            <Form.Select
-                                name="options"
-                                value={formData.options}
-                                onChange={handleChange}
+                            <Select
+                                name="category"
+                                value={options.find(opt => opt.value === formData.category)}
+                                onChange={handleSelectChange}
+                                options={options}
+                                placeholder={formCategoryTitle}
                             >
-                                <option value="">Select a category</option>
-                                <option value="option1">Option 1</option>
-                                <option value="option2">Option 2</option>
-                                <option value="option3">Option 3</option>
-                            </Form.Select>
+                            </Select>
                         </Form.Group>
-
                         <Form.Group className="mb-3" controlId="formDescription">
                             <ReactQuill theme="snow"
-                                value={formData.description}
+                                value={formData?.description}
                                 onChange={handleQuillChange}
                                 modules={modules}
                                 className='react-quill-class' />
                         </Form.Group>
                         <div className='btn-container'>
-                        <button className="button-submit" role="button">
-                            Submit
-                        </button>
+                            <button className="button-submit" role="button">
+                                Submit
+                            </button>
                         </div>
                     </Form>
                 </div>
