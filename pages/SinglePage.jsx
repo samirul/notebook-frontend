@@ -22,7 +22,7 @@ const SinglePage = ({value}) => {
 
     useEffect(()=>{
         fetchData();
-    },[])
+    },[note_id])
 
     const navigate = useNavigate()
 
