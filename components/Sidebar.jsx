@@ -27,6 +27,7 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
   // Separate arrays for each section
   const dashboardItems = [
     {
+      id: 1,
       title: 'Dashboard',
       path: '/',
       icon: <FaHome />
@@ -35,6 +36,7 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
 
   const AllNotes = [
     {
+      id: 2,
       title: 'All',
       path: '/notes',
       icon: <FaHome />
@@ -43,6 +45,7 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
 
   const CreateNote = [
     {
+      id: 3,
       title: 'New',
       icon: 'FaBook',
       submenu: [
@@ -67,9 +70,9 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
   };
 
   const renderMenuItems = (items) => {
-    return items.map((item) => (
+    return items && items.map((item) => (
       <div
-        key={item.id}
+        key={item.id || item.title}
         className="menu-item"
         onMouseEnter={() => setHoveredItem(item.title)}
         onMouseLeave={() => setHoveredItem(null)}
@@ -95,8 +98,8 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
               </span>
             </div>
             <div className={`submenu ${dropdowns[item.title] ? 'open' : ''}`}>
-              {item.submenu.map((subItem, subIndex) => (
-                <div key={subIndex} className="submenu-group">
+              {item.submenu && item.submenu.map((subItem, subIndex) => (
+                <div key={subItem.id || subItem.title || `sub-${subIndex}`} className="submenu-group">
                   <div
                     className="submenu-header"
                     onClick={() => toggleSubDropdown(subItem.title)}
@@ -112,9 +115,9 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
                   </div>
                   {subItem.subcategories && subDropdowns[subItem.title] && (
                     <div className="subcategories">
-                      {subItem.subcategories.map((subCat) => (
+                      {subItem && subItem.subcategories.map((subCat, catIndex) => (
                         <Link
-                          key={subCat.id}
+                          key={subCat.id || subCat.title || `cat-${catIndex}`}
                           to={subCat.path}
                           className="subcategory-item"
                         >
