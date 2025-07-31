@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { FaChevronDown, FaChevronRight, FaBars, FaHome, FaBook, FaCog } from 'react-icons/fa';
 import axios from 'axios';
@@ -20,7 +20,7 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
     setMenuNoteItem([response.data]);
   }
 
-  useEffect(()=>{
+  useEffect(() => {
     fetchMenuNoteItem();
   },[])
 
@@ -52,17 +52,6 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
     }
   ];
 
-  // const settingsItems = [
-  //   {
-  //     title: 'Settings',
-  //     icon: 'FaCog',
-  //     submenu: [
-  //       { title: 'Profile', path: '/settings/profile' },
-  //       { title: 'Preferences', path: '/settings/preferences' }
-  //     ]
-  //   }
-  // ];
-
   const toggleDropdown = (title) => {
     setDropdowns(prev => ({
       ...prev,
@@ -78,9 +67,9 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
   };
 
   const renderMenuItems = (items) => {
-    return items.map((item, index) => (
+    return items.map((item) => (
       <div
-        key={index}
+        key={item.id}
         className="menu-item"
         onMouseEnter={() => setHoveredItem(item.title)}
         onMouseLeave={() => setHoveredItem(null)}
@@ -91,11 +80,15 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
               className="menu-title"
               onClick={() => toggleDropdown(item.title)}
             >
-              <span className="icon-wrapper">{item.icon == 'FaBook' ? <FaBook/> : "" ||
-               item.icon == 'FaChevronDown' ? <FaChevronDown/> : "" ||
-               item.icon == 'FaBars' ? <FaBars/> : "" ||
-               item.icon == 'FaHome' ? <FaHome/> : "" ||
-               item.icon == 'FaCog' ? <FaCog/> : ""}</span>
+              <span className="icon-wrapper">
+                {{
+                  FaBook: <FaBook />,
+                  FaChevronDown: <FaChevronDown />,
+                  FaBars: <FaBars />,
+                  FaHome: <FaHome />,
+                  FaCog: <FaCog />
+                }[item.icon] || null}
+              </span>
               <span className="title-text">{item.title}</span>
               <span className="dropdown-icon">
                 {dropdowns[item.title] ? <FaChevronDown /> : <FaChevronRight />}
@@ -119,9 +112,9 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
                   </div>
                   {subItem.subcategories && subDropdowns[subItem.title] && (
                     <div className="subcategories">
-                      {subItem.subcategories.map((subCat, subCatIndex) => (
+                      {subItem.subcategories.map((subCat) => (
                         <Link
-                          key={subCatIndex}
+                          key={subCat.id}
                           to={subCat.path}
                           className="subcategory-item"
                         >
@@ -171,9 +164,6 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
         <div className="sidebar-section">
           {renderMenuItems(menuNoteItem)}
         </div>
-        {/* <div className="sidebar-section">
-          {renderMenuItems(settingsItems)}
-        </div> */}
       </nav>
     </div>
   );
