@@ -43,11 +43,11 @@ function App() {
           <main>
             <Navbars value={isDark} handleChange={() => setIsDark(!isDark)} />
             <Routes>
-              <Route path="/" exact element={<HomePage />} />
+              <Route path="/" element={<HomePage />} />
               <Route path="*" element={<Navigate to="/404" />} />
-              <Route path="/404" exact element={<Notfoundpage />} />
-              <Route path="/login" exact element={<Login />} />
-              <Route path="/register" exact element={<Register />} />
+              <Route path="/404" element={<Notfoundpage />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/register" element={<Register />} />
             </Routes>
             <Footer />
           </main>
@@ -56,11 +56,11 @@ function App() {
             <Sidebar isOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />
             <Routes>
               <Route path="*" element={<Navigate to="/404" />} />
-              <Route path="/notes" exact element={<Notes value={isDark} />} />
-              <Route path="/new-note" exact element={<NewNotes />} />
-              <Route path="/new-category" exact element={<NewCategory value={isDark} />} />
-              <Route path="/note/:note_id/" exact element={<SinglePage value={isDark} />} />
-              <Route path="/note/update/:note_id/" exact element={<TextUpdatePage />} />
+              <Route path="/notes" element={<Notes value={isDark} />} />
+              <Route path="/new-note" element={<NewNotes />} />
+              <Route path="/new-category" element={<NewCategory value={isDark} />} />
+              <Route path="/note/:note_id" element={<SinglePage value={isDark} />} />
+              <Route path="/note/update/:note_id" element={<TextUpdatePage />} />
             </Routes>
           <ToastContainer/>
           </main>

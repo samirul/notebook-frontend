@@ -27,7 +27,7 @@ const SinglePage = ({value}) => {
     const navigate = useNavigate()
 
     const handleProceed = (note_id) => {
-        note_id && navigate(generatePath("/note/update/:note_id/", { note_id }));
+        note_id && navigate(generatePath("/note/update/:note_id", { note_id }));
     };
     return (
         <>
