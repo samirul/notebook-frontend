@@ -29,6 +29,9 @@ const SinglePage = ({value}) => {
     const handleProceed = (note_id) => {
         note_id && navigate(generatePath("/note/update/:note_id", { note_id }));
     };
+    const QuillViewer = (htmlText) =>{
+        return new DOMParser().parseFromString(htmlText, 'text/html').body.textContent
+    }
     return (
         <>
             <main className='container'>
@@ -57,7 +60,7 @@ const SinglePage = ({value}) => {
                     <div className='note-body'>
                         <article className='note-article'>
                             <span className='note-text'>
-                                {noteData.note_text}
+                                {QuillViewer(noteData.note_text)}
                             </span>
                         </article>
                     </div>
