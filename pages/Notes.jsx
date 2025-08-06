@@ -109,7 +109,7 @@ const Notes = ({ value }) => {
           {formSearchResult.map((item) => (
             <div className='all-notes' key={item.id} onClick={()=> handleForwardToPage(item)}>
               <p>{item.title}</p>
-              <Trash3Fill className='trash-fill' onClick={() => {setModalShow(true), handleModal(item)}} />
+              <Trash3Fill className='trash-fill' onClick={(e) => {e.stopPropagation(); setModalShow(true), handleModal(item)}} />
             </div>
           ))}
         </div >
