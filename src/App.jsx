@@ -23,6 +23,7 @@ import { ToastContainer } from 'react-toastify';
 
 function App() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [showHeader, setShowHeader] = useState(false)
 
   useEffect(() => {
     SocketConnection();
@@ -30,6 +31,7 @@ function App() {
 
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
+    setShowHeader(prev => !prev)
   };
   const location = useLocation();
   const preference = window.matchMedia("(prefers-color-scheme: dark)").matches;
@@ -53,7 +55,7 @@ function App() {
           </main>
           : <main className={`main-content ${isSidebarOpen ? '' : 'sidebar-closed'}`}>
             <Navbars value={isDark} handleChange={() => setIsDark(!isDark)} />
-            <Sidebar isOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />
+            <Sidebar isOpen={isSidebarOpen} toggleSidebar={toggleSidebar} showHeader={showHeader}/>
             <Routes>
               <Route path="*" element={<Navigate to="/404" />} />
               <Route path="/notes" element={<Notes value={isDark} />} />

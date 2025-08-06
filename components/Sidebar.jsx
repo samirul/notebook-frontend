@@ -3,11 +3,12 @@ import { Link } from 'react-router-dom';
 import { FaChevronDown, FaChevronRight, FaBars, FaHome, FaBook, FaCog } from 'react-icons/fa';
 import axios from 'axios';
 
-const Sidebar = ({ isOpen, toggleSidebar }) => {
+const Sidebar = ({ isOpen, toggleSidebar, showHeader }) => {
   const [dropdowns, setDropdowns] = useState({});
   const [subDropdowns, setSubDropdowns] = useState({});
   const [hoveredItem, setHoveredItem] = useState(null);
   const [menuNoteItem, setMenuNoteItem] = useState([]);
+  const [updated, setUpdated] = useState(false);
 
   const fetchMenuNoteItem = async () => {
     const response = await axios.get("http://localhost:8000/api/notes/notes/",
@@ -22,7 +23,7 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
 
   useEffect(() => {
     fetchMenuNoteItem();
-  },[])
+  },[updated])
 
   // Separate arrays for each section
   const dashboardItems = [
@@ -69,6 +70,10 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
     }));
   };
 
+  const handleUpdate =() =>{
+    setUpdated(prev => !prev)
+  }
+
   const renderMenuItems = (items) => {
     return items && items.map((item) => (
       <div
@@ -81,7 +86,7 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
           <div className="menu-item-wrapper">
             <div
               className="menu-title"
-              onClick={() => toggleDropdown(item.title)}
+              onClick={() => {toggleDropdown(item.title), handleUpdate()}}
             >
               <span className="icon-wrapper">
                 {{
@@ -104,7 +109,7 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
                     className="submenu-header"
                     onClick={() => toggleSubDropdown(subItem.title)}
                   >
-                    <Link to={subItem.path} className="submenu-title">
+                    <Link to={subItem.path} className="submenu-title" onClick={handleUpdate}>
                       {subItem.title}
                     </Link>
                     {subItem.subcategories && (
@@ -146,10 +151,11 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
       </div>
     ));
   };
-
+  
   return (
     <div className={`sidebar ${isOpen ? 'open' : 'closed'}`}>
       <div className="sidebar-header">
+        <p className={showHeader? "sidebar-open-header": "sidebar-closed-header"}>MyNotebook</p>
         <button className="toggle-btn" onClick={toggleSidebar}>
           <FaBars />
         </button>
