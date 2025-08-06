@@ -3,6 +3,7 @@ import Form from 'react-bootstrap/Form';
 import { Trash3Fill } from 'react-bootstrap-icons';
 import ModalAllText from '../components/modals/ModalAllText';
 import PaginationButton from '../components/PaginationButton';
+import { generatePath, useNavigate } from "react-router-dom";
 import axios from 'axios';
 
 
@@ -15,6 +16,8 @@ const Notes = ({ value }) => {
   const [totalCounts, setTotalCounts] = useState();
   const [idNote, setIdNote] = useState([]);
   const pageSize = 6;
+
+  const navigate = useNavigate()
 
   const handleChangeSearch = (e) => {
     setFormSearch({ ...formSearch, [e.target.name]: e.target.value });
@@ -60,7 +63,12 @@ const Notes = ({ value }) => {
 
   const handleDeleteLocal = (id) => {
     setFormSearchResult((prev) => prev.filter((cat) => cat.id !== id)); // immediate UI update
-  }; 
+  };
+
+  const handleForwardToPage = (item) => {
+    const note_id = item.id
+    note_id && navigate(generatePath("/note/:note_id", {note_id}));
+  }
 
 
   return (
@@ -99,7 +107,7 @@ const Notes = ({ value }) => {
         />
         <div className='note-container'>
           {formSearchResult.map((item) => (
-            <div className='all-notes' key={item.id}>
+            <div className='all-notes' key={item.id} onClick={()=> handleForwardToPage(item)}>
               <p>{item.title}</p>
               <Trash3Fill className='trash-fill' onClick={() => {setModalShow(true), handleModal(item)}} />
             </div>
