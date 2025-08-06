@@ -26,10 +26,10 @@ const Sidebar = ({ isOpen, toggleSidebar, showHeader }) => {
   },[updated])
 
   // Separate arrays for each section
-  const dashboardItems = [
+  const Home = [
     {
       id: 1,
-      title: 'Dashboard',
+      title: 'Home',
       path: '/',
       icon: <FaHome />
     }
@@ -151,7 +151,7 @@ const Sidebar = ({ isOpen, toggleSidebar, showHeader }) => {
       </div>
     ));
   };
-  
+
   return (
     <div className={`sidebar ${isOpen ? 'open' : 'closed'}`}>
       <div className="sidebar-header">
@@ -162,7 +162,7 @@ const Sidebar = ({ isOpen, toggleSidebar, showHeader }) => {
       </div>
       <nav className="sidebar-nav">
         <div className="sidebar-section">
-          {renderMenuItems(dashboardItems)}
+          {renderMenuItems(Home)}
         </div>
         <div className="sidebar-section">
           {renderMenuItems(AllNotes)}
