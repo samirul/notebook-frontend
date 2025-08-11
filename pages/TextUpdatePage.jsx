@@ -113,7 +113,6 @@ const TextUpdatePage = () => {
             [{ 'script': 'sub' }, { 'script': 'super' }],
             ['link', 'image', 'video', 'formula'],
             ['blockquote', 'code-block'],
-            [{ 'color': [] }, { 'background': [] }],
             [{ 'align': [] }],
             [{ 'direction': 'rtl' }],
             ['clean']
