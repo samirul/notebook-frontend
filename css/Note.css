@@ -1,15 +1,15 @@
-.grid-note-containers{
+.grid-note-containers {
     display: grid;
     grid-template-columns: 1fr 3fr 1fr;
     margin: 60px auto;
 }
 
-.note-title{
+.note-title {
     grid-column: span 3;
 
 }
 
-.note-title .note-title-1{
+.note-title .note-title-1 {
     margin: 60px auto;
     text-align: center;
     color: var(--primary-text-color);
@@ -19,7 +19,7 @@
 
 .note-category,
 .note-created-time,
-.note-updated-time{
+.note-updated-time {
     margin-bottom: 8px;
     font-size: 10px;
     font-weight: 700;
@@ -27,25 +27,26 @@
     color: var(--note-times-color);
 }
 
-.note-updated-time{
+.note-updated-time {
     margin-bottom: 50px;
 }
 
-.note-body{
+.note-body {
     grid-column: span 3;
     margin: 20px auto;
 }
 
-.note-article{
+.note-article {
     max-width: 1000px;
     width: 100%;
 }
-.note-article .note-text{
+
+.note-article .note-text {
     color: var(--primary-text-color);
     line-height: 2em;
 }
 
-.note-menu{
+.note-menu {
     grid-column: span 3;
     margin: 0px auto;
     margin-bottom: 20px;
@@ -55,14 +56,98 @@
 
 .download-text,
 .edit-text,
-.delete-text{
+.delete-text {
     color: var(--note-tools-button-color);
     cursor: pointer;
 }
 
 .download-text:hover,
 .edit-text:hover,
-.delete-text:hover{
+.delete-text:hover {
     color: var(--primary-text-color);
     transition: .3s;
+}
+
+strong, span, a, h1, h2, em{
+    color: var(--primary-text-color) !important;
+}
+
+/* quill-viewer.css */
+.ql-align-center {
+    text-align: center;
+}
+
+.ql-align-right {
+    text-align: right;
+}
+
+.ql-align-left {
+    text-align: left;
+}
+
+.ql-size-small {
+    font-size: .75em;
+}
+
+.ql-size-huge {
+    font-size: 2.5em;
+}
+
+.ql-size-large {
+    font-size: 1.5em;
+}
+
+.ql-font-monospace{
+    font-family: monospace;
+}
+
+.ql-font-serif{
+    font-family: serif;
+}
+
+.note-text-quil img,
+.ql-align-center img,
+.ql-align-right img,
+.ql-align-left img {
+    max-width: 100%;
+    height: auto;
+    width: 400px;
+    border-radius: 8px;
+}
+
+p img {
+    text-align: center;
+    max-width: 100%;
+    height: auto;
+    width: 500px;
+    border-radius: 8px;
+}
+
+
+@media screen and (max-width: 400px) {
+
+    .grid-note-containers {
+        grid-template-columns: 1fr;
+    }
+
+    .note-body {
+        grid-column: span 1;
+        margin: 60px auto;
+        max-width: 320px;
+        overflow: hidden;
+    }
+
+}
+
+@media screen and (max-width: 399px) {
+    .grid-note-containers {
+        grid-template-columns: 1fr;
+    }
+
+    .note-body {
+        grid-column: span 1;
+        margin: 60px auto;
+        max-width: 265px;
+        overflow: hidden;
+    }
 }

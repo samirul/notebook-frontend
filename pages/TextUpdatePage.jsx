@@ -5,8 +5,10 @@ import 'react-quill-new/dist/quill.bubble.css';
 import Form from 'react-bootstrap/Form';
 import { useParams } from 'react-router-dom'
 import axios from 'axios';
+import Cookies from 'js-cookie';
 import Select from 'react-select'
 import { Spinner } from 'react-bootstrap';
+
 
 const TextUpdatePage = () => {
     const { note_id } = useParams();
@@ -30,25 +32,45 @@ const TextUpdatePage = () => {
     }
 
     const handleChange = (e) => {
-        setFormData(prev =>({ ...prev, [e.target.name]: e.target.value }));
+        setFormData(prev => ({ ...prev, [e.target.name]: e.target.value }));
     };
 
     const handleQuillChange = (value) => {
         setFormData({ ...formData, description: value });
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
+        try {
+            const response = await axios.patch(`http://localhost:8000/api/notes/note/${note_id}/update/`,
+                {
+                    "title":formData["name"],
+                    "category": formData["options"],
+                    "note_text": formData["description"]
+                },
+                { withCredentials: true }, {
+                headers:
+                {
+                    'X-CSRFToken': Cookies.get('csrftoken'),
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json',
+                },
+
+            })
+            console.log(response)
+        } catch (error) {
+            console.log(error)
+        }
         console.log('Form submitted:', formData);
     };
 
 
-     const handleSelectChange = (selectedOption) => {
-    setFormData(prev => ({
-      ...prev,
-      options: selectedOption?.value
-    }));
-  };
+    const handleSelectChange = (selectedOption) => {
+        setFormData(prev => ({
+            ...prev,
+            options: selectedOption?.value
+        }));
+    };
 
     const fetchCategories = async () => {
         const response = await axios.get("http://localhost:8000/api/notes/categories/", { withCredentials: true }, {
@@ -71,7 +93,7 @@ const TextUpdatePage = () => {
         fetchCategories();
         setTimeout(() => {
             setLoading(false);
-      }, 2500)
+        }, 2500)
     }, [])
 
 
@@ -99,14 +121,14 @@ const TextUpdatePage = () => {
     };
 
     if (loading) {
-    return (
-      <div className="d-flex justify-content-center align-items-center" style={{ height: '800px' }}>
-        <Spinner animation="border" role="status" variant="primary">
-          <span className="visually-hidden">Loading...</span>
-        </Spinner>
-      </div>
-    );
-  }
+        return (
+            <div className="d-flex justify-content-center align-items-center" style={{ height: '800px' }}>
+                <Spinner animation="border" role="status" variant="primary">
+                    <span className="visually-hidden">Loading...</span>
+                </Spinner>
+            </div>
+        );
+    }
 
     return (
         <>

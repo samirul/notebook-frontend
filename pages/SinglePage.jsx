@@ -1,4 +1,4 @@
-import React, {useEffect, useState}  from 'react'
+import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { Trash3Fill, PencilSquare, CloudDownload } from 'react-bootstrap-icons';
 import ModalSingleTextDelete from '../components/modals/ModalSingleTextDelete';
@@ -6,32 +6,30 @@ import { generatePath, useNavigate } from "react-router-dom";
 import ModalSingleTextDownload from '../components/modals/ModalSingleTextDownload';
 import axios from 'axios';
 
-const SinglePage = ({value}) => {
+const SinglePage = ({ value }) => {
     const { note_id } = useParams();
     const [modalShowDelete, setModalShowDelete] = useState(false);
     const [modalShowDownload, setModalShowDownload] = useState(false);
     const [noteData, setNoteData] = useState([])
 
 
-    const fetchData = async () =>{
-        try{
-            const response = await axios.get(`http://localhost:8000/api/notes/notes/${note_id}`, {withCredentials: true})
+    const fetchData = async () => {
+        try {
+            const response = await axios.get(`http://localhost:8000/api/notes/notes/${note_id}`, { withCredentials: true })
             setNoteData(response?.data?.note)
-        }catch(error){}
+        } catch (error) { }
     }
 
-    useEffect(()=>{
+    useEffect(() => {
         fetchData();
-    },[note_id])
+    }, [note_id])
 
     const navigate = useNavigate()
 
     const handleProceed = (note_id) => {
         note_id && navigate(generatePath("/note/update/:note_id", { note_id }));
     };
-    const QuillViewer = (htmlText) =>{
-        return new DOMParser().parseFromString(htmlText, 'text/html').body.textContent
-    }
+
     return (
         <>
             <main className='container'>
@@ -53,14 +51,13 @@ const SinglePage = ({value}) => {
                         value={value}
                     />
                     <div className="note-menu">
-                        <CloudDownload className='download-text' onClick={() => setModalShowDownload(true)}/>
+                        <CloudDownload className='download-text' onClick={() => setModalShowDownload(true)} />
                         <PencilSquare className='edit-text' onClick={() => handleProceed(note_id)} />
-                        <Trash3Fill className='delete-text' onClick={() => setModalShowDelete(true)}/>
+                        <Trash3Fill className='delete-text' onClick={() => setModalShowDelete(true)} />
                     </div>
                     <div className='note-body'>
                         <article className='note-article'>
-                            <span className='note-text'>
-                                {QuillViewer(noteData.note_text)}
+                            <span className='note-text' dangerouslySetInnerHTML={{ __html: noteData.note_text}}>
                             </span>
                         </article>
                     </div>
