@@ -17,7 +17,11 @@ const SinglePage = ({ value }) => {
         try {
             const response = await axios.get(`http://localhost:8000/api/notes/notes/${note_id}`, { withCredentials: true })
             setNoteData(response?.data?.note)
-        } catch (error) { }
+        } catch (error) { 
+            if(error.status===401){
+                window.location.replace("/login");
+            }
+        }
     }
 
     useEffect(() => {
