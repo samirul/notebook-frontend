@@ -1,6 +1,4 @@
-import React from 'react'
-
-const Notfoundpage = () => {
+const NotFoundPage = () => {
   return (
     <main className='grid-error-container'>
       <div className='error-container'>
@@ -11,4 +9,4 @@ const Notfoundpage = () => {
   )
 }
 
-export default Notfoundpage
+export default NotFoundPage

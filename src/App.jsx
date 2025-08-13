@@ -10,7 +10,7 @@ import {
 import HomePage from '../pages/HomePage';
 import Footer from '../components/Footer';
 import Sidebar from '../components/Sidebar';
-import Notfoundpage from '../pages/Notfoundpage';
+import NotFoundPage from '../pages/NotFoundPage';
 import Notes from '../pages/Notes';
 import NewNotes from '../pages/NewNotes';
 import NewCategory from '../pages/NewCategory';
@@ -81,7 +81,7 @@ function App() {
             <Routes>
               <Route path="/" element={<HomePage />} />
               <Route path="*" element={<Navigate to="/404" />} />
-              <Route path="/404" element={<Notfoundpage />} />
+              <Route path="/404" element={<NotFoundPage />} />
               <Route path="/login" element={<Login />} />
               <Route path="/register" element={<Register />} />
             </Routes>
