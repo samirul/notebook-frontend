@@ -67,7 +67,7 @@ const Register = () => {
       <div className='register-container'>
         <div className="grid-auth-container">
           <div className={isRegisterSuccess ? 'auth-panel-alert' : "auth-panel"}>
-            {registerSuccess ? <Alert variant="danger">
+            {registerSuccess ? <Alert variant="success">
               <p>{registerSuccess}</p>
             </Alert> : ""}
             <h2>Register</h2>
