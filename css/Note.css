@@ -68,7 +68,7 @@
     transition: .3s;
 }
 
-strong, span, a, h1, h2, em{
+.note-text strong, .note-text span, .note-text a, .note-text h1, .note-text h2, .note-text em{
     color: var(--primary-text-color) !important;
 }
 
