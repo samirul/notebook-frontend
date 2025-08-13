@@ -93,10 +93,10 @@ function App() {
             <Routes>
               <Route path="*" element={<Navigate to="/404" />} />
               <Route path="/notes" element={resultBackend ? <Notes value={isDark} /> : <Navigate to="/login" replace />} />
-              <Route path="/new-note" element={<NewNotes />} />
-              <Route path="/new-category" element={<NewCategory value={isDark} />} />
-              <Route path="/note/:note_id" element={<SinglePage value={isDark} />} />
-              <Route path="/note/update/:note_id" element={<TextUpdatePage />} />
+              <Route path="/new-note" element={resultBackend ? <NewNotes /> : <Navigate to="/login" replace />} />
+              <Route path="/new-category" element={resultBackend ? <NewCategory value={isDark} /> : <Navigate to="/login" replace />} />
+              <Route path="/note/:note_id" element={resultBackend ? <SinglePage value={isDark} /> : <Navigate to="/login" replace />} />
+              <Route path="/note/update/:note_id" element={resultBackend ? <TextUpdatePage /> : <Navigate to="/login" replace />} />
             </Routes>
           <ToastContainer/>
           </main>
