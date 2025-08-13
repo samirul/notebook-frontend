@@ -83,7 +83,7 @@ function App() {
               <Route path="*" element={<Navigate to="/404" />} />
               <Route path="/404" element={<NotFoundPage />} />
               <Route path="/login" element={resultBackend ? <Navigate to="/" replace /> : <Login />} />
-              <Route path="/register" element={<Register />} />
+              <Route path="/register" element={resultBackend ? <Navigate to="/" replace /> : <Register />} />
             </Routes>
             <Footer />
           </main>
