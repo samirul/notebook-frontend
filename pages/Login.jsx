@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useNavigate } from "react-router-dom";
 import Form from 'react-bootstrap/Form';
 import axios from 'axios';
 import Cookies from 'js-cookie';
@@ -9,6 +10,7 @@ const Login = () => {
   const [loginData, setLoginData] = useState({ email: '', password: '' });
   const [loginErrorMsg, setLoginErrorMsg] = useState([])
   const [showLoginErrorMsg, setShowLoginErrorMsg] = useState(false)
+  const navigate = useNavigate()
 
   const handleChange = (e) => {
     setLoginData({ ...loginData, [e.target.name]: e.target.value });
@@ -17,7 +19,7 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("http://localhost:8000/api/auth/login/",
+      const response = await axios.post("http://localhost:8000/api/auth/login/",
         loginData,
         { withCredentials: true }, {
         headers:
@@ -28,8 +30,13 @@ const Login = () => {
         },
 
       })
+      if(response.data && response.data.access && response.data.user.pk && response.status === 200){
+        const redirectPath = localStorage.getItem("redirectPage") || "/";
+        navigate(redirectPath,  { replace: true })
+        localStorage.removeItem("redirectPage")
+      }
     } catch (error) {
-      if(error.status == 400){
+      if(error.status === 400){
         setLoginErrorMsg(error.response.data['non_field_errors'][0]);
         setShowLoginErrorMsg(true);
       }
@@ -39,7 +46,7 @@ const Login = () => {
     <>
       <div className='login-container'>
         <div className="grid-auth-container">
-          <div className='auth-panel'>
+          <div className={showLoginErrorMsg ? 'auth-panel-alert': 'auth-panel'}>
             {showLoginErrorMsg ? <Alert variant="danger">
             <p>{loginErrorMsg}</p>
           </Alert> : ""}

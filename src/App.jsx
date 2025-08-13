@@ -20,6 +20,7 @@ import Login from '../pages/Login';
 import Register from '../pages/Register';
 import { SocketConnection } from '../components/SocketConnection';
 import { ToastContainer } from 'react-toastify';
+import { CheckUserRedirect } from '../components/CheckUserRedirect';
 
 function App() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -41,6 +42,7 @@ function App() {
   return (
     <>
       <div className="App" data-theme={isDark ? "dark" : "light"}>
+        <CheckUserRedirect/>
         {hideMain ?
           <main>
             <Navbars value={isDark} handleChange={() => setIsDark(!isDark)} />
