@@ -1,5 +1,4 @@
 import { useState } from 'react'
-import { useNavigate } from "react-router-dom";
 import Form from 'react-bootstrap/Form';
 import axios from 'axios';
 import Cookies from 'js-cookie';
@@ -10,7 +9,6 @@ const Login = () => {
   const [loginData, setLoginData] = useState({ email: '', password: '' });
   const [loginErrorMsg, setLoginErrorMsg] = useState([])
   const [showLoginErrorMsg, setShowLoginErrorMsg] = useState(false)
-  const navigate = useNavigate()
 
   const handleChange = (e) => {
     setLoginData({ ...loginData, [e.target.name]: e.target.value });
@@ -32,7 +30,7 @@ const Login = () => {
       })
       if(response.data && response.data.access && response.data.user.pk && response.status === 200){
         const redirectPath = localStorage.getItem("redirectPage") || "/";
-        navigate(redirectPath,  { replace: true })
+        window.location.replace(redirectPath);
         localStorage.removeItem("redirectPage")
       }
     } catch (error) {

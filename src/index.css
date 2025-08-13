@@ -18,6 +18,7 @@ html, body{
   height: 100%;
   box-sizing: border-box;
   font-family: 'Poppins', sans-serif !important;
+  /* background-color: var(--body-bg) !important; */
 }
 
 :root {
@@ -44,6 +45,7 @@ html, body{
   --background-nav-color: #f6f6f6;
   --toggle-bg: #f0eb9d;
   --toggle-fg: #ffd000;
+  --spinner-bg: #0a0a0a;
 }
 
 [data-theme="dark"] {
@@ -96,6 +98,10 @@ html, body{
   --toggle-fg: #00a6ff;
 }
 
+[variant="dark"]{
+  --spinner-bg: #f6f6f6;
+}
+
 .App {
   width: 100%;
   height: 100%;
@@ -117,3 +123,21 @@ html, body{
   background-color: var(--foreground-color);
   color: var(--secondary-text-color);
 }
+
+.loader-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--background-color); /* solid black */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+/* Optional: if you want transparent black background */
+/* .loader-overlay.transparent {
+  background-color: rgba(0, 0, 0, 0.8);
+} */

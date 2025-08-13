@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import Form from 'react-bootstrap/Form';
 import { Trash3Fill } from 'react-bootstrap-icons';
 import ModalAllText from '../components/modals/ModalAllText';
@@ -37,9 +37,10 @@ const Notes = ({ value }) => {
       setFormSearchResult(response.data.search_result)
       setTotalCounts(response.data.count)
     } catch (error) {
-
+      if(error.status===401){
+        navigate('/login',  { replace: true })
+      }
     }
-    console.log('Form submitted:', formSearch);
   }
 
   const handleSubmitSearch = async (e) => {
@@ -69,7 +70,6 @@ const Notes = ({ value }) => {
     const note_id = item.id
     note_id && navigate(generatePath("/note/:note_id", {note_id}));
   }
-
 
   return (
     <>
