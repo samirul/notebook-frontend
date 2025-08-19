@@ -29,6 +29,9 @@ const NewNotes = () => {
             })
             setCategories(response.data);
         } catch (error) {
+            if (error.status === 401) {
+                window.location.replace("/login");
+            }
         }
     }
 
@@ -55,7 +58,11 @@ const NewNotes = () => {
                 },
 
             })
-        } catch (error) { }
+        } catch (error) {
+            if (error.status === 401) {
+                window.location.replace("/login");
+            }
+        }
     };
 
     const modules = {
