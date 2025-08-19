@@ -33,7 +33,7 @@ function App() {
   const checkAuth = async () =>{
     try{
       const response = await userCheck();
-      if(response?.data && response?.data?.user.id && response?.status === 200){
+      if(response.data && response.data.user.id && response.status === 200){
         setResultBackend(true);
       }
     }catch(error){
