@@ -38,7 +38,7 @@ const Notes = ({ value }) => {
       setTotalCounts(response.data.count)
     } catch (error) {
       if(error.status===401){
-        navigate('/login',  { replace: true })
+        window.location.replace("/login")
       }
     }
   }
@@ -63,7 +63,7 @@ const Notes = ({ value }) => {
   }
 
   const handleDeleteLocal = (id) => {
-    setFormSearchResult((prev) => prev.filter((cat) => cat.id !== id)); // immediate UI update
+    setFormSearchResult((prev) => prev.filter((cat) => cat.id !== id));
   };
 
   const handleForwardToPage = (item) => {
@@ -81,7 +81,7 @@ const Notes = ({ value }) => {
               <Form.Control
                 type="text"
                 name="title"
-                value={formSearch.name}
+                value={formSearch?.name}
                 onChange={handleChangeSearch}
                 placeholder="Enter your notes name"
                 className='category-input'
@@ -107,8 +107,8 @@ const Notes = ({ value }) => {
         />
         <div className='note-container'>
           {formSearchResult.map((item) => (
-            <div className='all-notes' key={item.id} onClick={()=> handleForwardToPage(item)}>
-              <p>{item.title}</p>
+            <div className='all-notes' key={item?.id} onClick={()=> handleForwardToPage(item)}>
+              <p>{item?.title}</p>
               <Trash3Fill className='trash-fill' onClick={(e) => {e.stopPropagation(); setModalShow(true), handleModal(item)}} />
             </div>
           ))}
