@@ -20,13 +20,16 @@ const NewNotes = () => {
     };
 
     const fetchCategories = async () => {
-        const response = await axios.get("http://localhost:8000/api/notes/categories/", { withCredentials: true }, {
-            headers: {
-                'Content-Type': 'application/json',
-                'Accept': 'application/json',
-            }
-        })
-        setCategories(response.data);
+        try {
+            const response = await axios.get("http://localhost:8000/api/notes/categories/", { withCredentials: true }, {
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json',
+                }
+            })
+            setCategories(response.data);
+        } catch (error) {
+        }
     }
 
     const options = categories.map(item => ({
@@ -100,7 +103,7 @@ const NewNotes = () => {
                                 value={options.find(opt => opt.value === formData.category)}
                                 onChange={(selectedOption) => handleChange({
                                     target: { name: 'category', value: selectedOption.value }
-  })}
+                                })}
                                 options={options}
                                 placeholder="Select a category"
                             >
