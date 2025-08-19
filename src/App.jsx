@@ -96,7 +96,7 @@ function App() {
               <Route path="/new-note" element={resultBackend ? <NewNotes /> : <Navigate to="/login" replace />} />
               <Route path="/new-category" element={resultBackend ? <NewCategory value={isDark} /> : <Navigate to="/login" replace />} />
               <Route path="/note/:note_id" element={resultBackend ? <SinglePage value={isDark} /> : <Navigate to="/login" replace />} />
-              <Route path="/note/update/:note_id" element={resultBackend ? <TextUpdatePage /> : <Navigate to="/login" replace />} />
+              <Route path="/note/update/:note_id" element={resultBackend ? <TextUpdatePage value={isDark} /> : <Navigate to="/login" replace />} />
             </Routes>
           <ToastContainer/>
           </main>
