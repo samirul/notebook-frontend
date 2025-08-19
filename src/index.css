@@ -134,14 +134,9 @@ html, body{
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-color: var(--background-color); /* solid black */
+  background-color: var(--background-color);
   display: flex;
   justify-content: center;
   align-items: center;
   z-index: 9999;
 }
-
-/* Optional: if you want transparent black background */
-/* .loader-overlay.transparent {
-  background-color: rgba(0, 0, 0, 0.8);
-} */

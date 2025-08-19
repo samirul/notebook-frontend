@@ -158,6 +158,10 @@ svg path.ql-fill{
     color: var(--primary-text-color);
 }
 
+.ql-editor strong, .ql-editor span, .ql-editor a, .ql-editor h1, .ql-editor h2, .ql-editor em{
+    color: var(--primary-text-color) !important;
+}
+
 @media only screen and (min-device-width: 1201px) and (max-device-width: 1800px){
     .new-notes-container .react-quill-class {
         max-width: 1000px;
