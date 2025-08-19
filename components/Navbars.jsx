@@ -10,21 +10,26 @@ import Cookies from 'js-cookie';
 
 const Navbars = ({ value, handleChange }) => {
   const [user, setUser] = useState([])
-  const [logged, setLogged] = useState('')
+  const [logged, setLogged] = useState(false)
 
   const checkLoggedIn = async () => {
     try {
       const response = await axios.get('http://localhost:8000/accounts/api/logged/status/', { withCredentials: true })
-      setLogged(response.data.item.logged_in)
+      if(response.data.item.logged_in === 'yes'){
+        setLogged(true)
+      }
+      else if(response.data.item.logged_in === 'no'){
+        setLogged(false)
+      }
     } catch (error) {
       if (error.status == 400) {
-        setLogged('no');
+        setLogged(false);
       }
     }
   }
 
   const getUser = async () => {
-    if (logged === 'yes') {
+    if (logged) {
       try {
         const response = await CheckUser()
         if (response.data && response.status === 200) {
@@ -35,9 +40,7 @@ const Navbars = ({ value, handleChange }) => {
           window.location.replace("/login");
         }
       }
-    } else if (logged === 'no') {
-      window.location.replace("/login");
-    }
+    } 
 
   }
 

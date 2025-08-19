@@ -48,7 +48,9 @@ function App() {
 
   useEffect(() => {
     checkLoggedIn();
-    SocketConnection();
+    if(resultBackend){
+      SocketConnection();
+    }
     setTimeout(() => {
       setLoading(false);
     }, 1500)

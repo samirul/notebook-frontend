@@ -13,7 +13,6 @@ export const SocketConnection = async () => {
     const socket = new WebSocket(`ws://localhost:8000/ws/notifications/${id}/`);
 
     socket.onopen = () => {
-        console.log('websocket connected')
         if (socket.current && socket.current.readyState === WebSocket.OPEN) {
             socket.current.send(JSON.stringify({ 'message': 'Connection established with React notebook-frontend app.' }))
         }
@@ -21,7 +20,6 @@ export const SocketConnection = async () => {
 
     socket.onmessage = (event) => {
         const data = JSON.parse(event.data);
-        console.log(data)
         if (data['type'] != 'undefined' && data['type'] == 'created_category_error') {
             toast.error(data['notification'], { position: 'bottom-left' })
         } else if (data['type'] != 'undefined' && data['type'] == 'notification_created_category') {
@@ -38,7 +36,6 @@ export const SocketConnection = async () => {
     };
 
     socket.onclose = () => {
-        console.log('WebSocket disconnected');
     };
 
     return () => {
