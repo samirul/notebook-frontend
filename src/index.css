@@ -20,6 +20,11 @@ html, body{
   font-family: 'Poppins', sans-serif !important;
 }
 
+.dark body {
+  background-color: #0a0a0a;
+  color: #f6f6f6;
+}
+
 :root {
   --background-button-color: #0a0a0a;
   --background-category-color: #0a0a0a;
