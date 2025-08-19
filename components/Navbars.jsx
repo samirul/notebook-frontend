@@ -14,8 +14,8 @@ const Navbars = ({ value, handleChange }) => {
   const getUser = async () => {
     try {
       const response = await CheckUser()
-      if (response?.data && response?.status === 200) {
-        setUser(response?.data?.user)
+      if (response.data && response.status === 200) {
+        setUser(response.data.user)
       }
     } catch (error) { }
   }
@@ -25,7 +25,7 @@ const Navbars = ({ value, handleChange }) => {
   const handleLogout = async () => {
     try {
       const response = await CheckUser()
-      if (response?.data && response?.status === 200) {
+      if (response.data && response.status === 200) {
         try {
           await axios.post("http://localhost:8000/api/auth/logout/", {
             headers: {
