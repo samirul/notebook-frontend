@@ -14,11 +14,12 @@ const Navbars = ({ value, handleChange }) => {
 
   const checkLoggedIn = async () => {
     try {
-
       const response = await axios.get('http://localhost:8000/accounts/api/logged/status/', { withCredentials: true })
       setLogged(response.data.item.logged_in)
     } catch (error) {
+      if (error.status == 400) {
         setLogged('no');
+      }
     }
   }
 
