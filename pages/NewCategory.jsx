@@ -63,12 +63,12 @@ const NewCategory = ({ value }) => {
         window.location.replace("/login");
       }
     }
-    console.log('Form submitted:', formSearch);
   }
 
   const handleDeleteLocal = (id) => {
-    setFormSearchResult((prev) => prev.filter((cat) => cat.id !== id)); // immediate UI update
+    setFormSearchResult((prev) => prev.filter((cat) => cat.id !== id));
   };
+
   const handleSubmitSearch = async (e) => {
     e.preventDefault();
     setPage(1);
@@ -97,7 +97,7 @@ const NewCategory = ({ value }) => {
               <Form.Control
                 type="text"
                 name="title"
-                value={formData.title}
+                value={formData?.title}
                 onChange={handleChange}
                 placeholder="Enter your category name"
                 className='category-input'
@@ -117,7 +117,7 @@ const NewCategory = ({ value }) => {
               <Form.Control
                 type="text"
                 name="title"
-                value={formSearch.title}
+                value={formSearch?.title}
                 onChange={handleChangeSearch}
                 placeholder="Enter your category name"
                 className='category-input'
@@ -142,8 +142,8 @@ const NewCategory = ({ value }) => {
           <h2>List of categories is created</h2>
           <div className='category-items'>
             {formSearchResult.map((item) => (
-              <div className='category-item' key={item.id}>
-                <p>{item.title}</p>
+              <div className='category-item' key={item?.id}>
+                <p>{item?.title}</p>
                 <Trash3Fill className='trash-fill-category' onClick={() => { setModalShow(true), handleModal(item) }} />
               </div>
             ))}
