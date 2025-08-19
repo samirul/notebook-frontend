@@ -61,7 +61,7 @@ const SinglePage = ({ value }) => {
                     </div>
                     <div className='note-body'>
                         <article className='note-article'>
-                            <span className='note-text' dangerouslySetInnerHTML={{ __html: noteData.note_text}}>
+                            <span className='note-text' dangerouslySetInnerHTML={{ __html: noteData?.note_text}}>
                             </span>
                         </article>
                     </div>
