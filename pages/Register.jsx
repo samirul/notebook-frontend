@@ -99,7 +99,6 @@ const Register = () => {
                 <Form.Control
                   type="password"
                   name="password1"
-                  value={registerData.password1}
                   onChange={handleChange}
                   placeholder='Password'
                 />
@@ -113,7 +112,6 @@ const Register = () => {
                 <Form.Control
                   type="password"
                   name="password2"
-                  value={registerData.password2}
                   onChange={handleChange}
                   placeholder='Confirm Password'
                 />
