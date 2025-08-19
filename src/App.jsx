@@ -21,36 +21,40 @@ import Register from '../pages/Register';
 import { SocketConnection } from '../components/SocketConnection';
 import { ToastContainer } from 'react-toastify';
 import { CheckUserRedirect } from '../components/CheckUserRedirect';
-import { CheckUser as userCheck } from '../components/CheckUser'
 import { Spinner } from 'react-bootstrap';
+import axios from 'axios';
 
 function App() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [showHeader, setShowHeader] = useState(false);
-  const [resultBackend, setResultBackend] = useState(false)
+  const [resultBackend, setResultBackend] = useState(false);
   const [loading, setLoading] = useState(true);
 
-  const checkAuth = async () =>{
-    try{
-      const response = await userCheck();
-      if(response.data && response.data.user.id && response.status === 200){
-        setResultBackend(true);
+  const checkLoggedIn = async () => {
+    try {
+      const response = await axios.get('http://localhost:8000/accounts/api/logged/status/', { withCredentials: true })
+      if (response.data.item.logged_in === 'yes') {
+        setResultBackend(true)
+      } else if (response.data.item.logged_in === 'no') {
+        setResultBackend(false)
       }
-    }catch(error){
-      if(error.status === 401){
-        setResultBackend(false);
+
+    } catch (error) {
+      if (error.status === 400) {
+        setResultBackend(false)
       }
     }
   }
 
   useEffect(() => {
-    checkAuth();
+    checkLoggedIn();
     SocketConnection();
     setTimeout(() => {
       setLoading(false);
     }, 1500)
-  }, [])
-  
+  }, [resultBackend])
+
+
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
     setShowHeader(prev => !prev)
@@ -74,7 +78,7 @@ function App() {
   return (
     <>
       <div className="App" data-theme={isDark ? "dark" : "light"}>
-        <CheckUserRedirect/>
+        <CheckUserRedirect />
         {hideMain ?
           <main>
             <Navbars value={isDark} handleChange={() => setIsDark(!isDark)} />
@@ -89,7 +93,7 @@ function App() {
           </main>
           : <main className={`main-content ${isSidebarOpen ? '' : 'sidebar-closed'}`}>
             <Navbars value={isDark} handleChange={() => setIsDark(!isDark)} />
-            <Sidebar isOpen={isSidebarOpen} toggleSidebar={toggleSidebar} showHeader={showHeader}/>
+            <Sidebar isOpen={isSidebarOpen} toggleSidebar={toggleSidebar} showHeader={showHeader} />
             <Routes>
               <Route path="*" element={<Navigate to="/404" />} />
               <Route path="/notes" element={resultBackend ? <Notes value={isDark} /> : <Navigate to="/login" replace />} />
@@ -98,7 +102,7 @@ function App() {
               <Route path="/note/:note_id" element={resultBackend ? <SinglePage value={isDark} /> : <Navigate to="/login" replace />} />
               <Route path="/note/update/:note_id" element={resultBackend ? <TextUpdatePage value={isDark} /> : <Navigate to="/login" replace />} />
             </Routes>
-          <ToastContainer/>
+            <ToastContainer />
           </main>
         }
       </div>

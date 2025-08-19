@@ -1,21 +1,26 @@
-import { useEffect } from 'react'
+import { useEffect} from 'react'
 import { useLocation } from "react-router-dom";
-import { CheckUser as user } from './CheckUser';
+import axios from 'axios';
 
 export const CheckUserRedirect = () => {
     const location = useLocation();
-    const checkUser = async () => {
+    const checkLoggedInUser = async () => {
         try {
-            await user();
+            const response = await axios.get('http://localhost:8000/accounts/api/logged/status/', { withCredentials: true }, {
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json',
+                }
+            })
 
-        } catch (error) {
-            if (error.status === 401) {
+            if (response.data.item.logged_in === 'no') {
                 localStorage.setItem("redirectPage", location.pathname);
             }
-        }
+
+        } catch (error) { }
 
     }
     useEffect(() => {
-        checkUser();
+        checkLoggedInUser();
     }, [])
 }
