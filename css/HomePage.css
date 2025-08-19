@@ -40,7 +40,7 @@
   text-transform: uppercase;
   transition: 0.5s;
   background-size: 200% auto;
-  color: white;
+  color: var(--primary-text-color);
   border-radius: 10px;
   display: block;
   border: 0px;
