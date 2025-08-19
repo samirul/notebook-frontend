@@ -38,7 +38,11 @@ const NewCategory = ({ value }) => {
         },
 
       })
-    } catch (error) { }
+    } catch (error) {
+      if (error.status === 401) {
+        window.location.replace("/login");
+      }
+    }
   };
 
   const dataSearch = async () => {
@@ -55,14 +59,16 @@ const NewCategory = ({ value }) => {
       setFormSearchResult(response.data.search_result)
       setTotalCounts(response.data.count)
     } catch (error) {
-
+      if (error.status === 401) {
+        window.location.replace("/login");
+      }
     }
     console.log('Form submitted:', formSearch);
   }
 
-    const handleDeleteLocal = (id) => {
+  const handleDeleteLocal = (id) => {
     setFormSearchResult((prev) => prev.filter((cat) => cat.id !== id)); // immediate UI update
-  }; 
+  };
   const handleSubmitSearch = async (e) => {
     e.preventDefault();
     setPage(1);
@@ -77,7 +83,7 @@ const NewCategory = ({ value }) => {
 
   const totalPages = Math.ceil(totalCounts / pageSize);
 
-  const handleModal = (item) =>{
+  const handleModal = (item) => {
     setIdCategory(item.id)
   }
 
@@ -127,18 +133,18 @@ const NewCategory = ({ value }) => {
             show={modalShow}
             onHide={() => setModalShow(false)}
             value={value}
-            id = {idCategory}
+            id={idCategory}
             onDeleteSuccess={(id) => {
-            handleDeleteLocal(id); 
-            setModalShow(false);
-          }}
+              handleDeleteLocal(id);
+              setModalShow(false);
+            }}
           />
           <h2>List of categories is created</h2>
           <div className='category-items'>
             {formSearchResult.map((item) => (
               <div className='category-item' key={item.id}>
                 <p>{item.title}</p>
-                <Trash3Fill className='trash-fill-category' onClick={() => {setModalShow(true), handleModal(item)}}/>
+                <Trash3Fill className='trash-fill-category' onClick={() => { setModalShow(true), handleModal(item) }} />
               </div>
             ))}
           </div>
