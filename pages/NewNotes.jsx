@@ -97,7 +97,7 @@ const NewNotes = () => {
                             <Form.Control
                                 type="text"
                                 name="title"
-                                value={formData.title}
+                                value={formData?.title}
                                 onChange={handleChange}
                                 placeholder="Enter your title"
                             />
@@ -107,9 +107,9 @@ const NewNotes = () => {
                             <Form.Label>Category</Form.Label>
                             <Select
                                 name="category"
-                                value={options.find(opt => opt.value === formData.category)}
+                                value={options.find(opt => opt.value === formData?.category)}
                                 onChange={(selectedOption) => handleChange({
-                                    target: { name: 'category', value: selectedOption.value }
+                                    target: { name: 'category', value: selectedOption?.value }
                                 })}
                                 options={options}
                                 placeholder="Select a category"
@@ -119,7 +119,7 @@ const NewNotes = () => {
 
                         <Form.Group className="mb-3" controlId="formNoteText">
                             <ReactQuill theme="snow"
-                                value={formData.note_text}
+                                value={formData?.note_text}
                                 onChange={handleQuillChange}
                                 modules={modules}
                                 className='react-quill-class' />
