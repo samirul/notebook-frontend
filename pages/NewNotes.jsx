@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { generatePath, useNavigate } from 'react-router-dom';
 import ReactQuill from 'react-quill-new';
 import 'react-quill-new/dist/quill.snow.css';
 import 'react-quill-new/dist/quill.bubble.css';
@@ -10,6 +11,8 @@ import Select from 'react-select'
 const NewNotes = () => {
     const [categories, setCategories] = useState([])
     const [formData, setFormData] = useState({ title: '', category: '', note_text: '' });
+
+    const navigate = useNavigate()
 
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -47,7 +50,7 @@ const NewNotes = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            await axios.post("http://localhost:8000/api/notes/new-note/",
+            const response = await axios.post("http://localhost:8000/api/notes/new-note/",
                 formData,
                 { withCredentials: true }, {
                 headers:
@@ -58,6 +61,10 @@ const NewNotes = () => {
                 },
 
             })
+            if(response.data && response.status === 201){
+                const note_id = response.data.id
+                note_id && navigate(generatePath("/note/:note_id", { note_id }));
+            }
         } catch (error) {
             if (error.status === 401) {
                 window.location.replace("/login");
