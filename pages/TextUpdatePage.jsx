@@ -3,7 +3,7 @@ import ReactQuill from 'react-quill-new';
 import 'react-quill-new/dist/quill.snow.css';
 import 'react-quill-new/dist/quill.bubble.css';
 import Form from 'react-bootstrap/Form';
-import { useParams } from 'react-router-dom'
+import { generatePath, useNavigate, useParams } from 'react-router-dom'
 import axios from 'axios';
 import Cookies from 'js-cookie';
 import Select from 'react-select'
@@ -16,6 +16,8 @@ const TextUpdatePage = ({value}) => {
     const [formData, setFormData] = useState({ name: '', options: '', description: '' });
     const [formCategoryTitle, setFormCategoryTitle] = useState('')
     const [loading, setLoading] = useState(true);
+
+    const navigate = useNavigate()
 
     const fetchData = async () => {
         try {
@@ -57,11 +59,15 @@ const TextUpdatePage = ({value}) => {
                 },
 
             })
-            console.log(response)
+            if(response.data && response.status === 200){
+                const note_id = response.data.note.id
+                note_id && navigate(generatePath("/note/:note_id", { note_id }));
+            }
         } catch (error) {
-            console.log(error)
+            if (error.status === 401) {
+                window.location.replace("/login");
+            }
         }
-        console.log('Form submitted:', formData);
     };
 
 
