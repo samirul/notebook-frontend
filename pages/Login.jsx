@@ -65,7 +65,6 @@ const Login = () => {
                 <Form.Control
                   type="password"
                   name="password"
-                  value={loginData.password}
                   onChange={handleChange}
                   placeholder='Password'
                 />
