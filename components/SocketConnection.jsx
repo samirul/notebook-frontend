@@ -30,6 +30,8 @@ export const SocketConnection = async () => {
             toast.success(data['notification'], { position: 'bottom-left' })
         } else if (data['type'] != 'undefined' && data['type'] == 'created_note_error') {
             toast.error(data['notification'], { position: 'bottom-left' })
+        } else if (data['type'] != 'undefined' && data['type'] == 'notification_updated_note') {
+            toast.success(data['notification'], { position: 'bottom-left' })
         } else if (data['type'] != 'undefined' && data['type'] == 'notification_deleted_note') {
             toast.success(data['notification'], { position: 'bottom-left' })
         }else if (data['type'] != 'undefined' && data['type'] == 'notification_rate_limited') {
