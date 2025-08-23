@@ -9,6 +9,23 @@ const Sidebar = ({ isOpen, toggleSidebar, showHeader }) => {
   const [hoveredItem, setHoveredItem] = useState(null);
   const [menuNoteItem, setMenuNoteItem] = useState([]);
   const [updated, setUpdated] = useState(false);
+  const [resultBackend, setResultBackend] = useState(false);
+
+  const checkLoggedIn = async () => {
+    try {
+      const response = await axios.get('http://localhost:8000/accounts/api/logged/status/', { withCredentials: true })
+      if (response.data.item.logged_in === 'yes') {
+        setResultBackend(true)
+      } else if (response.data.item.logged_in === 'no') {
+        setResultBackend(false)
+      }
+
+    } catch (error) {
+      if (error.status === 400) {
+        setResultBackend(false)
+      }
+    }
+  }
 
   const fetchMenuNoteItem = async () => {
     const response = await axios.get("http://localhost:8000/api/notes/notes/",
@@ -22,8 +39,11 @@ const Sidebar = ({ isOpen, toggleSidebar, showHeader }) => {
   }
 
   useEffect(() => {
-    fetchMenuNoteItem();
-  },[updated])
+    checkLoggedIn();
+    if(resultBackend){
+      fetchMenuNoteItem();
+    }
+  },[updated, resultBackend])
 
   // Separate arrays for each section
   const Home = [
