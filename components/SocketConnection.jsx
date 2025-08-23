@@ -32,7 +32,10 @@ export const SocketConnection = async () => {
             toast.error(data['notification'], { position: 'bottom-left' })
         } else if (data['type'] != 'undefined' && data['type'] == 'notification_deleted_note') {
             toast.success(data['notification'], { position: 'bottom-left' })
+        }else if (data['type'] != 'undefined' && data['type'] == 'notification_rate_limited') {
+            toast.error(data['notification'], { position: 'bottom-left' })
         }
+        
     };
 
     socket.onclose = () => {
