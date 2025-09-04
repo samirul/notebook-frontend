@@ -16,7 +16,7 @@ const SinglePage = ({ value }) => {
     const fetchData = async () => {
         try {
             const response = await axios.get(`http://localhost:8000/api/notes/notes/${note_id}`, { withCredentials: true })
-            setNoteData(response?.data?.note)
+            setNoteData(response.data.note)
         } catch (error) { 
             if(error.status===401){
                 window.location.replace("/login");
@@ -53,6 +53,8 @@ const SinglePage = ({ value }) => {
                         show={modalShowDownload}
                         onHide={() => setModalShowDownload(false)}
                         value={value}
+                        title={noteData.title}
+                        text={noteData.note_text}
                     />
                     <div className="note-menu">
                         <CloudDownload className='download-text' onClick={() => setModalShowDownload(true)} />
