@@ -43,8 +43,9 @@
 
 .note-article .note-text {
     color: var(--primary-text-color);
-    line-height: 2em;
     word-wrap: break-word;
+    overflow-wrap: break-word; 
+    white-space: normal;
 }
 
 .note-menu {
