@@ -34,9 +34,9 @@ export const SocketConnection = async () => {
             toast.success(data['notification'], { position: 'bottom-left' })
         } else if (data['type'] != 'undefined' && data['type'] == 'notification_deleted_note') {
             toast.success(data['notification'], { position: 'bottom-left' })
-        }else if (data['type'] != 'undefined' && data['type'] == 'notification_rate_limited') {
+        } else if (data['type'] != 'undefined' && data['type'] == 'notification_rate_limited') {
             toast.error(data['notification'], { position: 'bottom-left' })
-        }else if (data['type'] != 'undefined' && data['type'] == 'notification_downloading') {
+        } else if (data['type'] != 'undefined' && data['type'] == 'notification_downloading') {
             toast.success(data['notification'], { position: 'bottom-left' })
         }
         

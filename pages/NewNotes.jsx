@@ -87,7 +87,7 @@ const NewNotes = () => {
             [{ 'indent': '+1' }],
             [{ 'script': 'sub' }, { 'script': 'super' }],
             ['link', 'image', 'video', 'formula'],
-            ['blockquote', 'code-block'],
+            ['blockquote'],
             [{ 'align': [] }],
             [{ 'direction': 'rtl' }],
             ['clean']

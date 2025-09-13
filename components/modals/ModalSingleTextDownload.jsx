@@ -7,26 +7,49 @@ import { saveAs } from 'file-saver';
 const ModalSingleTextDownload = (props) => {
     const [selected, setSelected] = useState("");
     const handleDownload = async () => {
+        if (selected === 'pdf-file') {
+            await downloadPDFTask();
+        } else if (selected === 'text-file') {
+            await downloadTextTask();
+        }
+    }
+
+    const downloadPDFTask = async () => {
         const data = {
             "name": props.title,
             "html": props.text,
             "selected": selected
         }
-        const response = await axios.post("http://localhost:8000/api/notes/note/download/",
+        const response = await axios.post("http://localhost:8000/api/notes/note/download/pdf/",
             { data },
             { withCredentials: true })
         taskPollStatusHandler(response.data.pdf_download_task_id);
+    }
 
+    const downloadTextTask = async () => {
+        const data = {
+            "name": props.title,
+            "html": props.text,
+            "selected": selected
+        }
+        const response = await axios.post("http://localhost:8000/api/notes/note/download/text/",
+            { data },
+            { withCredentials: true })
+        taskPollStatusHandler(response.data.text_download_task_id);
     }
 
     const taskPollStatusHandler = (id) => {
         const interval = setInterval(async () => {
             try {
-                const response = await axios.get(`http://localhost:8000/api/notes/pdf-status/${id}/`, { withCredentials: true });
+                const response = await axios.get(`http://localhost:8000/api/notes/status/${id}/`, { withCredentials: true });
                 if (response.data.status === 'SUCCESS') {
                     clearInterval(interval);
-                    const pdfUrl = response.data.pdf_url;
-                    await downloadPdfHandler(pdfUrl);
+                    const TextUrl = response.data.url;
+                    if (selected === 'pdf-file') {
+                        await downloadPdfHandler(TextUrl);
+                    } else if (selected === 'text-file') {
+                        await downloadTextHandler(TextUrl);
+                    }
                 } else if (response.data.status === 'FAILURE') {
                     clearInterval(interval);
                 }
@@ -36,12 +59,24 @@ const ModalSingleTextDownload = (props) => {
         }, 10000);
     };
 
-
     const downloadPdfHandler = async (url) => {
         try {
             const url_name = url.split('/').pop();
             const file_name = url_name.split('/').pop();
             const response = await axios.get(`http://localhost:8000/media/pdf/${file_name}`, { responseType: 'blob' }, { withCredentials: true });
+            saveAs(new Blob([response.data]), file_name);
+        } catch (error) {
+            if (error.status === 404) {
+                console.log("Download failed.")
+            }
+        }
+    };
+
+    const downloadTextHandler = async (url) => {
+        try {
+            const url_name = url.split('/').pop();
+            const file_name = url_name.split('/').pop();
+            const response = await axios.get(`http://localhost:8000/media/text/${file_name}`, { responseType: 'blob' }, { withCredentials: true });
             saveAs(new Blob([response.data]), file_name);
         } catch (error) {
             if (error.status === 404) {
