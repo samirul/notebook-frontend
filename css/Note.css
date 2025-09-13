@@ -37,13 +37,14 @@
 }
 
 .note-article {
-    max-width: 1000px;
+    max-width: 1200px;
     width: 100%;
 }
 
 .note-article .note-text {
     color: var(--primary-text-color);
     line-height: 2em;
+    word-wrap: break-word;
 }
 
 .note-menu {
@@ -123,31 +124,77 @@ p img {
     border-radius: 8px;
 }
 
-
-@media screen and (max-width: 400px) {
-
+@media screen and (max-width: 1500px) {
     .grid-note-containers {
         grid-template-columns: 1fr;
+        margin: 40px auto;
+        padding: 0 20px;
+    }
+
+    .note-title .note-title-1 {
+        font-size: 36px;
     }
 
     .note-body {
         grid-column: span 1;
-        margin: 60px auto;
-        max-width: 320px;
-        overflow: hidden;
+        margin: 30px 0;
+        max-width: 100%;
+        overflow-x: hidden;
     }
-
 }
 
-@media screen and (max-width: 399px) {
+@media screen and (max-width: 1024px) {
     .grid-note-containers {
         grid-template-columns: 1fr;
+        margin: 40px auto;
+        padding: 0 20px;
+    }
+
+    .note-title .note-title-1 {
+        font-size: 36px;
     }
 
     .note-body {
         grid-column: span 1;
-        margin: 60px auto;
-        max-width: 265px;
-        overflow: hidden;
+        margin: 30px 0;
+        max-width: 100%;
+        overflow-x: hidden;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .grid-note-containers {
+        grid-template-columns: 1fr;
+        margin: 30px auto;
+        padding: 0 15px;
+    }
+
+    .note-title .note-title-1 {
+        font-size: 32px;
+        margin: 40px auto;
+    }
+
+    .note-body {
+        margin: 20px 0;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .grid-note-containers {
+        margin: 20px auto;
+        padding: 0 10px;
+    }
+
+    .note-title .note-title-1 {
+        font-size: 24px;
+        margin: 30px auto;
+    }
+
+    .note-body {
+        margin: 15px 0;
+    }
+
+    .note-menu {
+        gap: 15px;
     }
 }
