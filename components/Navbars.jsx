@@ -54,7 +54,7 @@ const Navbars = ({ value, handleChange }) => {
       const response = await CheckUser()
       if (response.data && response.status === 200) {
         try {
-          await axios.post("http://localhost:8000/api/auth/logout/", {
+          await axios.post("http://localhost:8000/api/accounts/auth/logout/", {
             headers: {
               'X-CSRFToken': Cookies.get('csrftoken'),
               'Content-Type': 'application/json',
