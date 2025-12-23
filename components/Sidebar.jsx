@@ -40,10 +40,10 @@ const Sidebar = ({ isOpen, toggleSidebar, showHeader }) => {
 
   useEffect(() => {
     checkLoggedIn();
-    if(resultBackend){
+    if (resultBackend) {
       fetchMenuNoteItem();
     }
-  },[updated, resultBackend])
+  }, [updated, resultBackend])
 
   // Separate arrays for each section
   const Home = [
@@ -90,7 +90,7 @@ const Sidebar = ({ isOpen, toggleSidebar, showHeader }) => {
     }));
   };
 
-  const handleUpdate =() =>{
+  const handleUpdate = () => {
     setUpdated(prev => !prev)
   }
 
@@ -102,11 +102,16 @@ const Sidebar = ({ isOpen, toggleSidebar, showHeader }) => {
         onMouseEnter={() => setHoveredItem(item.title)}
         onMouseLeave={() => setHoveredItem(null)}
       >
+        {!isOpen && hoveredItem === item.title && (
+          <div className="floating-menu">
+            <div className="floating-title">{item.title}</div>
+          </div>
+        )}
         {item.submenu ? (
           <div className="menu-item-wrapper">
             <div
               className="menu-title"
-              onClick={() => {toggleDropdown(item.title), handleUpdate()}}
+              onClick={() => { toggleDropdown(item.title), handleUpdate() }}
             >
               <span className="icon-wrapper">
                 {{
@@ -161,11 +166,6 @@ const Sidebar = ({ isOpen, toggleSidebar, showHeader }) => {
               <span className="icon-wrapper">{item.icon}</span>
               <span className="title-text">{item.title}</span>
             </Link>
-            {!isOpen && hoveredItem === item.title && (
-              <div className="floating-menu">
-                <div className="floating-title">{item.title}</div>
-              </div>
-            )}
           </div>
         )}
       </div>
@@ -175,7 +175,7 @@ const Sidebar = ({ isOpen, toggleSidebar, showHeader }) => {
   return (
     <div className={`sidebar ${isOpen ? 'open' : 'closed'}`}>
       <div className="sidebar-header">
-        <p className={showHeader? "sidebar-open-header": "sidebar-closed-header"}>MyNotebook</p>
+        <p className={showHeader ? "sidebar-open-header" : "sidebar-closed-header"}>MyNotebook</p>
         <button className="toggle-btn" onClick={toggleSidebar}>
           <FaBars />
         </button>

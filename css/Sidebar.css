@@ -146,6 +146,7 @@
     position: absolute;
     left: calc(100% + 10px);
     top: 0;
+    left: 50px;
     background-color: var(--background-color);
     border-radius: 4px;
     padding: 0.5rem;
@@ -157,8 +158,9 @@
   .floating-title {
     padding: 0.5rem;
     font-weight: bold;
-    border-bottom: 1px solid #2a2a2a;
     margin-bottom: 0.5rem;
+    text-align: center;
+    padding-top: 20px;
   }
   
   .floating-menu-item {
