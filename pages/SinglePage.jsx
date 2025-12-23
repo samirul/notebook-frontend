@@ -19,7 +19,10 @@ const SinglePage = ({ value }) => {
             const response = await axios.get(`http://localhost:8000/api/notes/notes/${note_id}`, { withCredentials: true })
             setNoteData(response.data.note)
         } catch (error) {
-            if (error.status === 401) {
+            if(error.status === 400 || error.status === 404){
+                navigate("/notes")
+            }
+            else if (error.status === 401) {
                 window.location.replace("/login");
             }
         }
