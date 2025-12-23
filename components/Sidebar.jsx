@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { FaChevronDown, FaChevronRight, FaBars, FaHome, FaBook, FaCog } from 'react-icons/fa';
+import { FaChevronDown, FaChevronRight, FaBars, FaHome, FaBook, FaCog, FaSearch } from 'react-icons/fa';
 import axios from 'axios';
 
 const Sidebar = ({ isOpen, toggleSidebar, showHeader }) => {
@@ -58,9 +58,9 @@ const Sidebar = ({ isOpen, toggleSidebar, showHeader }) => {
   const AllNotes = [
     {
       id: 2,
-      title: 'All',
+      title: 'Search',
       path: '/notes',
-      icon: <FaHome />
+      icon: <FaSearch />
     }
   ];
 

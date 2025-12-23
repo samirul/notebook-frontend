@@ -7,7 +7,7 @@
     color: var(--primary-text-color);
     transition: all 0.3s ease;
     width: 250px;
-    padding: 1rem;
+    padding: 0.9rem;
     box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
     z-index: 1000;
   }
