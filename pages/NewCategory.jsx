@@ -139,7 +139,7 @@ const NewCategory = ({ value }) => {
               setModalShow(false);
             }}
           />
-          <h2>List of categories is created</h2>
+          <h2>{formSearchResult.length > 0 ? "Category Results": ""}</h2>
           <div className='category-items'>
             {formSearchResult.map((item) => (
               <div className='category-item' key={item?.id}>
