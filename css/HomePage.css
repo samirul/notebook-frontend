@@ -55,7 +55,7 @@
 
 .grid-container .btn-banner:hover {
   background-position: right center;
-  color: #fff;
+  color: var(--btn-color-hover);
   text-decoration: none;
 }
 

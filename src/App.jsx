@@ -32,7 +32,7 @@ function App() {
 
   const checkLoggedIn = async () => {
     try {
-      const response = await axios.get('http://localhost:8000/accounts/api/logged/status/', { withCredentials: true })
+      const response = await axios.get('http://localhost:8000/api/accounts/logged/status/', { withCredentials: true })
       if (response.data.item.logged_in === 'yes') {
         setResultBackend(true)
       } else if (response.data.item.logged_in === 'no') {

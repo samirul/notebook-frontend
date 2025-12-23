@@ -28,7 +28,7 @@ const Register = () => {
     setRegisterErrorMsgPassword2('');
     setRegisterErrorMsgNonField('');
     try {
-      const response = await axios.post("http://localhost:8000/api/auth/registration/",
+      const response = await axios.post("http://localhost:8000/api/accounts/auth/registration/",
         registerData,
         { withCredentials: true }, {
         headers:

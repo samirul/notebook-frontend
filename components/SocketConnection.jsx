@@ -2,7 +2,7 @@ import { toast } from 'react-toastify';
 import axios from 'axios';
 
 export const SocketConnection = async () => {
-    const response = await axios.get('http://localhost:8000/accounts/user/', { withCredentials: true }, {
+    const response = await axios.get('http://localhost:8000/api/accounts/user/', { withCredentials: true }, {
         headers: {
             'Content-Type': 'application/json',
             'Accept': 'application/json',
