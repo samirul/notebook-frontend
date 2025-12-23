@@ -11,14 +11,15 @@ const SinglePage = ({ value }) => {
     const [modalShowDelete, setModalShowDelete] = useState(false);
     const [modalShowDownload, setModalShowDownload] = useState(false);
     const [noteData, setNoteData] = useState([])
+    const [idNote, setIdNote] = useState([]);
 
 
     const fetchData = async () => {
         try {
             const response = await axios.get(`http://localhost:8000/api/notes/notes/${note_id}`, { withCredentials: true })
             setNoteData(response.data.note)
-        } catch (error) { 
-            if(error.status===401){
+        } catch (error) {
+            if (error.status === 401) {
                 window.location.replace("/login");
             }
         }
@@ -27,6 +28,10 @@ const SinglePage = ({ value }) => {
     useEffect(() => {
         fetchData();
     }, [note_id])
+
+    const handleModal = (item) => {
+        setIdNote(item.id)
+    }
 
     const navigate = useNavigate()
 
@@ -48,6 +53,7 @@ const SinglePage = ({ value }) => {
                         show={modalShowDelete}
                         onHide={() => setModalShowDelete(false)}
                         value={value}
+                        id={idNote}
                     />
                     <ModalSingleTextDownload
                         show={modalShowDownload}
@@ -59,11 +65,11 @@ const SinglePage = ({ value }) => {
                     <div className="note-menu">
                         <CloudDownload className='download-text' onClick={() => setModalShowDownload(true)} />
                         <PencilSquare className='edit-text' onClick={() => handleProceed(note_id)} />
-                        <Trash3Fill className='delete-text' onClick={() => setModalShowDelete(true)} />
+                        <Trash3Fill className='delete-text' onClick={(e) => {e.stopPropagation(); setModalShowDelete(true); handleModal(noteData)}} />
                     </div>
                     <div className='note-body'>
                         <article className='note-article'>
-                            <span className='note-text' dangerouslySetInnerHTML={{ __html: noteData?.note_text}}>
+                            <span className='note-text' dangerouslySetInnerHTML={{ __html: noteData?.note_text }}>
                             </span>
                         </article>
                     </div>

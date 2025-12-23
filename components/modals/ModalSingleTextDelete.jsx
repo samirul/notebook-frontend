@@ -1,7 +1,22 @@
-import React from 'react'
+import axios from 'axios';
 import Modal from 'react-bootstrap/Modal';
+import {useNavigate } from "react-router-dom";
 
 const ModalSingleTextDelete = (props) => {
+    const navigate = useNavigate()
+        const handleDelete = async (id) => {
+        try {
+            await axios.delete(`http://localhost:8000/api/notes/note/delete/${id}/`, { withCredentials: true })
+            navigate("/notes")
+        } catch (error) {
+            if(error.status === 400 || error.status === 404){
+               navigate("/notes") 
+            }else if(error.status === 401){
+                window.location.href = "/login"
+            }
+
+        }
+    }
     return (
         <>
             <div>
@@ -26,7 +41,7 @@ const ModalSingleTextDelete = (props) => {
                     </Modal.Body>
                     <Modal.Footer>
                         <div className='btn-container'>
-                            <button className="button-submit-category" role="button">
+                            <button className="button-submit-category" role="button" onClick={() => { handleDelete(props.id), props.onHide() }}>
                                 Delete
                             </button>
                         </div>
@@ -40,6 +55,7 @@ const ModalSingleTextDelete = (props) => {
             </div>
         </>
     )
+
 }
 
 export default ModalSingleTextDelete

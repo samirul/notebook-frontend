@@ -101,8 +101,8 @@ const Notes = ({ value }) => {
           value={value}
           id = {idNote}
             onDeleteSuccess={(id) => {
-            handleDeleteLocal(id); 
-            setModalShow(false);
+              handleDeleteLocal(id); 
+              setModalShow(false);
           }}
         />
         <div className='note-container'>
