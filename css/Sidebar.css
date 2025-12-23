@@ -47,8 +47,8 @@
   }
   
   .toggle-btn:hover {
-    background-color: #2a2a2a;
-    color: #f6f6f6;
+    background-color: var(--sidebar-background-color);
+    color: var(--sidebar-text-color);
   }
   
   .menu-item {
@@ -70,12 +70,12 @@
   }
   
   .menu-title:hover{
-    background-color: #2a2a2a;
-    color: #f6f6f6;
+    background-color: var(--sidebar-background-color);
+    color: var(--sidebar-text-color);
   }
 
   .menu-title:hover .dropdown-icon {
-    color: #f6f6f6;
+    color: var(--sidebar-text-color);
   }
 
   
@@ -90,8 +90,8 @@
   }
   
   .menu-link:hover {
-    background-color: #2a2a2a;
-    color: #f6f6f6;
+    background-color: var(--sidebar-background-color);
+    color: var(--sidebar-text-color);
   }
   
   .icon-wrapper {
@@ -138,8 +138,8 @@
   }
   
   .submenu-item:hover {
-    background-color: #2a2a2a;
-    color: #f6f6f6;
+    background-color: var(--sidebar-background-color);
+    color: var(--sidebar-text-color);
   }
   
   .floating-menu {
@@ -147,7 +147,7 @@
     left: calc(100% + 10px);
     top: 0;
     left: 50px;
-    background-color: var(--background-color);
+    background-color: var(--sidebar-background-color);
     border-radius: 4px;
     padding: 0.5rem;
     min-width: 150px;
@@ -161,6 +161,7 @@
     margin-bottom: 0.5rem;
     text-align: center;
     padding-top: 20px;
+    color: var(--sidebar-text-color);
   }
   
   .floating-menu-item {
@@ -173,8 +174,8 @@
   }
   
   .floating-menu-item:hover {
-    background-color: #2a2a2a;
-    color: #f6f6f6;
+    background-color: var(--sidebar-background-color);
+    color: var(--sidebar-text-color);
   }
   
   .sidebar.closed .title-text,
@@ -221,16 +222,16 @@
 }
 
 .submenu-header:hover {
-  background-color: #2a2a2a;
-  color: #f6f6f6 !important;
+  background-color: var(--sidebar-background-color);
+  color: var(--sidebar-text-color) !important;
 }
 
 .submenu-header:hover .submenu-title {
-  color: #f6f6f6;
+  color: var(--sidebar-text-color);
 }
 
 .submenu-header:hover .dropdown-icon {
-  color: #f6f6f6;
+  color: var(--sidebar-text-color);
 }
 
 .submenu-title {
@@ -262,8 +263,8 @@
 }
 
 .subcategory-item:hover {
-  background-color: #2a2a2a;
-  color: #f6f6f6;
+  background-color: var(--sidebar-background-color);
+  color: var(--sidebar-text-color);
 }
 
 .floating-submenu-item {
@@ -280,8 +281,8 @@
 }
 
 .floating-submenu-header:hover {
-  background-color: #2a2a2a;
-  color: #f6f6f6;
+  background-color: var(--sidebar-background-color);
+  color: var(--sidebar-text-color);
 }
 
 .floating-subcategories {
@@ -300,8 +301,8 @@
 }
 
 .floating-subcategory-item:hover {
-  background-color: #2a2a2a;
-  color: #f6f6f6;
+  background-color: var(--sidebar-background-color);
+  color: var(--sidebar-text-color);
 }
 
 

@@ -50,6 +50,8 @@ html, body{
   --toggle-fg: #ffd000;
   --spinner-bg: #0a0a0a;
   --btn-color-hover: #f6f6f6;
+  --sidebar-background-color: #0a0a0a;
+  --sidebar-text-color: #f6f6f6;
 }
 
 [data-theme="dark"] {
@@ -76,6 +78,8 @@ html, body{
   --toggle-bg: #283452;
   --toggle-fg: #00a6ff;
   --btn-color-hover: #0a0a0a;
+  --sidebar-background-color: #f6f6f6;
+  --sidebar-text-color: #0a0a0a;
   min-height: 100vh;
 }
 
