@@ -46,7 +46,7 @@ const Notes = ({ value }) => {
   const handleSubmitSearch = async (e) => {
     e.preventDefault();
     setPage(1);
-    dataSearch();
+    await dataSearch();
   };
 
   useEffect(() => {
