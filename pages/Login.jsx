@@ -3,6 +3,8 @@ import Form from 'react-bootstrap/Form';
 import axios from 'axios';
 import Cookies from 'js-cookie';
 import Alert from 'react-bootstrap/Alert';
+import SocialLogin from '../components/SocialAuth';
+import { GoogleOAuthProvider } from '@react-oauth/google'
 
 const Login = () => {
 
@@ -28,13 +30,13 @@ const Login = () => {
         },
 
       })
-      if(response.data && response.data.access && response.data.user.pk && response.status === 200){
+      if (response.data && response.data.access && response.data.user.pk && response.status === 200) {
         const redirectPath = localStorage.getItem("redirectPage") || "/";
         window.location.replace(redirectPath);
         localStorage.removeItem("redirectPage")
       }
     } catch (error) {
-      if(error.status === 400){
+      if (error.status === 400) {
         setLoginErrorMsg(error.response.data['non_field_errors'][0]);
         setShowLoginErrorMsg(true);
       }
@@ -44,12 +46,12 @@ const Login = () => {
     <>
       <div className='login-container'>
         <div className="grid-auth-container">
-          <div className={showLoginErrorMsg ? 'auth-panel-alert': 'auth-panel'}>
+          <div className={showLoginErrorMsg ? 'auth-panel-alert' : 'auth-panel'}>
             {showLoginErrorMsg ? <Alert variant="danger">
-            <p>{loginErrorMsg}</p>
-          </Alert> : ""}
+              <p>{loginErrorMsg}</p>
+            </Alert> : ""}
             <h2>Login</h2>
-            <Form onSubmit={handleSubmit} className="p-4">
+            <Form onSubmit={handleSubmit} className="pt-4 px-4">
               <Form.Group className="mb-3 from-size-item" controlId="formEmail">
                 <Form.Label>Email</Form.Label>
                 <Form.Control
@@ -75,9 +77,14 @@ const Login = () => {
                   Login
                 </button>
               </div>
+            </Form>
+            <div className="btm-container">
+              <div className='btn-auth-container'>
+                <GoogleOAuthProvider clientId={import.meta.env.VITE_CLIENT_ID}><SocialLogin /></GoogleOAuthProvider>
+              </div>
               <p className='register-link-title'>Not Registered?</p>
               <a className="register-link" href="/register">Register</a>
-            </Form>
+            </div>
           </div>
 
         </div>

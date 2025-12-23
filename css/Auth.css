@@ -94,6 +94,11 @@
 
 }
 
+.btm-container{
+    margin: 5px auto;
+    text-align: center;
+}
+
 
 @media only screen and (min-device-width: 500px) and (max-device-width: 599px){
     .grid-auth-container .auth-panel{
