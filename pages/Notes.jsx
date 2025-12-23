@@ -94,7 +94,7 @@ const Notes = ({ value }) => {
             </div>
           </Form>
         </div>
-        <h2 className='notes-title-front'>All Notes</h2>
+        <h2 className='notes-title-front'>{formSearchResult.length > 0 ? "Note Results" : ""}</h2>
         <ModalAllText
           show={modalShow}
           onHide={() => setModalShow(false)}
