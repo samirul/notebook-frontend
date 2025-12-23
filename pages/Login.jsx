@@ -79,6 +79,7 @@ const Login = () => {
               </div>
             </Form>
             <div className="btm-container">
+              <p className='pt-3'>OR</p>
               <div className='btn-auth-container'>
                 <GoogleOAuthProvider clientId={import.meta.env.VITE_CLIENT_ID}><SocialLogin /></GoogleOAuthProvider>
               </div>
