@@ -64,7 +64,10 @@ const TextUpdatePage = ({value}) => {
                 note_id && navigate(generatePath("/note/:note_id", { note_id }));
             }
         } catch (error) {
-            if (error.status === 401) {
+            if(error.status === 400){
+                note_id && navigate(generatePath("/note/:note_id", { note_id }));
+            }
+            else if (error.status === 401) {
                 window.location.replace("/login");
             }
         }
