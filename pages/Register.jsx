@@ -3,6 +3,8 @@ import Form from 'react-bootstrap/Form';
 import axios from 'axios';
 import Cookies from 'js-cookie';
 import Alert from 'react-bootstrap/Alert';
+import SocialLogin from '../components/SocialAuth';
+import { GoogleOAuthProvider } from '@react-oauth/google'
 
 
 const Register = () => {
@@ -124,11 +126,16 @@ const Register = () => {
                   Register
                 </button>
               </div>
+            </Form>
+            <div className="btm-container">
+              <p className='pt-3'>OR</p>
+              <div className='btn-auth-container'>
+                <GoogleOAuthProvider clientId={import.meta.env.VITE_CLIENT_ID}><SocialLogin /></GoogleOAuthProvider>
+              </div>
               <p className='register-link-title'>Already Registered?</p>
               <a className="register-link" href="/login">Login</a>
-            </Form>
+            </div>
           </div>
-
         </div>
 
       </div>
