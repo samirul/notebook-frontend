@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
-import { Trash3Fill, PencilSquare, CloudDownload } from 'react-bootstrap-icons';
+import { Trash3Fill, PencilSquare, CloudDownload, CardText, Robot } from 'react-bootstrap-icons';
 import ModalSingleTextDelete from '../components/modals/ModalSingleTextDelete';
 import { generatePath, useNavigate } from "react-router-dom";
 import ModalSingleTextDownload from '../components/modals/ModalSingleTextDownload';
@@ -69,6 +69,8 @@ const SinglePage = ({ value }) => {
                         <CloudDownload className='download-text' onClick={() => setModalShowDownload(true)} />
                         <PencilSquare className='edit-text' onClick={() => handleProceed(note_id)} />
                         <Trash3Fill className='delete-text' onClick={(e) => {e.stopPropagation(); setModalShowDelete(true); handleModal(noteData)}} />
+                        <CardText className='summary-text' onClick={(e) => {e.stopPropagation(); setModalShowDelete(true); handleModal(noteData)}} />
+                        <Robot className='robot-text' onClick={(e) => {e.stopPropagation(); setModalShowDelete(true); handleModal(noteData)}} />
                     </div>
                     <div className='note-body'>
                         <article className='note-article'>

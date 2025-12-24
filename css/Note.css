@@ -58,14 +58,18 @@
 
 .download-text,
 .edit-text,
-.delete-text {
+.delete-text,
+.summary-text,
+.robot-text{
     color: var(--note-tools-button-color);
     cursor: pointer;
 }
 
 .download-text:hover,
 .edit-text:hover,
-.delete-text:hover {
+.delete-text:hover,
+.summary-text:hover,
+.robot-text:hover {
     color: var(--primary-text-color);
     transition: .3s;
 }
