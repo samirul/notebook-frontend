@@ -23,6 +23,7 @@ import { ToastContainer } from 'react-toastify';
 import { CheckUserRedirect } from '../components/CheckUserRedirect';
 import { Spinner } from 'react-bootstrap';
 import axios from 'axios';
+import Cookies from 'js-cookie';
 
 function App() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -48,13 +49,61 @@ function App() {
 
   useEffect(() => {
     checkLoggedIn();
-    if(resultBackend){
+    if (resultBackend) {
       SocketConnection();
     }
     setTimeout(() => {
       setLoading(false);
     }, 1500)
   }, [resultBackend])
+
+  useEffect(() => {
+    if (resultBackend) {
+      const timeout = 300000
+      const fetchAccess = setInterval(async () => {
+        try {
+          await axios.post("http://localhost:8000/api/accounts/auth/token/refresh/", {
+            headers: {
+              'X-CSRFToken': Cookies.get('csrftoken'),
+              'Content-Type': 'application/json',
+              'Accept': 'application/json',
+            }
+          }, { withCredentials: true });
+        } catch (error) {
+          if (error.status === 400 || error.status === 401) {
+            window.location.replace("/login");
+          }
+        }
+        try {
+          await axios.get("http://localhost:8000/api/accounts/user/", { withCredentials: true }, {
+            headers: {
+              'Content-Type': 'application/json',
+              'Accept': 'application/json',
+            }
+          })
+        } catch (error) {
+          if (error.status === 401) {
+            try {
+              await axios.post("http://localhost:8000/api/accounts/auth/token/refresh/", {
+                headers: {
+                  'X-CSRFToken': Cookies.get('csrftoken'),
+                  'Content-Type': 'application/json',
+                  'Accept': 'application/json',
+                }
+              }, { withCredentials: true });
+            } catch (error) {
+              if (error.status === 400 || error.status === 401) {
+                window.location.replace("/login");
+              }
+            }
+          }
+        }
+      }, timeout);
+      return () => {
+        clearInterval(fetchAccess);
+      }
+    }
+  }, [resultBackend]);
 
 
   const toggleSidebar = () => {
